@@ -1,6 +1,7 @@
 package lógico;
 
 public abstract class Persona {
+
 	protected String cedula;
 	protected String nombre;
 	protected String apellido;
@@ -9,6 +10,7 @@ public abstract class Persona {
 	protected String direccion;
 	public String getCedula() {
 		return cedula;
+
 	}
 	public void setCedula(String cedula) {
 		this.cedula = cedula;

@@ -6,7 +6,7 @@ public class Paciente extends Persona{
 	private ArrayList<Vacuna> misVacunas;
 	private ArrayList<Enfermedad> enfermedades;
 	private Reporte historiaClinica;
-	
+
 	public ArrayList<Vacuna> getMisVacunas() {
 		return misVacunas;
 	}
