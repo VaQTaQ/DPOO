@@ -8,6 +8,17 @@ public abstract class Persona {
 	protected int edad;
 	protected String sexo;
 	protected String direccion;
+	
+	Persona(String cedula, String nombre, String apellido, int edad, String sexo, String direccion){
+		super();
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.sexo = sexo;
+		this.direccion = direccion;
+	}
+	
 	public String getCedula() {
 		return cedula;
 

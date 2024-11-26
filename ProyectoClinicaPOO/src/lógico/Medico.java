@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Medico extends Persona {
-    private String especialidad;
+
+	private String especialidad;
     private String codigoMedico;
     private ArrayList<Consulta> consultas;
 
-    public Medico(String cedula, String nombre, String apellido, 
-                  String especialidad, String codigoMedico) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.apellido = apellido;
+
+   public Medico(String cedula, String nombre, String apellido, int edad, String sexo, String direccion, String especialidad, String codigoMedico) 
+    {
+		super(cedula, nombre, apellido, edad, sexo, direccion);
         this.especialidad = especialidad;
         this.codigoMedico = codigoMedico;
         this.consultas = new ArrayList<>();
