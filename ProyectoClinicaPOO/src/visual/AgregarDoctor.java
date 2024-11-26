@@ -7,7 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lógico.Clinica;
+import lógico.Medico;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -23,7 +28,7 @@ public class AgregarDoctor extends JDialog {
 	private JTextField txtEspecialidadDoctor;
 	private JTextField txtIdDoctor;
 	private JTextField txtApellidosDoctor;
-	private JTextField textField_6;
+	private JTextField txtDireccionDoctor;
 
 	/**
 	 * Launch the application.
@@ -112,15 +117,15 @@ public class AgregarDoctor extends JDialog {
 		txtApellidosDoctor.setBounds(343, 96, 155, 22);
 		contentPanel.add(txtApellidosDoctor);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Seleccione", "Masculino", "Femenino"}));
-		comboBox.setBounds(329, 140, 145, 22);
-		contentPanel.add(comboBox);
+		JComboBox cmbSexoDoctor = new JComboBox();
+		cmbSexoDoctor.setModel(new DefaultComboBoxModel(new String[] {"Seleccione", "Masculino", "Femenino"}));
+		cmbSexoDoctor.setBounds(329, 140, 145, 22);
+		contentPanel.add(cmbSexoDoctor);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(343, 188, 179, 108);
-		contentPanel.add(textField_6);
+		txtDireccionDoctor = new JTextField();
+		txtDireccionDoctor.setColumns(10);
+		txtDireccionDoctor.setBounds(343, 188, 179, 108);
+		contentPanel.add(txtDireccionDoctor);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -129,6 +134,39 @@ public class AgregarDoctor extends JDialog {
 				JButton btnAgregarDoctor = new JButton("Agregar");
 				btnAgregarDoctor.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
+						String cedula = txtCedulaDoctor.getText();
+					    String nombre = txtNombresDoctor.getText();
+					    String apellido = txtApellidosDoctor.getText();
+					    int edad = Integer.parseInt(txtEdadDoctor.getText());
+					    String sexo = cmbSexoDoctor.getSelectedItem().toString();
+					    String direccion = txtDireccionDoctor.getText();
+					    String especialidad = txtEspecialidadDoctor.getText();
+					    String codigoMedico = txtIdDoctor.getText();
+					    
+					    
+					    Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
+					    
+					    
+					    Clinica.getInstance().registrarMedico(nuevoMedico);
+					    
+					    
+					    JOptionPane.showMessageDialog(null, "Médico registrado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+					    
+					    clean();
+						
+					}
+
+					private void clean() {
+						// TODO Auto-generated method stub
+						txtCedulaDoctor.setText("");
+					    txtNombresDoctor.setText("");
+					    txtApellidosDoctor.setText("");
+					    txtEdadDoctor.setText("");
+					    cmbSexoDoctor.setSelectedIndex(0);
+					    txtDireccionDoctor.setText("");
+					    txtEspecialidadDoctor.setText("");
+					    txtIdDoctor.setText("");
 						
 					}
 				});

@@ -9,13 +9,22 @@ public class Clinica {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
 
-    public Clinica(String nombre, String direccion) {
+    
+    private static Clinica estado;
+    
+    private Clinica(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.pacientes = new ArrayList<>();
         this.medicos = new ArrayList<>();
     }
-
+    
+    public static Clinica getInstance() {
+        if (estado == null) {
+            estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
+        }
+        return estado;
+    }
    
 
     public void registrarPaciente(Paciente paciente) {
