@@ -8,6 +8,8 @@ public class Clinica {
     private String direccion;
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
+    public static int idMedico;
+
 
     
     private static Clinica estado;
@@ -17,6 +19,7 @@ public class Clinica {
         this.direccion = direccion;
         this.pacientes = new ArrayList<>();
         this.medicos = new ArrayList<>();
+        idMedico = 1;
     }
     
     public static Clinica getInstance() {
@@ -65,6 +68,7 @@ public class Clinica {
 
     public void registrarMedico(Medico medico) {
         medicos.add(medico);
+        idMedico++;
     }
 
     public Medico buscarMedicoPorCedula(String cedula) {

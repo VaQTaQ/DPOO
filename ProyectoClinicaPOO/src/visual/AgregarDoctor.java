@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+
 
 import lógico.Clinica;
 import lógico.Medico;
@@ -24,7 +27,8 @@ public class AgregarDoctor extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCedulaDoctor;
 	private JTextField txtNombresDoctor;
-	private JTextField txtEdadDoctor;
+	//private JTextField txtEdadDoctor;
+	private JSpinner spnEdadDoctor;
 	private JTextField txtIdDoctor;
 	private JTextField txtApellidosDoctor;
 	private JTextField txtDireccionDoctor;
@@ -95,12 +99,13 @@ public class AgregarDoctor extends JDialog {
 		txtNombresDoctor.setBounds(98, 93, 155, 22);
 		contentPanel.add(txtNombresDoctor);
 		
-		txtEdadDoctor = new JTextField();
-		txtEdadDoctor.setColumns(10);
-		txtEdadDoctor.setBounds(75, 140, 155, 22);
-		contentPanel.add(txtEdadDoctor);
+		spnEdadDoctor = new JSpinner();
+		spnEdadDoctor.setModel(new SpinnerNumberModel(18, 0, 120, 1)); // Edad min 0, max 120
+		spnEdadDoctor.setBounds(75, 140, 155, 22);
+		contentPanel.add(spnEdadDoctor);
 		
 		txtIdDoctor = new JTextField();
+		txtIdDoctor.setText("D-" + "1");
 		txtIdDoctor.setEditable(false);
 		txtIdDoctor.setColumns(10);
 		txtIdDoctor.setBounds(310, 51, 155, 22);
@@ -126,49 +131,62 @@ public class AgregarDoctor extends JDialog {
 		cmbEspecialidad.setBounds(116, 188, 145, 22);
 		contentPanel.add(cmbEspecialidad);
 		{
+			
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnAgregarDoctor = new JButton("Agregar");
 				btnAgregarDoctor.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						
-						String cedula = txtCedulaDoctor.getText();
-					    String nombre = txtNombresDoctor.getText();
-					    String apellido = txtApellidosDoctor.getText();
-					    int edad = Integer.parseInt(txtEdadDoctor.getText());//convert a int
-					    String sexo = cmbSexoDoctor.getSelectedItem().toString();
-					    String direccion = txtDireccionDoctor.getText();
-					    String especialidad = cmbEspecialidad.getSelectedItem().toString();
-					    String codigoMedico = txtIdDoctor.getText();
-					    
-					    
-					    Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
-					    
-					    
-					    Clinica.getInstance().registrarMedico(nuevoMedico);
-					    
-					    
-					    JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-					    
-					    clean();
-						
-					}
+				    public void actionPerformed(ActionEvent e) {
+				        try {
+				            if (txtCedulaDoctor.getText().isEmpty() || 
+				                txtNombresDoctor.getText().isEmpty() || 
+				                txtApellidosDoctor.getText().isEmpty() || 
+				                cmbSexoDoctor.getSelectedIndex() == 0 || 
+				                txtDireccionDoctor.getText().isEmpty() || 
+				                cmbEspecialidad.getSelectedIndex() == 0) {
 
-					private void clean() {
-						// TODO Auto-generated method stub
-						txtCedulaDoctor.setText("");
-					    txtNombresDoctor.setText("");
-					    txtApellidosDoctor.setText("");
-					    txtEdadDoctor.setText("");
-					    cmbSexoDoctor.setSelectedIndex(0);
-					    txtDireccionDoctor.setText("");
-					    cmbSexoDoctor.setSelectedIndex(0);
-					    txtIdDoctor.setText("");
-						
-					}
+				                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				                return;
+				            }
+
+				            int edad = (Integer) spnEdadDoctor.getValue();
+
+				            String cedula = txtCedulaDoctor.getText();
+				            String nombre = txtNombresDoctor.getText();
+				            String apellido = txtApellidosDoctor.getText();
+				            String sexo = cmbSexoDoctor.getSelectedItem().toString();
+				            String direccion = txtDireccionDoctor.getText();
+				            String especialidad = cmbEspecialidad.getSelectedItem().toString();
+				            String codigoMedico = txtIdDoctor.getText();
+
+				            Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
+
+				            Clinica.getInstance().registrarMedico(nuevoMedico);
+
+				            JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+
+				            clean();
+
+				        } catch (Exception ex) {
+				            JOptionPane.showMessageDialog(null, "Error al registrar el medico: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				        }
+				        
+				    }
+				    private void clean() {
+				        txtCedulaDoctor.setText("");
+				        txtNombresDoctor.setText("");
+				        txtApellidosDoctor.setText("");
+				        spnEdadDoctor.setValue(18); 
+				        cmbSexoDoctor.setSelectedIndex(0);
+				        txtDireccionDoctor.setText("");
+				        cmbEspecialidad.setSelectedIndex(0);
+				        txtIdDoctor.setText("D-" + Clinica.idMedico);
+				    }
+
 				});
+
 				btnAgregarDoctor.setActionCommand("OK");
 				buttonPane.add(btnAgregarDoctor);
 				getRootPane().setDefaultButton(btnAgregarDoctor);
