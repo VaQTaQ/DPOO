@@ -41,4 +41,9 @@ public class Medico extends Persona {
     public List<Consulta> getConsultas() {
         return consultas;
     }
+    
+    public int getNumeroConsultas() {
+        return consultas.size();
+    }
+    
 }
