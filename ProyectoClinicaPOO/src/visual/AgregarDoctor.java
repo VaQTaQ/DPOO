@@ -150,7 +150,7 @@ public class AgregarDoctor extends JDialog {
 					    Clinica.getInstance().registrarMedico(nuevoMedico);
 					    
 					    
-					    JOptionPane.showMessageDialog(null, "Médico registrado satisfactoriamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+					    JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 					    
 					    clean();
 						
