@@ -160,4 +160,13 @@ public class Clinica {
     public List<Medico> getMedicos() {
         return medicos;
     }
+
+	public Medico buscarDoctorById(String doctorId) {
+		for (Medico doctor : medicos) { 
+	        if (doctor.getCodigoMedico().equalsIgnoreCase(doctorId)) {
+	            return doctor;
+	        }
+	    }
+	    return null;
+	}
 }

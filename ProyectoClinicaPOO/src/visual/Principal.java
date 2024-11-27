@@ -71,6 +71,14 @@ public class Principal extends JFrame {
 		menuBar.add(mnCitasYConsultas);
 		
 		JMenuItem mntmHacerCita = new JMenuItem("Hacer Cita");
+		mntmHacerCita.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HacerCita agCita = new HacerCita();
+				agCita.setModal(true);
+				agCita.setVisible(true);
+				
+			}
+		});
 		mnCitasYConsultas.add(mntmHacerCita);
 		
 		JMenuItem mntmHacerConsulta = new JMenuItem("Hacer Consulta");

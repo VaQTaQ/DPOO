@@ -105,7 +105,7 @@ public class AgregarDoctor extends JDialog {
 		contentPanel.add(spnEdadDoctor);
 		
 		txtIdDoctor = new JTextField();
-		txtIdDoctor.setText("D-" + "1");
+		txtIdDoctor.setText("D-" + Clinica.idMedico);
 		txtIdDoctor.setEditable(false);
 		txtIdDoctor.setColumns(10);
 		txtIdDoctor.setBounds(310, 51, 155, 22);
