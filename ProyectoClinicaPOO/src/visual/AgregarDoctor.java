@@ -25,7 +25,6 @@ public class AgregarDoctor extends JDialog {
 	private JTextField txtCedulaDoctor;
 	private JTextField txtNombresDoctor;
 	private JTextField txtEdadDoctor;
-	private JTextField txtEspecialidadDoctor;
 	private JTextField txtIdDoctor;
 	private JTextField txtApellidosDoctor;
 	private JTextField txtDireccionDoctor;
@@ -101,11 +100,6 @@ public class AgregarDoctor extends JDialog {
 		txtEdadDoctor.setBounds(75, 140, 155, 22);
 		contentPanel.add(txtEdadDoctor);
 		
-		txtEspecialidadDoctor = new JTextField();
-		txtEspecialidadDoctor.setColumns(10);
-		txtEspecialidadDoctor.setBounds(116, 188, 155, 22);
-		contentPanel.add(txtEspecialidadDoctor);
-		
 		txtIdDoctor = new JTextField();
 		txtIdDoctor.setEditable(false);
 		txtIdDoctor.setColumns(10);
@@ -126,6 +120,11 @@ public class AgregarDoctor extends JDialog {
 		txtDireccionDoctor.setColumns(10);
 		txtDireccionDoctor.setBounds(343, 188, 179, 108);
 		contentPanel.add(txtDireccionDoctor);
+		
+		JComboBox cmbEspecialidad = new JComboBox();
+		cmbEspecialidad.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Medicina General/Familiar", "Pediatr\u00EDa", "Ginecolog\u00EDa y Obstetricia", "Cardiolog\u00EDa", "Neurolog\u00EDa", "Dermatolog\u00EDa", "Oftalmolog\u00EDa", "Otorrinolaringolog\u00EDa", "Neumolog\u00EDa", "Psiquiatr\u00EDa", "Traumatolog\u00EDa y Ortopedia", "Cirug\u00EDa General", "Oncolog\u00EDa", "Endocrinolog\u00EDa", "Gastroenterolog\u00EDa", "Urolog\u00EDa", "Nefrolog\u00EDa", "Hematolog\u00EDa", "Reumatolog\u00EDa", "Medicina Interna", "Anestesiolog\u00EDa", "Infectolog\u00EDa", "Medicina Intensiva", "Medicina del Deporte", "Geriatr\u00EDa", "Patolog\u00EDa", "Radiolog\u00EDa e Imagenolog\u00EDa", "Medicina Preventiva", "Medicina del Trabajo", "Cirug\u00EDa Pl\u00E1stica y Reconstructiva"}));
+		cmbEspecialidad.setBounds(116, 188, 145, 22);
+		contentPanel.add(cmbEspecialidad);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -138,10 +137,10 @@ public class AgregarDoctor extends JDialog {
 						String cedula = txtCedulaDoctor.getText();
 					    String nombre = txtNombresDoctor.getText();
 					    String apellido = txtApellidosDoctor.getText();
-					    int edad = Integer.parseInt(txtEdadDoctor.getText());
+					    int edad = Integer.parseInt(txtEdadDoctor.getText());//convert a int
 					    String sexo = cmbSexoDoctor.getSelectedItem().toString();
 					    String direccion = txtDireccionDoctor.getText();
-					    String especialidad = txtEspecialidadDoctor.getText();
+					    String especialidad = cmbEspecialidad.getSelectedItem().toString();
 					    String codigoMedico = txtIdDoctor.getText();
 					    
 					    
@@ -165,7 +164,7 @@ public class AgregarDoctor extends JDialog {
 					    txtEdadDoctor.setText("");
 					    cmbSexoDoctor.setSelectedIndex(0);
 					    txtDireccionDoctor.setText("");
-					    txtEspecialidadDoctor.setText("");
+					    cmbSexoDoctor.setSelectedIndex(0);
 					    txtIdDoctor.setText("");
 						
 					}
