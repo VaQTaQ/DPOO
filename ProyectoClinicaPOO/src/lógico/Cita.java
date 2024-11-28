@@ -9,9 +9,9 @@ public class Cita {
     private String doctorID;
     private int prioridad;
     private boolean active;
-    private Date fecha; // Nueva propiedad para la fecha de la cita
+    private Date fecha; 
 
-    // Constructor actualizado
+    
     public Cita(int idCita, Persona posiblePaciente, String pacienteID, String doctorID, int prioridad, boolean active, Date fecha) {
         this.idCita = idCita;
         this.posiblePaciente = posiblePaciente;
@@ -22,7 +22,6 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    // Getters y Setters
     public int getIdCita() {
         return idCita;
     }

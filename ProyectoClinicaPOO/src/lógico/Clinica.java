@@ -36,7 +36,6 @@ public class Clinica {
         return estado;
     }
 
-    // Gestión de pacientes
     public void registrarPaciente(Paciente paciente) {
         pacientes.add(paciente);
         idPaciente++;
@@ -72,7 +71,6 @@ public class Clinica {
         }
     }
 
-    // Gestión de médicos
     public void registrarMedico(Medico medico) {
         medicos.add(medico);
         idMedico++;
@@ -116,7 +114,6 @@ public class Clinica {
         }
     }
 
-    // Gestión de citas
     public void registrarCita(Cita cita) {
         citas.add(cita);
         idCita++;
@@ -135,7 +132,6 @@ public class Clinica {
         return citas;
     }
 
-    // Gestión de consultas
     public void registrarConsulta(Consulta consulta) {
         consultas.add(consulta);
     }
@@ -144,7 +140,6 @@ public class Clinica {
         return consultas;
     }
 
-    // Generación de reportes
     public String generarReporteGeneral() {
         StringBuilder reporte = new StringBuilder();
         reporte.append("Reporte General\n");
