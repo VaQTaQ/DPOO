@@ -98,7 +98,6 @@ public class ListarConsultas extends JDialog {
             row[3] = consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido();
             row[4] = consulta.getDiagnostico();
             row[5] = enfermedad.getNombre();
-            row[5] = "No especificada";
             row[6] = consulta.getTratamiento();
             row[7] = consulta.isTratado() ? "Si" : "No";
             
