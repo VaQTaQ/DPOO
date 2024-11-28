@@ -29,9 +29,9 @@ public class Clinica {
 		idPaciente = 0;
 	}
 
-	public static Clinica getInstance() {
+	public static Clinica getInstance(String nombreClinica, String dirClinica) {
 		if (estado == null) {
-			estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
+			estado = new Clinica(nombreClinica, dirClinica);
 		}
 		return estado;
 	}
@@ -136,9 +136,7 @@ public class Clinica {
 		consultas.add(consulta);
 	}
 
-	public List<Consulta> getConsultas() {
-		return consultas;
-	}
+	
 
 	public String generarReporteGeneral() {
 		StringBuilder reporte = new StringBuilder();
@@ -146,6 +144,7 @@ public class Clinica {
 		reporte.append("Total de Pacientes: ").append(pacientes.size()).append("\n");
 		reporte.append("Total de Médicos: ").append(medicos.size()).append("\n");
 		reporte.append("Total de Citas: ").append(citas.size()).append("\n");
+		reporte.append("Total de Consultas: ").append(consultas.size()).append("\n");
 		return reporte.toString();
 	}
 
@@ -208,5 +207,9 @@ public class Clinica {
 
 	public List<Medico> getMedicos() {
 		return medicos;
+	}
+	
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 }
