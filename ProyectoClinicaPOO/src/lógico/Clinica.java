@@ -16,6 +16,7 @@ public class Clinica {
 	public static int idMedico;
 	public static int idCita;
 	public static int idPaciente;
+	public static int idConsulta;
 
 	private static Clinica estado;
 
@@ -31,9 +32,9 @@ public class Clinica {
 		idPaciente = 0;
 	}
 
-	public static Clinica getInstance(String nombreClinica, String dirClinica) {
+	public static Clinica getInstance() {
 		if (estado == null) {
-			estado = new Clinica(nombreClinica, dirClinica);
+			estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
 		}
 		return estado;
 	}
@@ -76,30 +77,20 @@ public class Clinica {
 	public void registrarMedico(Medico medico) {
 		medicos.add(medico);
 		idMedico++;
-		registrarEspecialidad(medico.getEspecialidad());
-	}
-
-	private void registrarEspecialidad(String especialidad) {
-		for(String temp : especialidades)
-		{
-			if (temp.equalsIgnoreCase(especialidad))
-				return;
-		}
-		especialidades.add(especialidad);
 	}
 
 	public Medico buscarMedicoPorCedula(String cedula) {
 		for (Medico medico : medicos) {
-			if (medico.getCedula().equalsIgnoreCase(cedula)) {
+			if (medico.getCedula().equals(cedula)) {
 				return medico;
 			}
 		}
 		return null;
 	}
 
-	public Medico buscarDoctorById(String medicoId) {
+	public Medico buscarDoctorById(String doctorId) {
 		for (Medico doctor : medicos) {
-			if (doctor.getCodigoMedico().equalsIgnoreCase(medicoId)) {
+			if (doctor.getCodigoMedico().equalsIgnoreCase(doctorId)) {
 				return doctor;
 			}
 		}
@@ -124,23 +115,6 @@ public class Clinica {
 		if (medico != null) {
 			medicos.remove(medico);
 		}
-		
-		eliminarEspecialidad(medico.getEspecialidad());
-	}
-
-	private void eliminarEspecialidad(String especialidad) {
-		
-		for(Medico medico: medicos) {
-			if(medico.getEspecialidad().equalsIgnoreCase(especialidad));
-			return;
-		}
-		
-		for(String temp : especialidades)
-		{
-			if (temp.equalsIgnoreCase(especialidad))
-				especialidades.remove(especialidad);
-		}
-		
 	}
 
 	public void registrarCita(Cita cita) {
@@ -173,13 +147,13 @@ public class Clinica {
 		vacunasPuestas.add(vacuna);
 	}
 
+
 	public String generarReporteGeneral() {
 		StringBuilder reporte = new StringBuilder();
 		reporte.append("Reporte General\n");
 		reporte.append("Total de Pacientes: ").append(pacientes.size()).append("\n");
 		reporte.append("Total de Médicos: ").append(medicos.size()).append("\n");
 		reporte.append("Total de Citas: ").append(citas.size()).append("\n");
-		reporte.append("Total de Consultas: ").append(consultas.size()).append("\n");
 		return reporte.toString();
 	}
 
@@ -243,6 +217,7 @@ public class Clinica {
 	public List<Medico> getMedicos() {
 		return medicos;
 	}
+
 	
 	public List<Consulta> getConsultas() {
 		return consultas;
