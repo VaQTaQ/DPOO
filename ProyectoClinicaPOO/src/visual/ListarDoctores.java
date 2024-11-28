@@ -81,7 +81,7 @@ public class ListarDoctores extends JDialog {
     private void cargarDoctores() {
     
         modelo.setRowCount(0);
-        ArrayList<Medico> listaDoctores = (ArrayList<Medico>) Clinica.getInstance().getMedicos();
+        ArrayList<Medico> listaDoctores = (ArrayList<Medico>) Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").getMedicos();
         row = new Object[modelo.getColumnCount()];
         
         for (Medico doctor : listaDoctores) {

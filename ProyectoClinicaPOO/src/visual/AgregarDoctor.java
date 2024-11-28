@@ -163,7 +163,7 @@ public class AgregarDoctor extends JDialog {
 
 				            Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
 
-				            Clinica.getInstance().registrarMedico(nuevoMedico);
+				            Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").registrarMedico(nuevoMedico);
 
 				            JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 

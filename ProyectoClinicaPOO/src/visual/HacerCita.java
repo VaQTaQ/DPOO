@@ -169,7 +169,7 @@ public class HacerCita extends JDialog {
             	
             	
                 String doctorId = "D-" + txtDoctorId.getText();
-                Medico doctor = Clinica.getInstance().buscarDoctorById(doctorId);
+                Medico doctor = Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").buscarDoctorById(doctorId);
 
                 if (doctor != null) {
                     txtDoctorNombre.setText(doctor.getNombre() + " " + doctor.getApellido());
@@ -241,16 +241,16 @@ public class HacerCita extends JDialog {
                     String sexo = cmbPacienteSexo.getSelectedItem().toString();
                     String direccion = txtPacienteDireccion.getText();
 
-                    Paciente paciente = Clinica.getInstance().buscarPacientePorCedula(cedula);
+                    Paciente paciente = Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").buscarPacientePorCedula(cedula);
                     if (paciente == null) {
                         String codigoPaciente = "P-" + (Clinica.idPaciente + 1);
                         paciente = new Paciente(cedula, nombre, apellido, edad, sexo, direccion,
                                 new ArrayList<>(), new ArrayList<>(), null, codigoPaciente);
-                        Clinica.getInstance().registrarPaciente(paciente);
+                        Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").registrarPaciente(paciente);
                     }
 
                     String doctorId = "D-" + txtDoctorId.getText();
-                    Medico doctor = Clinica.getInstance().buscarDoctorById(doctorId);
+                    Medico doctor = Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").buscarDoctorById(doctorId);
                     if (doctor == null) {
                         JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia",
                                 JOptionPane.WARNING_MESSAGE);
@@ -265,7 +265,7 @@ public class HacerCita extends JDialog {
                     Cita cita = new Cita(idCita, paciente, paciente.getCodigoPaciente(), doctor.getCodigoMedico(), prioridad,
                             active, fecha);
 
-                    Clinica.getInstance().registrarCita(cita);
+                    Clinica.getInstance("Clínica Juan XXIII", "Calle Eduardo Ramírez #2").registrarCita(cita);
 
                     JOptionPane.showMessageDialog(null, "Cita creada exitosamente.", "Informacion",
                             JOptionPane.INFORMATION_MESSAGE);
