@@ -77,6 +77,7 @@ public class Clinica {
 	public void registrarMedico(Medico medico) {
 		medicos.add(medico);
 		idMedico++;
+		int k;
 	}
 
 	public Medico buscarMedicoPorCedula(String cedula) {
