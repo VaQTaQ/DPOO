@@ -22,6 +22,8 @@ import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerDateModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HacerConsulta extends JDialog {
 
@@ -109,22 +111,19 @@ public class HacerConsulta extends JDialog {
         pnlPaciente.add(txtPacienteId);
 
         JButton btnBuscarPacienteXId = new JButton("Buscar");
-        btnBuscarPacienteXId.addActionListener(e -> {
-        	
-          
-            Paciente paciente = Clinica.getInstance().buscarPacienteById("P-" + txtPacienteId.getText());
+        btnBuscarPacienteXId.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Paciente paciente = Clinica.getInstance().buscarPacienteById("P-" + txtPacienteId.getText());
 
-            if (paciente != null) {
-                txtPacienteCedula.setText(paciente.getCedula());
-                txtPacienteNombre.setText(paciente.getNombre() + " " + paciente.getApellido());
-                txtPacienteSexo.setText(paciente.getSexo());
-                txtPacienteEdad.setText(String.valueOf(paciente.getEdad()));//como un parseInt pero pa string
-                
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-                limpiarDatosPaciente();
-                
+                if (paciente != null) {
+                    txtPacienteCedula.setText(paciente.getCedula());
+                    txtPacienteNombre.setText(paciente.getNombre() + " " + paciente.getApellido());
+                    txtPacienteSexo.setText(paciente.getSexo());
+                    txtPacienteEdad.setText(String.valueOf(paciente.getEdad()));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    limpiarDatosPaciente();
+                }
             }
         });
         btnBuscarPacienteXId.setBounds(381, 9, 70, 25);
@@ -177,17 +176,20 @@ public class HacerConsulta extends JDialog {
         pnlDoctor.add(txtDoctorEspecialidad);
 
         JButton btnBuscarDoctorXId = new JButton("Buscar");
-        btnBuscarDoctorXId.addActionListener(e -> {
-          
-            Medico medico = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
+        btnBuscarDoctorXId.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	
+                Medico medico = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
 
-            if (medico != null) {
-                txtDoctorNombre.setText(medico.getNombre() + " " + medico.getApellido());
-                txtDoctorEspecialidad.setText(medico.getEspecialidad());
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-                limpiarDatosDoctor();
+                if (medico != null) {
+                    txtDoctorNombre.setText(medico.getNombre() + " " + medico.getApellido());
+                    txtDoctorEspecialidad.setText(medico.getEspecialidad());
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    limpiarDatosDoctor();
+                }
             }
         });
         btnBuscarDoctorXId.setBounds(197, 18, 85, 25);
@@ -257,71 +259,82 @@ public class HacerConsulta extends JDialog {
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton btnHacerConsulta = new JButton("Hacer Consulta");
-        btnHacerConsulta.addActionListener(e -> {
-            try {
+        btnHacerConsulta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
             	
-                if (txtPacienteId.getText().isEmpty() || txtDoctorId.getText().isEmpty()
-                        || txtDiagnostico.getText().isEmpty() || txtEnfermedadNombre.getText().isEmpty()
-                        || txtTratamiento.getText().isEmpty() || cmbVigilancia.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(null, "Complete todos los campos obligatorios.", "Advertencia",
-                            JOptionPane.WARNING_MESSAGE);
-                    return;
+                try {
+                    if (txtPacienteId.getText().isEmpty() || txtDoctorId.getText().isEmpty()
+                            || txtDiagnostico.getText().isEmpty() || txtEnfermedadNombre.getText().isEmpty()
+                            || txtTratamiento.getText().isEmpty() || cmbVigilancia.getSelectedIndex() == 0) {
+                        JOptionPane.showMessageDialog(null, "Complete todos los campos obligatorios.", "Advertencia",
+                                JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    
+                    
+
+                    Paciente paciente = Clinica.getInstance().buscarPacienteById("P-" + txtPacienteId.getText());
+
+                    if (txtPacienteId.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    
+
+                    Medico medico = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
+                    if (medico == null) {
+                        JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    
+
+                    String diagnostico = txtDiagnostico.getText();
+                    String enfermedadNombre = txtEnfermedadNombre.getText();
+                    boolean bajoVigilancia = cmbVigilancia.getSelectedItem().toString().equalsIgnoreCase("Si");
+                    String enfermedadDescripcion = txtEnfermedadDescripcion.getText();
+
+                    Enfermedad enfermedad = new Enfermedad(enfermedadNombre, enfermedadDescripcion, bajoVigilancia);
+
+                    
+                    
+                    String tratamiento = txtTratamiento.getText();
+                    boolean importante = bajoVigilancia;
+
+                    Date fecha = (Date) spnFechaConsulta.getValue();
+                    int idConsulta = Clinica.idConsulta + 1;
+
+                    Consulta consulta = new Consulta(idConsulta, paciente, medico, fecha, diagnostico, enfermedad, tratamiento, false,
+                            importante);
+
+                    Clinica.getInstance().registrarConsulta(consulta);
+
+                    JOptionPane.showMessageDialog(null, "Consulta registrada exitosamente.", "Información",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    
+                    
+                    
+
+                    limpiarFormulario();
+                    
+                    
+                    
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al registrar la consulta: " + ex.getMessage(), "Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-
-                
-                Paciente paciente = Clinica.getInstance().buscarPacienteById("P-" + txtPacienteId.getText());
-                
-                if (txtPacienteId.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                
-
-                Medico medico = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
-                if (medico == null) {
-                    JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-                
-
-                String diagnostico = txtDiagnostico.getText();
-                String enfermedadNombre = txtEnfermedadNombre.getText();
-                boolean bajoVigilancia = cmbVigilancia.getSelectedItem().toString().equalsIgnoreCase("Si");
-                String enfermedadDescripcion = txtEnfermedadDescripcion.getText();
-                
-                Enfermedad enfermedad = new Enfermedad(enfermedadNombre, enfermedadDescripcion, bajoVigilancia);
-               
-                
-                
-                String tratamiento = txtTratamiento.getText();
-                boolean importante = bajoVigilancia;
-
-                Date fecha = (Date) spnFechaConsulta.getValue();
-                int idConsulta = Clinica.idConsulta + 1;
-
-                Consulta consulta = new Consulta(idConsulta,paciente, medico, fecha, diagnostico, enfermedad, tratamiento, false,
-                        importante);
-                
-                Clinica.getInstance().registrarConsulta(consulta);
-                
-                
-                
-
-                JOptionPane.showMessageDialog(null, "Consulta registrada exitosamente.", "Información",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                limpiarFormulario();
-                
-                
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error al registrar la consulta: " + ex.getMessage(), "Error",
-                        JOptionPane.ERROR_MESSAGE);
             }
         });
         buttonPane.add(btnHacerConsulta);
 
         JButton cancelButton = new JButton("Cancelar");
-        cancelButton.addActionListener(e -> dispose());
+        cancelButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
         buttonPane.add(cancelButton);
     }
 
