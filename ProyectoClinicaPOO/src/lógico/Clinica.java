@@ -11,6 +11,7 @@ public class Clinica {
 	private ArrayList<Medico> medicos;
 	private ArrayList<Cita> citas;
 	private ArrayList<Consulta> consultas;
+	private ArrayList<Vacuna> vacunasPuestas;
 	private ArrayList<String> especialidades;
 	public static int idMedico;
 	public static int idCita;
@@ -164,7 +165,13 @@ public class Clinica {
 		consultas.add(consulta);
 	}
 
-	
+	public void registrarVacuna(Vacuna vacuna) {
+		for(Vacuna temp : vacunasPuestas) {
+			if(vacuna.equals(temp))
+				return;
+		}
+		vacunasPuestas.add(vacuna);
+	}
 
 	public String generarReporteGeneral() {
 		StringBuilder reporte = new StringBuilder();
@@ -247,5 +254,13 @@ public class Clinica {
 
 	public void setEspecialidades(ArrayList<String> especialidades) {
 		this.especialidades = especialidades;
+	}
+
+	public ArrayList<Vacuna> getVacunas() {
+		return vacunasPuestas;
+	}
+
+	public void setVacunas(ArrayList<Vacuna> vacunasPuestas) {
+		this.vacunasPuestas = vacunasPuestas;
 	}
 }
