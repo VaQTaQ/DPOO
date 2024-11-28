@@ -2,23 +2,26 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import lógico.Cita;
 import lógico.Clinica;
 import lógico.Medico;
+import lógico.Paciente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
-public class ListarDoctores extends JDialog {
+public class ListarCitas extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
-    private JTable tblListarDoctores;
+    private JTable tblListarCitas;
     private DefaultTableModel modelo;
     private Object[] row;
 
@@ -27,7 +30,7 @@ public class ListarDoctores extends JDialog {
      */
     public static void main(String[] args) {
         try {
-            ListarDoctores dialog = new ListarDoctores();
+            ListarCitas dialog = new ListarCitas();
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             dialog.setVisible(true);
         } catch (Exception e) {
@@ -38,10 +41,10 @@ public class ListarDoctores extends JDialog {
     /**
      * Create the dialog.
      */
-    public ListarDoctores() {
-        setTitle("Listado de Doctores");
-        setBounds(100, 100, 700, 400);
-        setLocationRelativeTo(null); 
+    public ListarCitas() {
+        setTitle("Listado de Citas");
+        setBounds(100, 100, 800, 400);
+        setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBackground(SystemColor.activeCaption);
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,12 +54,12 @@ public class ListarDoctores extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarDoctores = new JTable();
+                tblListarCitas = new JTable();
                 modelo = new DefaultTableModel();
-                String[] columnas = { "ID", "Nombre y Apellido", "Especialidad", "Edad", "Número de Consultas" };
+                String[] columnas = { "ID Cita", "Nombre Paciente", "Nombre Doctor", "Prioridad", "Activa", "Fecha" };
                 modelo.setColumnIdentifiers(columnas);
-                tblListarDoctores.setModel(modelo);
-                scrollPane.setViewportView(tblListarDoctores);
+                tblListarCitas.setModel(modelo);
+                scrollPane.setViewportView(tblListarCitas);
             }
         }
         {
@@ -68,29 +71,34 @@ public class ListarDoctores extends JDialog {
                 cancelButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
-                        
+
                     }
                 });
                 cancelButton.setActionCommand("Cancel");
                 buttonPane.add(cancelButton);
             }
         }
-        cargarDoctores();
+        cargarCitas();
     }
 
-    private void cargarDoctores() {
-    
+    private void cargarCitas() {
+
         modelo.setRowCount(0);
-        ArrayList<Medico> listaDoctores = (ArrayList<Medico>) Clinica.getInstance().getMedicos();
+        ArrayList<Cita> listaCitas = (ArrayList<Cita>) Clinica.getInstance().getCitas();
         row = new Object[modelo.getColumnCount()];
         
-        for (Medico doctor : listaDoctores) {
+        
+        for (Cita cita : listaCitas) {
         	
-            row[0] = doctor.getCodigoMedico(); 
-            row[1] = doctor.getNombre() + " " + doctor.getApellido(); 
-            row[2] = doctor.getEspecialidad(); 
-            row[3] = doctor.getEdad(); 
-            row[4] = doctor.getNumeroConsultas(); 
+        	Medico medico = Clinica.getInstance().buscarDoctorById(cita.getDoctorID());
+        	Paciente paciente = (Paciente) cita.getPosiblePaciente();
+        	 
+            row[0] = "C-" + cita.getIdCita();
+            row[1] = paciente.getNombre() + " " + paciente.getApellido();
+            row[2] = medico.getNombre() + " " + medico.getApellido();
+            row[3] = cita.getPrioridad();
+            row[4] = cita.isActive() ? "Sí" : "No";
+            row[5] = cita.getFecha();
             
             modelo.addRow(row);
         }
