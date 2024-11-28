@@ -179,7 +179,6 @@ public class HacerConsulta extends JDialog {
         btnBuscarDoctorXId.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	
                 Medico medico = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
 
                 if (medico != null) {
@@ -190,6 +189,8 @@ public class HacerConsulta extends JDialog {
                     JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                     limpiarDatosDoctor();
                 }
+                
+       
             }
         });
         btnBuscarDoctorXId.setBounds(197, 18, 85, 25);
