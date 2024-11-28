@@ -11,6 +11,7 @@ public class Clinica {
 	private ArrayList<Medico> medicos;
 	private ArrayList<Cita> citas;
 	private ArrayList<Consulta> consultas;
+	private ArrayList<String> especialidades;
 	public static int idMedico;
 	public static int idCita;
 	public static int idPaciente;
@@ -74,20 +75,30 @@ public class Clinica {
 	public void registrarMedico(Medico medico) {
 		medicos.add(medico);
 		idMedico++;
+		registrarEspecialidad(medico.getEspecialidad());
+	}
+
+	private void registrarEspecialidad(String especialidad) {
+		for(String temp : especialidades)
+		{
+			if (temp.equalsIgnoreCase(especialidad))
+				return;
+		}
+		especialidades.add(especialidad);
 	}
 
 	public Medico buscarMedicoPorCedula(String cedula) {
 		for (Medico medico : medicos) {
-			if (medico.getCedula().equals(cedula)) {
+			if (medico.getCedula().equalsIgnoreCase(cedula)) {
 				return medico;
 			}
 		}
 		return null;
 	}
 
-	public Medico buscarDoctorById(String doctorId) {
+	public Medico buscarDoctorById(String medicoId) {
 		for (Medico doctor : medicos) {
-			if (doctor.getCodigoMedico().equalsIgnoreCase(doctorId)) {
+			if (doctor.getCodigoMedico().equalsIgnoreCase(medicoId)) {
 				return doctor;
 			}
 		}
@@ -112,6 +123,23 @@ public class Clinica {
 		if (medico != null) {
 			medicos.remove(medico);
 		}
+		
+		eliminarEspecialidad(medico.getEspecialidad());
+	}
+
+	private void eliminarEspecialidad(String especialidad) {
+		
+		for(Medico medico: medicos) {
+			if(medico.getEspecialidad().equalsIgnoreCase(especialidad));
+			return;
+		}
+		
+		for(String temp : especialidades)
+		{
+			if (temp.equalsIgnoreCase(especialidad))
+				especialidades.remove(especialidad);
+		}
+		
 	}
 
 	public void registrarCita(Cita cita) {
@@ -211,5 +239,13 @@ public class Clinica {
 	
 	public List<Consulta> getConsultas() {
 		return consultas;
+	}
+
+	public ArrayList<String> getEspecialidades() {
+		return especialidades;
+	}
+
+	public void setEspecialidades(ArrayList<String> especialidades) {
+		this.especialidades = especialidades;
 	}
 }
