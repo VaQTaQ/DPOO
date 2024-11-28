@@ -17,16 +17,17 @@ import javax.swing.DefaultComboBoxModel;
 public class HacerConsulta extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_8;
-	private JTextField textField_3;
-	private JTextField textField_7;
-	private JTextField textField_9;
+	private JTextField txtPacienteCedula;
+	private JTextField txtPacienteNombre;
+	private JTextField txtDoctorId;
+	private JTextField txtDoctorNombre;
+	private JTextField txtDoctorEspecialidad;
+	private JTextField txtPacienteId;
+	private JTextField txtDiagnostico;
+	private JTextField txtEnfermedad;
+	private JTextField txtTratamiento;
+	private JTextField txtPacienteSexo;
+	private JTextField txtPacienteEdad;
 
 	/**
 	 * Launch the application.
@@ -45,7 +46,7 @@ public class HacerConsulta extends JDialog {
 	 * Create the dialog.
 	 */
 	public HacerConsulta() {
-		setBounds(100, 100, 551, 692);
+		setBounds(100, 100, 550, 706);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -71,42 +72,23 @@ public class HacerConsulta extends JDialog {
 				panel.add(label);
 			}
 			{
-				JLabel label = new JLabel("Apellido:");
-				label.setBounds(246, 67, 56, 16);
-				panel.add(label);
-			}
-			{
 				JLabel label = new JLabel("Sexo:");
 				label.setBounds(246, 125, 56, 16);
 				panel.add(label);
 			}
 			{
-				textField = new JTextField();
-				textField.setColumns(10);
-				textField.setBounds(74, 10, 148, 22);
-				panel.add(textField);
+				txtPacienteCedula = new JTextField();
+				txtPacienteCedula.setEditable(false);
+				txtPacienteCedula.setColumns(10);
+				txtPacienteCedula.setBounds(74, 10, 148, 22);
+				panel.add(txtPacienteCedula);
 			}
 			{
-				textField_1 = new JTextField();
-				textField_1.setColumns(10);
-				textField_1.setBounds(74, 64, 148, 22);
-				panel.add(textField_1);
-			}
-			{
-				textField_2 = new JTextField();
-				textField_2.setColumns(10);
-				textField_2.setBounds(301, 64, 148, 22);
-				panel.add(textField_2);
-			}
-			{
-				JComboBox<String> comboBox = new JComboBox<String>();
-				comboBox.setBounds(301, 122, 145, 22);
-				panel.add(comboBox);
-			}
-			{
-				JSpinner spinner = new JSpinner();
-				spinner.setBounds(74, 122, 78, 22);
-				panel.add(spinner);
+				txtPacienteNombre = new JTextField();
+				txtPacienteNombre.setEditable(false);
+				txtPacienteNombre.setColumns(10);
+				txtPacienteNombre.setBounds(74, 64, 306, 22);
+				panel.add(txtPacienteNombre);
 			}
 			{
 				JLabel lblIdPaciente = new JLabel("ID Paciente:");
@@ -114,16 +96,28 @@ public class HacerConsulta extends JDialog {
 				panel.add(lblIdPaciente);
 			}
 			{
-				textField_8 = new JTextField();
-				textField_8.setColumns(10);
-				textField_8.setBounds(324, 10, 56, 22);
-				panel.add(textField_8);
+				txtPacienteId = new JTextField();
+				txtPacienteId.setColumns(10);
+				txtPacienteId.setBounds(324, 10, 56, 22);
+				panel.add(txtPacienteId);
 			}
 			{
-				JButton button = new JButton("Buscar");
-				button.setBounds(381, 9, 70, 25);
-				panel.add(button);
+				JButton btnBuscarPacienteXId = new JButton("Buscar");
+				btnBuscarPacienteXId.setBounds(381, 9, 70, 25);
+				panel.add(btnBuscarPacienteXId);
 			}
+			
+			txtPacienteSexo = new JTextField();
+			txtPacienteSexo.setEditable(false);
+			txtPacienteSexo.setColumns(10);
+			txtPacienteSexo.setBounds(303, 122, 148, 22);
+			panel.add(txtPacienteSexo);
+			
+			txtPacienteEdad = new JTextField();
+			txtPacienteEdad.setEditable(false);
+			txtPacienteEdad.setColumns(10);
+			txtPacienteEdad.setBounds(74, 122, 80, 22);
+			panel.add(txtPacienteEdad);
 		}
 		{
 			JPanel panel = new JPanel();
@@ -146,29 +140,29 @@ public class HacerConsulta extends JDialog {
 				panel.add(label);
 			}
 			{
-				textField_4 = new JTextField();
-				textField_4.setColumns(10);
-				textField_4.setBounds(94, 19, 91, 22);
-				panel.add(textField_4);
+				txtDoctorId = new JTextField();
+				txtDoctorId.setColumns(10);
+				txtDoctorId.setBounds(94, 19, 91, 22);
+				panel.add(txtDoctorId);
 			}
 			{
-				textField_5 = new JTextField();
-				textField_5.setEditable(false);
-				textField_5.setColumns(10);
-				textField_5.setBounds(94, 64, 188, 22);
-				panel.add(textField_5);
+				txtDoctorNombre = new JTextField();
+				txtDoctorNombre.setEditable(false);
+				txtDoctorNombre.setColumns(10);
+				txtDoctorNombre.setBounds(94, 64, 188, 22);
+				panel.add(txtDoctorNombre);
 			}
 			{
-				textField_6 = new JTextField();
-				textField_6.setEditable(false);
-				textField_6.setColumns(10);
-				textField_6.setBounds(94, 109, 188, 22);
-				panel.add(textField_6);
+				txtDoctorEspecialidad = new JTextField();
+				txtDoctorEspecialidad.setEditable(false);
+				txtDoctorEspecialidad.setColumns(10);
+				txtDoctorEspecialidad.setBounds(94, 109, 188, 22);
+				panel.add(txtDoctorEspecialidad);
 			}
 			{
-				JButton button = new JButton("Buscar");
-				button.setBounds(197, 18, 85, 25);
-				panel.add(button);
+				JButton btnBuscarDoctorXId = new JButton("Buscar");
+				btnBuscarDoctorXId.setBounds(197, 18, 85, 25);
+				panel.add(btnBuscarDoctorXId);
 			}
 		}
 		{
@@ -182,9 +176,9 @@ public class HacerConsulta extends JDialog {
 				panel.add(label);
 			}
 			{
-				JSpinner spinner = new JSpinner();
-				spinner.setBounds(263, 188, 119, 22);
-				panel.add(spinner);
+				JSpinner spnFechaConsulta = new JSpinner();
+				spnFechaConsulta.setBounds(263, 188, 119, 22);
+				panel.add(spnFechaConsulta);
 			}
 			{
 				JLabel lblDiagnostico = new JLabel("Diagnostico:");
@@ -207,38 +201,38 @@ public class HacerConsulta extends JDialog {
 				panel.add(lblImportanteParaVigilancia);
 			}
 			{
-				textField_3 = new JTextField();
-				textField_3.setBounds(95, 10, 268, 22);
-				panel.add(textField_3);
-				textField_3.setColumns(10);
+				txtDiagnostico = new JTextField();
+				txtDiagnostico.setBounds(95, 10, 268, 22);
+				panel.add(txtDiagnostico);
+				txtDiagnostico.setColumns(10);
 			}
 			{
-				textField_7 = new JTextField();
-				textField_7.setColumns(10);
-				textField_7.setBounds(95, 42, 268, 46);
-				panel.add(textField_7);
+				txtEnfermedad = new JTextField();
+				txtEnfermedad.setColumns(10);
+				txtEnfermedad.setBounds(95, 42, 268, 46);
+				panel.add(txtEnfermedad);
 			}
 			{
-				textField_9 = new JTextField();
-				textField_9.setColumns(10);
-				textField_9.setBounds(95, 101, 268, 46);
-				panel.add(textField_9);
+				txtTratamiento = new JTextField();
+				txtTratamiento.setColumns(10);
+				txtTratamiento.setBounds(95, 101, 268, 46);
+				panel.add(txtTratamiento);
 			}
 			
-			JComboBox comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"---", "si", "no"}));
-			comboBox.setBounds(166, 188, 39, 22);
-			panel.add(comboBox);
+			JComboBox cmbVigilancia = new JComboBox();
+			cmbVigilancia.setModel(new DefaultComboBoxModel(new String[] {"---", "si", "no"}));
+			cmbVigilancia.setBounds(166, 188, 39, 22);
+			panel.add(cmbVigilancia);
 		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnHacerConsulta = new JButton("Hacer Consulta");
+				btnHacerConsulta.setActionCommand("OK");
+				buttonPane.add(btnHacerConsulta);
+				getRootPane().setDefaultButton(btnHacerConsulta);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
