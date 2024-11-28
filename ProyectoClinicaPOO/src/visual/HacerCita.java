@@ -168,12 +168,13 @@ public class HacerCita extends JDialog {
             public void actionPerformed(ActionEvent e) {
             	
             	
-                String doctorId = "D-" + txtDoctorId.getText();
-                Medico doctor = Clinica.getInstance().buscarDoctorById(doctorId);
+                
+                Medico doctor = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
 
                 if (doctor != null) {
                     txtDoctorNombre.setText(doctor.getNombre() + " " + doctor.getApellido());
                     txtDoctorEspecialidad.setText(doctor.getEspecialidad());
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                     txtDoctorNombre.setText("");
@@ -224,6 +225,7 @@ public class HacerCita extends JDialog {
         btnHacerCita.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
+                	
                     if (txtPacienteCedula.getText().isEmpty() || txtPacienteNombre.getText().isEmpty()
                             || txtPacienteApellido.getText().isEmpty()
                             || txtPacienteDireccion.getText().isEmpty()
@@ -231,31 +233,41 @@ public class HacerCita extends JDialog {
                             || txtCitaPrioridad.getText().isEmpty() || cmbCitaActiva.getSelectedIndex() == 0) {
                         JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos .",
                                 "Advertencia", JOptionPane.WARNING_MESSAGE);
-                        return;
+                        return ;
+                        
+                        
                     }
 
+                    
+                    int edad = (Integer) spnPacienteEdad.getValue();
                     String cedula = txtPacienteCedula.getText();
                     String nombre = txtPacienteNombre.getText();
                     String apellido = txtPacienteApellido.getText();
-                    int edad = (Integer) spnPacienteEdad.getValue();
                     String sexo = cmbPacienteSexo.getSelectedItem().toString();
                     String direccion = txtPacienteDireccion.getText();
 
+                    
                     Paciente paciente = Clinica.getInstance().buscarPacientePorCedula(cedula);
                     if (paciente == null) {
+                    	
                         String codigoPaciente = "P-" + (Clinica.idPaciente + 1);
+                        
                         paciente = new Paciente(cedula, nombre, apellido, edad, sexo, direccion,
                                 new ArrayList<>(), new ArrayList<>(), null, codigoPaciente);
+                        
                         Clinica.getInstance().registrarPaciente(paciente);
                     }
 
-                    String doctorId = "D-" + txtDoctorId.getText();
-                    Medico doctor = Clinica.getInstance().buscarDoctorById(doctorId);
+                   
+                    Medico doctor = Clinica.getInstance().buscarDoctorById("D-" + txtDoctorId.getText());
+                   
                     if (doctor == null) {
                         JOptionPane.showMessageDialog(null, "Doctor no encontrado.", "Advertencia",
                                 JOptionPane.WARNING_MESSAGE);
                         return;
                     }
+                    
+                    
 
                     int prioridad = Integer.parseInt(txtCitaPrioridad.getText());
                     boolean active = cmbCitaActiva.getSelectedItem().toString().equalsIgnoreCase("Si");
@@ -269,12 +281,16 @@ public class HacerCita extends JDialog {
 
                     JOptionPane.showMessageDialog(null, "Cita creada exitosamente.", "Informacion",
                             JOptionPane.INFORMATION_MESSAGE);
+                    
+                    
+                    
 
                     clean();
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese valores numericos validos.",
                             "Error", JOptionPane.ERROR_MESSAGE);
+                    
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error al crear la cita: " + ex.getMessage(),
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -285,7 +301,7 @@ public class HacerCita extends JDialog {
                 txtPacienteCedula.setText("");
                 txtPacienteNombre.setText("");
                 txtPacienteApellido.setText("");
-                spnPacienteEdad.setValue(18);
+                spnPacienteEdad.setValue(18);//(edad min)
                 cmbPacienteSexo.setSelectedIndex(0);
                 txtPacienteDireccion.setText("");
                 txtDoctorId.setText("");

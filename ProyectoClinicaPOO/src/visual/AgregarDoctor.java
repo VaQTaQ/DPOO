@@ -28,6 +28,7 @@ public class AgregarDoctor extends JDialog {
 	private JTextField txtCedulaDoctor;
 	private JTextField txtNombresDoctor;
 	//private JTextField txtEdadDoctor;
+	
 	private JSpinner spnEdadDoctor;
 	private JTextField txtIdDoctor;
 	private JTextField txtApellidosDoctor;
@@ -140,6 +141,8 @@ public class AgregarDoctor extends JDialog {
 				btnAgregarDoctor.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				        try {
+				        	
+				        	
 				            if (txtCedulaDoctor.getText().isEmpty() || 
 				                txtNombresDoctor.getText().isEmpty() || 
 				                txtApellidosDoctor.getText().isEmpty() || 
@@ -147,12 +150,12 @@ public class AgregarDoctor extends JDialog {
 				                txtDireccionDoctor.getText().isEmpty() || 
 				                cmbEspecialidad.getSelectedIndex() == 0) {
 
+				            	
 				                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
 				                return;
 				            }
 
 				            int edad = (Integer) spnEdadDoctor.getValue();
-
 				            String cedula = txtCedulaDoctor.getText();
 				            String nombre = txtNombresDoctor.getText();
 				            String apellido = txtApellidosDoctor.getText();
@@ -161,19 +164,27 @@ public class AgregarDoctor extends JDialog {
 				            String especialidad = cmbEspecialidad.getSelectedItem().toString();
 				            String codigoMedico = txtIdDoctor.getText();
 
+				            
 				            Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
 
 				            Clinica.getInstance().registrarMedico(nuevoMedico);
 
+				            
+				            
 				            JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 
+				            
+				            
 				            clean();
+				            
+				            
 
 				        } catch (Exception ex) {
 				            JOptionPane.showMessageDialog(null, "Error al registrar el medico: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				        }
 				        
 				    }
+				    
 				    private void clean() {
 				        txtCedulaDoctor.setText("");
 				        txtNombresDoctor.setText("");

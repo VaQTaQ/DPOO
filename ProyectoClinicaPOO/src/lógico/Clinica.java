@@ -14,6 +14,7 @@ public class Clinica {
 	public static int idMedico;
 	public static int idCita;
 	public static int idPaciente;
+	public static int idConsulta;
 
 	private static Clinica estado;
 
@@ -27,6 +28,7 @@ public class Clinica {
 		idMedico = 0;
 		idCita = 0;
 		idPaciente = 0;
+		idConsulta = 0;
 	}
 
 	public static Clinica getInstance() {
@@ -134,6 +136,7 @@ public class Clinica {
 
 	public void registrarConsulta(Consulta consulta) {
 		consultas.add(consulta);
+		idConsulta++;
 	}
 
 	public List<Consulta> getConsultas() {

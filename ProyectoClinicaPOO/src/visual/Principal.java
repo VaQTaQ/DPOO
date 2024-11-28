@@ -89,12 +89,34 @@ public class Principal extends JFrame {
 		mnCitasYConsultas.add(mntmHacerCita);
 		
 		JMenuItem mntmHacerConsulta = new JMenuItem("Hacer Consulta");
+		mntmHacerConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HacerConsulta agConsulta = new HacerConsulta();
+				agConsulta.setModal(true);
+				agConsulta.setVisible(true);
+				
+			}
+		});
 		mnCitasYConsultas.add(mntmHacerConsulta);
 		
 		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
+		mntmListarCitas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarCitas liCitas = new ListarCitas();
+				liCitas.setModal(true);
+				liCitas.setVisible(true);
+			}
+		});
 		mnCitasYConsultas.add(mntmListarCitas);
 		
 		JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
+		mntmListarConsultas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarConsultas liConsultas = new ListarConsultas();
+				liConsultas.setModal(true);
+				liConsultas.setVisible(true);
+			}
+		});
 		mnCitasYConsultas.add(mntmListarConsultas);
 		
 		JMenu mnControl = new JMenu("Control ");

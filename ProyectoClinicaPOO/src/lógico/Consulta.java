@@ -3,6 +3,7 @@ package lógico;
 import java.util.Date;
 
 public class Consulta {
+	private int idConsulta;
 	private Paciente paciente;        
 	private Medico medico;            
 	private Date fecha;               
@@ -13,8 +14,9 @@ public class Consulta {
 	private boolean importante;       
 
 	
-	public Consulta(Paciente paciente, Medico medico, Date fecha, String diagnostico, 
+	public Consulta(int idConsulta,Paciente paciente, Medico medico, Date fecha, String diagnostico, 
 			Enfermedad enfermedad, String tratamiento, boolean tratado, boolean importante) {
+		this.idConsulta = idConsulta;
 		this.paciente = paciente;
 		this.medico = medico;
 		this.fecha = fecha;
@@ -103,5 +105,15 @@ public class Consulta {
 		resumen.append("Tratado: ").append(tratado ? "Sí" : "No").append("\n");
 		resumen.append("Importante: ").append(importante ? "Sí" : "No").append("\n");
 		return resumen.toString();
+	}
+
+
+	public int getIdConsulta() {
+		return idConsulta;
+	}
+
+
+	public void setIdConsulta(int idConsulta) {
+		this.idConsulta = idConsulta;
 	}
 }
