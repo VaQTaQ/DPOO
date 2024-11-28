@@ -1,37 +1,45 @@
 package lógico;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Clinica {
     private String nombre;
     private String direccion;
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
+    private ArrayList<Cita> citas;
+    private ArrayList<Consulta> consultas;
     public static int idMedico;
+    public static int idCita;
+    public static int idPaciente;
 
-
-    
     private static Clinica estado;
-    
+
     private Clinica(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.pacientes = new ArrayList<>();
         this.medicos = new ArrayList<>();
-        idMedico = 1;
+        this.citas = new ArrayList<>();
+        this.consultas = new ArrayList<>();
+        idMedico = 0;
+        idCita = 0;
+        idPaciente = 0;
     }
-    
+
     public static Clinica getInstance() {
         if (estado == null) {
             estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
         }
         return estado;
     }
-   
 
+    // Gestión de pacientes
     public void registrarPaciente(Paciente paciente) {
         pacientes.add(paciente);
+        idPaciente++;
     }
 
     public Paciente buscarPacientePorCedula(String cedula) {
@@ -40,7 +48,7 @@ public class Clinica {
                 return paciente;
             }
         }
-        return null;  
+        return null;
     }
 
     public void actualizarPaciente(Paciente paciente) {
@@ -64,8 +72,7 @@ public class Clinica {
         }
     }
 
-  
-
+    // Gestión de médicos
     public void registrarMedico(Medico medico) {
         medicos.add(medico);
         idMedico++;
@@ -77,7 +84,16 @@ public class Clinica {
                 return medico;
             }
         }
-        return null;  
+        return null;
+    }
+
+    public Medico buscarDoctorById(String doctorId) {
+        for (Medico doctor : medicos) {
+            if (doctor.getCodigoMedico().equalsIgnoreCase(doctorId)) {
+                return doctor;
+            }
+        }
+        return null;
     }
 
     public void actualizarMedico(Medico medico) {
@@ -100,13 +116,41 @@ public class Clinica {
         }
     }
 
-    
+    // Gestión de citas
+    public void registrarCita(Cita cita) {
+        citas.add(cita);
+        idCita++;
+    }
 
+    public Cita buscarCitaPorId(int idCita) {
+        for (Cita cita : citas) {
+            if (cita.getIdCita() == idCita) {
+                return cita;
+            }
+        }
+        return null;
+    }
+
+    public List<Cita> getCitas() {
+        return citas;
+    }
+
+    // Gestión de consultas
+    public void registrarConsulta(Consulta consulta) {
+        consultas.add(consulta);
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    // Generación de reportes
     public String generarReporteGeneral() {
         StringBuilder reporte = new StringBuilder();
         reporte.append("Reporte General\n");
         reporte.append("Total de Pacientes: ").append(pacientes.size()).append("\n");
         reporte.append("Total de Médicos: ").append(medicos.size()).append("\n");
+        reporte.append("Total de Citas: ").append(citas.size()).append("\n");
         return reporte.toString();
     }
 
@@ -136,7 +180,7 @@ public class Clinica {
         return reporte.toString();
     }
 
-   
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -160,13 +204,4 @@ public class Clinica {
     public List<Medico> getMedicos() {
         return medicos;
     }
-
-	public Medico buscarDoctorById(String doctorId) {
-		for (Medico doctor : medicos) { 
-	        if (doctor.getCodigoMedico().equalsIgnoreCase(doctorId)) {
-	            return doctor;
-	        }
-	    }
-	    return null;
-	}
 }
