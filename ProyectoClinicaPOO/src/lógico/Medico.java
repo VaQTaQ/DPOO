@@ -16,6 +16,7 @@ public class Medico extends Persona {
         this.especialidad = especialidad;
         this.codigoMedico = codigoMedico;
         this.consultas = new ArrayList<>();
+        
     }
 
     public String getEspecialidad() {
