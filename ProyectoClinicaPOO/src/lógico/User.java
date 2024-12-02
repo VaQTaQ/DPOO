@@ -1,5 +1,6 @@
 package lógico;
 
+
 public class User {
 	private String nombre;
 	private String pasword;
