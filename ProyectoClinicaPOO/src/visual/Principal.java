@@ -54,18 +54,19 @@ public class Principal extends JFrame {
 		menuBar.setForeground(new Color(0, 153, 255));
 		setJMenuBar(menuBar);
 		
-		JMenu mnDoctores = new JMenu("Doctores");
+		JMenu mnDoctores = new JMenu("Doctor");
+		mnDoctores.setForeground(new Color(0, 51, 255));
+		mnDoctores.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		menuBar.add(mnDoctores);
 		
-		JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
-		mntmListarDoctores.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ListarDoctores liDoctores = new ListarDoctores();
-				liDoctores.setModal(true);
-				liDoctores.setVisible(true);
-			}
-		});
-		mnDoctores.add(mntmListarDoctores);
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar Citas");
+		mnDoctores.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Listar Consultas");
+		mnDoctores.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Reportes Por Paciente");
+		mnDoctores.add(mntmNewMenuItem_9);
 		
 		JMenu mnCitasYConsultas = new JMenu("Servicio");
 		mnCitasYConsultas.setForeground(new Color(0, 51, 255));
@@ -116,28 +117,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmReporte = new JMenuItem("Reportes");
 		mnHistoral.add(mntmReporte);
 		
-		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Reportes Por Paciente");
-		mnHistoral.add(mntmNewMenuItem_9);
+		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas Totales");
+		mnHistoral.add(mntmListarCitas);
 		
-		JMenu mnNewMenu = new JMenu("Administracion");
-		mnNewMenu.setForeground(new Color(0, 51, 255));
-		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
-		mnNewMenu.add(mntmAgregarDoctor);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Admin");
-		mnNewMenu.add(mntmNewMenuItem);
-		
-		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
-		mnNewMenu.add(mntmListarCitas);
-		
-		JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
-		mnNewMenu.add(mntmListarConsultas);
-		
-		JMenuItem mntmNewListarPacientes = new JMenuItem("Listar Pacientes");
-		mnNewMenu.add(mntmNewListarPacientes);
+		JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas Totales");
+		mnHistoral.add(mntmListarConsultas);
 		mntmListarConsultas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListarConsultas liConsultas = new ListarConsultas();
@@ -150,6 +134,33 @@ public class Principal extends JFrame {
 				ListarCitas liCitas = new ListarCitas();
 				liCitas.setModal(true);
 				liCitas.setVisible(true);
+			}
+		});
+		
+		JMenu mnNewMenu = new JMenu("Administracion");
+		mnNewMenu.setForeground(new Color(0, 51, 255));
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
+		mnNewMenu.add(mntmAgregarDoctor);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Admin");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewListarPacientes = new JMenuItem("Listar Pacientes Totales");
+		mnNewMenu.add(mntmNewListarPacientes);
+		
+		JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
+		mnNewMenu.add(mntmListarDoctores);
+		
+		JMenuItem mntmListarPacientesB = new JMenuItem("Listar Pacientes B. Vigilancia");
+		mnNewMenu.add(mntmListarPacientesB);
+		mntmListarDoctores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarDoctores liDoctores = new ListarDoctores();
+				liDoctores.setModal(true);
+				liDoctores.setVisible(true);
 			}
 		});
 		mntmAgregarDoctor.addActionListener(new ActionListener() {
