@@ -27,6 +27,8 @@ public class Reporte {
 	public void agregarCita(Cita cita) {
 		citasMedicas.add(cita);
 	}
+	
+	
 
 	public void agregarDiagnostico(String diagnostico) {
 		diagnosticos.add(diagnostico);
