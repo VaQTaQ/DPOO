@@ -42,14 +42,14 @@ public class VacunarPaciente extends JDialog {
 	 * Create the dialog.
 	 */
 	public VacunarPaciente() {
-		setBounds(100, 100, 720, 524);
+		setBounds(100, 100, 633, 527);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JPanel pnlListaVacunasDisponibles = new JPanel();
-		pnlListaVacunasDisponibles.setBounds(22, 181, 657, 238);
+		pnlListaVacunasDisponibles.setBounds(22, 181, 561, 238);
 		contentPanel.add(pnlListaVacunasDisponibles);
 		
 		JPanel panel = new JPanel();
@@ -108,27 +108,27 @@ public class VacunarPaciente extends JDialog {
 		panel.add(txtEdadPaciente);
 		
 		JPanel pnlDatosVacuna = new JPanel();
-		pnlDatosVacuna.setBounds(416, 26, 263, 142);
+		pnlDatosVacuna.setBounds(416, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
 		pnlDatosVacuna.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Fecha:");
-		lblNewLabel.setBounds(12, 51, 56, 16);
+		lblNewLabel.setBounds(54, 69, 56, 16);
 		pnlDatosVacuna.add(lblNewLabel);
 		
 		txtFechaHoy = new JTextField();
 		txtFechaHoy.setEditable(false);
-		txtFechaHoy.setBounds(127, 48, 116, 22);
+		txtFechaHoy.setBounds(24, 87, 116, 22);
 		pnlDatosVacuna.add(txtFechaHoy);
 		txtFechaHoy.setColumns(10);
 		
 		txtDosisAplicar = new JTextField();
 		txtDosisAplicar.setColumns(10);
-		txtDosisAplicar.setBounds(127, 13, 116, 22);
+		txtDosisAplicar.setBounds(24, 34, 116, 22);
 		pnlDatosVacuna.add(txtDosisAplicar);
 		
 		JLabel lblDosisAAplicar = new JLabel("Dosis a Aplicar:");
-		lblDosisAAplicar.setBounds(12, 16, 103, 16);
+		lblDosisAAplicar.setBounds(31, 13, 103, 16);
 		pnlDatosVacuna.add(lblDosisAAplicar);
 		{
 			JPanel buttonPane = new JPanel();
