@@ -256,6 +256,14 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.add(txtEnfermedadDescripcion);
         
         JButton btnVacunar = new JButton("Vacunar");
+        btnVacunar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		VacunarPaciente vacPaciente = new VacunarPaciente();
+        		vacPaciente.setModal(true);
+        		vacPaciente.setVisible(true);
+        		
+        	}
+        });
         btnVacunar.setBounds(403, 146, 97, 25);
         pnlConsulta.add(btnVacunar);
 

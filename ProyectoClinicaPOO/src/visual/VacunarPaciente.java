@@ -8,6 +8,9 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import lógico.Paciente;
+import lógico.Vacuna;
+
 public class VacunarPaciente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
