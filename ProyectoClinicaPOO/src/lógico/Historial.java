@@ -54,4 +54,37 @@ public class Historial {
 		this.reportes = reportes;
 	}
 	
+	//Metodos para las acciones
+	
+	public void registrarAccion(Object accion) {
+	    Acciones.add(accion);
+	}
+	
+	public void generarReporte() {
+	    StringBuilder reporte = new StringBuilder();
+	    reporte.append("Reporte generado el: ").append(new Date()).append("\n");
+	    for (Object accion : Acciones) {
+	        reporte.append("Acción: ").append(accion.toString()).append("\n");
+	    }
+	    reportes.add(reporte.toString());
+	}
+	
+	public String obtenerReporte(int indice) {
+	    if (indice >= 0 && indice < reportes.size()) {
+	        return reportes.get(indice);
+	    }
+	    return "Reporte no encontrado.";
+	}
+	
+	public ArrayList<Object> buscarAcciones(String criterio) {
+	    ArrayList<Object> resultados = new ArrayList<>();
+	    for (Object accion : Acciones) {
+	        if (accion.toString().contains(criterio)) {
+	            resultados.add(accion);
+	        }
+	    }
+	    return resultados;
+	}
+
+	
 }
