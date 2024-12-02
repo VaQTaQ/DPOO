@@ -103,5 +103,6 @@ public class ListarConsultas extends JDialog {
             
             modelo.addRow(row);
         }
+        
     }
 }
