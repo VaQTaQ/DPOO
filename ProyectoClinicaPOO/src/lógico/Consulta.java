@@ -11,7 +11,8 @@ public class Consulta {
 	private Enfermedad enfermedad;    
 	private String tratamiento;       
 	private boolean tratado;          
-	private boolean importante;       
+	private boolean importante;  
+	
 
 	
 	public Consulta(int idConsulta,Paciente paciente, Medico medico, Date fecha, String diagnostico, 
