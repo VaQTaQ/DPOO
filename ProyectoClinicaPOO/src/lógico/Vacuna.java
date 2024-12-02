@@ -2,21 +2,18 @@ package lógico;
 
 import java.util.Date;
 
-public class Vacuna {
-    private String nombre;
+public class Vacuna  extends VacunaDisponible{
+    
     private Date fechaAplicacion;
     private int dosisNecesarias;
     private int dosisAplicadas;
-    private int minEdad;
-    private int maxEdad;
+    
 
     public Vacuna(String nombre, Date fechaAplicacion, int dosisNecesarias, int dosisAplicadas, int minEdad, int maxEdad) {
-        this.nombre = nombre;
+        super(nombre, minEdad, maxEdad);
         this.fechaAplicacion = fechaAplicacion;
         this.dosisNecesarias = dosisNecesarias;
         this.dosisAplicadas = dosisAplicadas;
-        this.minEdad = minEdad;
-        this.maxEdad = maxEdad;
     }
 
    

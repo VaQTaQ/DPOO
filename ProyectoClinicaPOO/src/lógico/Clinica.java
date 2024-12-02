@@ -13,6 +13,9 @@ public class Clinica {
 	private ArrayList<Consulta> consultas;
 	private ArrayList<Vacuna> vacunasPuestas;
 	private ArrayList<String> especialidades;
+	private ArrayList<VacunaDisponible> vacunasDisponibles;
+	
+
 	public static int idMedico;
 	public static int idCita;
 	public static int idPaciente;
@@ -21,17 +24,22 @@ public class Clinica {
 	private static Clinica estado;
 
 	private Clinica(String nombre, String direccion) {
+		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.pacientes = new ArrayList<>();
 		this.medicos = new ArrayList<>();
 		this.citas = new ArrayList<>();
 		this.consultas = new ArrayList<>();
+		this.vacunasDisponibles = new ArrayList<>();
+		this.vacunasPuestas = new ArrayList<>();
+		this.especialidades = new ArrayList<>();
 		idMedico = 0;
 		idCita = 0;
 		idPaciente = 0;
+		idConsulta = 0;
 	}
-
+	
 	public static Clinica getInstance() {
 		if (estado == null) {
 			estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
@@ -237,5 +245,13 @@ public class Clinica {
 
 	public void setVacunas(ArrayList<Vacuna> vacunasPuestas) {
 		this.vacunasPuestas = vacunasPuestas;
+	}
+	
+	public ArrayList<VacunaDisponible> getVacunasDisponibles() {
+		return vacunasDisponibles;
+	}
+
+	public void setVacunasDisponibles(ArrayList<VacunaDisponible> vacunasDisponibles) {
+		this.vacunasDisponibles = vacunasDisponibles;
 	}
 }
