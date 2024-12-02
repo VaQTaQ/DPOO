@@ -54,16 +54,6 @@ public class Principal extends JFrame {
 		JMenu mnDoctores = new JMenu("Doctores");
 		menuBar.add(mnDoctores);
 		
-		JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
-		mntmAgregarDoctor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AgregarDoctor agDoctor = new AgregarDoctor();
-				agDoctor.setModal(true);
-				agDoctor.setVisible(true);
-			}
-		});
-		mnDoctores.add(mntmAgregarDoctor);
-		
 		JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
 		mntmListarDoctores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,26 +89,6 @@ public class Principal extends JFrame {
 		});
 		mnCitasYConsultas.add(mntmHacerConsulta);
 		
-		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
-		mntmListarCitas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ListarCitas liCitas = new ListarCitas();
-				liCitas.setModal(true);
-				liCitas.setVisible(true);
-			}
-		});
-		mnCitasYConsultas.add(mntmListarCitas);
-		
-		JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
-		mntmListarConsultas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ListarConsultas liConsultas = new ListarConsultas();
-				liConsultas.setModal(true);
-				liConsultas.setVisible(true);
-			}
-		});
-		mnCitasYConsultas.add(mntmListarConsultas);
-		
 		JMenu mnControl = new JMenu("Control ");
 		menuBar.add(mnControl);
 		
@@ -127,9 +97,6 @@ public class Principal extends JFrame {
 		
 		JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
 		mnControl.add(mntmControlVacunas);
-		
-		JMenuItem mntmNewListarPacientes = new JMenuItem("Listar Pacientes");
-		mnControl.add(mntmNewListarPacientes);
 		
 		JMenu mnHistoral = new JMenu("Historial");
 		menuBar.add(mnHistoral);
@@ -142,6 +109,45 @@ public class Principal extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Reportes Por Paciente");
 		mnHistoral.add(mntmNewMenuItem_9);
+		
+		JMenu mnNewMenu = new JMenu("Administracion");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
+		mnNewMenu.add(mntmAgregarDoctor);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Admin");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
+		mnNewMenu.add(mntmListarCitas);
+		
+		JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
+		mnNewMenu.add(mntmListarConsultas);
+		
+		JMenuItem mntmNewListarPacientes = new JMenuItem("Listar Pacientes");
+		mnNewMenu.add(mntmNewListarPacientes);
+		mntmListarConsultas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarConsultas liConsultas = new ListarConsultas();
+				liConsultas.setModal(true);
+				liConsultas.setVisible(true);
+			}
+		});
+		mntmListarCitas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarCitas liCitas = new ListarCitas();
+				liCitas.setModal(true);
+				liCitas.setVisible(true);
+			}
+		});
+		mntmAgregarDoctor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AgregarDoctor agDoctor = new AgregarDoctor();
+				agDoctor.setModal(true);
+				agDoctor.setVisible(true);
+			}
+		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
