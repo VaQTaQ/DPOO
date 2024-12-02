@@ -11,6 +11,8 @@ public class Clinica {
 	private ArrayList<Medico> medicos;
 	private ArrayList<Cita> citas;
 	private ArrayList<Consulta> consultas;
+	
+
 	private ArrayList<Vacuna> vacunasPuestas;
 	private ArrayList<String> especialidades;
 	private ArrayList<VacunaDisponible> vacunasDisponibles;
@@ -139,9 +141,7 @@ public class Clinica {
 		return null;
 	}
 
-	public List<Cita> getCitas() {
-		return citas;
-	}
+	
 
 	public void registrarConsulta(Consulta consulta) {
 		consultas.add(consulta);
@@ -155,6 +155,13 @@ public class Clinica {
 		vacunasPuestas.add(vacuna);
 	}
 
+	public void registrarVacunaDisponible(VacunaDisponible vacuna) {
+		for(VacunaDisponible temp : vacunasDisponibles) {
+			if(vacuna.equals(temp))
+				return;
+		}
+		vacunasDisponibles.add(vacuna);
+	}
 
 	public String generarReporteGeneral() {
 		StringBuilder reporte = new StringBuilder();
@@ -226,6 +233,9 @@ public class Clinica {
 		return medicos;
 	}
 
+	public List<Cita> getCitas() {
+		return citas;
+	}
 	
 	public List<Consulta> getConsultas() {
 		return consultas;
@@ -253,5 +263,49 @@ public class Clinica {
 
 	public void setVacunasDisponibles(ArrayList<VacunaDisponible> vacunasDisponibles) {
 		this.vacunasDisponibles = vacunasDisponibles;
+	}
+	
+	public ArrayList<Vacuna> getVacunasPuestas() {
+		return vacunasPuestas;
+	}
+
+	public void setVacunasPuestas(ArrayList<Vacuna> vacunasPuestas) {
+		this.vacunasPuestas = vacunasPuestas;
+	}
+
+	public static int getIdMedico() {
+		return idMedico;
+	}
+
+	public static int getIdCita() {
+		return idCita;
+	}
+
+	public static int getIdPaciente() {
+		return idPaciente;
+	}
+
+	public static int getIdConsulta() {
+		return idConsulta;
+	}
+
+	public static Clinica getEstado() {
+		return estado;
+	}
+
+	public void setPacientes(ArrayList<Paciente> pacientes) {
+		this.pacientes = pacientes;
+	}
+
+	public void setMedicos(ArrayList<Medico> medicos) {
+		this.medicos = medicos;
+	}
+
+	public void setCitas(ArrayList<Cita> citas) {
+		this.citas = citas;
+	}
+
+	public void setConsultas(ArrayList<Consulta> consultas) {
+		this.consultas = consultas;
 	}
 }
