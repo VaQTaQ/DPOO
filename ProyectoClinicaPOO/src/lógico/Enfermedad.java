@@ -36,4 +36,5 @@ public class Enfermedad {
     public void setBajoVigilancia(boolean bajoVigilancia) {
         this.bajoVigilancia = bajoVigilancia;
     }
+    
 }
