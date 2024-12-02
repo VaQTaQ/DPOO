@@ -113,22 +113,22 @@ public class VacunarPaciente extends JDialog {
 		pnlDatosVacuna.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Fecha:");
-		lblNewLabel.setBounds(54, 69, 56, 16);
+		lblNewLabel.setBounds(54, 72, 56, 16);
 		pnlDatosVacuna.add(lblNewLabel);
 		
 		txtFechaHoy = new JTextField();
 		txtFechaHoy.setEditable(false);
-		txtFechaHoy.setBounds(24, 87, 116, 22);
+		txtFechaHoy.setBounds(24, 90, 116, 22);
 		pnlDatosVacuna.add(txtFechaHoy);
 		txtFechaHoy.setColumns(10);
 		
 		txtDosisAplicar = new JTextField();
 		txtDosisAplicar.setColumns(10);
-		txtDosisAplicar.setBounds(24, 34, 116, 22);
+		txtDosisAplicar.setBounds(24, 35, 116, 22);
 		pnlDatosVacuna.add(txtDosisAplicar);
 		
 		JLabel lblDosisAAplicar = new JLabel("Dosis a Aplicar:");
-		lblDosisAAplicar.setBounds(31, 13, 103, 16);
+		lblDosisAAplicar.setBounds(31, 16, 103, 16);
 		pnlDatosVacuna.add(lblDosisAAplicar);
 		{
 			JPanel buttonPane = new JPanel();
