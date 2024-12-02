@@ -308,4 +308,5 @@ public class Clinica {
 	public void setConsultas(ArrayList<Consulta> consultas) {
 		this.consultas = consultas;
 	}
+	
 }
