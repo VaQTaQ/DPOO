@@ -1,6 +1,7 @@
 package lógico;
 
 public class VacunaDisponible {
+	
 	protected String nombre;
 	protected int minEdad;
 	protected int maxEdad;
