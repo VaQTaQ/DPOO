@@ -61,7 +61,7 @@ public class HacerConsulta extends JDialog {
      */
     public HacerConsulta() {
         setTitle("Hacer Consulta");
-        setBounds(100, 100, 538, 713);
+        setBounds(100, 100, 584, 717);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -69,45 +69,45 @@ public class HacerConsulta extends JDialog {
         contentPanel.setLayout(null);
 
         JPanel pnlPaciente = new JPanel();
-        pnlPaciente.setBounds(12, 42, 491, 165);
+        pnlPaciente.setBounds(17, 42, 532, 165);
         contentPanel.add(pnlPaciente);
         pnlPaciente.setLayout(null);
 
         JLabel lblCedula = new JLabel("Cedula:");
-        lblCedula.setBounds(12, 13, 56, 16);
+        lblCedula.setBounds(60, 17, 56, 16);
         pnlPaciente.add(lblCedula);
 
         JLabel lblNombre = new JLabel("Nombre:");
-        lblNombre.setBounds(12, 67, 56, 16);
+        lblNombre.setBounds(60, 71, 56, 16);
         pnlPaciente.add(lblNombre);
 
         JLabel lblEdad = new JLabel("Edad:");
-        lblEdad.setBounds(12, 125, 56, 16);
+        lblEdad.setBounds(60, 129, 56, 16);
         pnlPaciente.add(lblEdad);
 
         JLabel lblSexo = new JLabel("Sexo:");
-        lblSexo.setBounds(246, 125, 56, 16);
+        lblSexo.setBounds(294, 129, 56, 16);
         pnlPaciente.add(lblSexo);
 
         JLabel lblPacienteId = new JLabel("ID Paciente:");
-        lblPacienteId.setBounds(246, 13, 70, 16);
+        lblPacienteId.setBounds(294, 17, 70, 16);
         pnlPaciente.add(lblPacienteId);
 
         txtPacienteCedula = new JTextField();
         txtPacienteCedula.setEditable(false);
         txtPacienteCedula.setColumns(10);
-        txtPacienteCedula.setBounds(74, 10, 148, 22);
+        txtPacienteCedula.setBounds(122, 14, 148, 22);
         pnlPaciente.add(txtPacienteCedula);
 
         txtPacienteNombre = new JTextField();
         txtPacienteNombre.setEditable(false);
         txtPacienteNombre.setColumns(10);
-        txtPacienteNombre.setBounds(74, 64, 306, 22);
+        txtPacienteNombre.setBounds(122, 68, 306, 22);
         pnlPaciente.add(txtPacienteNombre);
 
         txtPacienteId = new JTextField();
         txtPacienteId.setColumns(10);
-        txtPacienteId.setBounds(324, 10, 56, 22);
+        txtPacienteId.setBounds(372, 14, 56, 22);
         pnlPaciente.add(txtPacienteId);
 
         JButton btnBuscarPacienteXId = new JButton("Buscar");
@@ -126,23 +126,23 @@ public class HacerConsulta extends JDialog {
                 }
             }
         });
-        btnBuscarPacienteXId.setBounds(381, 9, 70, 25);
+        btnBuscarPacienteXId.setBounds(429, 13, 70, 25);
         pnlPaciente.add(btnBuscarPacienteXId);
 
         txtPacienteSexo = new JTextField();
         txtPacienteSexo.setEditable(false);
         txtPacienteSexo.setColumns(10);
-        txtPacienteSexo.setBounds(303, 122, 148, 22);
+        txtPacienteSexo.setBounds(351, 126, 148, 22);
         pnlPaciente.add(txtPacienteSexo);
 
         txtPacienteEdad = new JTextField();
         txtPacienteEdad.setEditable(false);
         txtPacienteEdad.setColumns(10);
-        txtPacienteEdad.setBounds(74, 122, 80, 22);
+        txtPacienteEdad.setBounds(122, 126, 80, 22);
         pnlPaciente.add(txtPacienteEdad);
 
         JPanel pnlDoctor = new JPanel();
-        pnlDoctor.setBounds(108, 220, 299, 154);
+        pnlDoctor.setBounds(133, 220, 299, 154);
         contentPanel.add(pnlDoctor);
         pnlDoctor.setLayout(null);
 
@@ -197,7 +197,7 @@ public class HacerConsulta extends JDialog {
         pnlDoctor.add(btnBuscarDoctorXId);
 
         JPanel pnlConsulta = new JPanel();
-        pnlConsulta.setBounds(32, 387, 454, 222);
+        pnlConsulta.setBounds(27, 387, 512, 221);
         contentPanel.add(pnlConsulta);
         pnlConsulta.setLayout(null);
 
@@ -254,6 +254,14 @@ public class HacerConsulta extends JDialog {
         txtEnfermedadDescripcion.setColumns(10);
         txtEnfermedadDescripcion.setBounds(114, 74, 268, 56);
         pnlConsulta.add(txtEnfermedadDescripcion);
+        
+        JLabel lblNewLabel = new JLabel("Vacunar:");
+        lblNewLabel.setBounds(424, 16, 56, 16);
+        pnlConsulta.add(lblNewLabel);
+        
+        JComboBox cmbTodasVacunas = new JComboBox();
+        cmbTodasVacunas.setBounds(394, 42, 106, 22);
+        pnlConsulta.add(cmbTodasVacunas);
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

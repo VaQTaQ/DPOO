@@ -12,6 +12,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class Principal extends JFrame {
 
@@ -49,6 +51,7 @@ public class Principal extends JFrame {
 
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setForeground(new Color(0, 153, 255));
 		setJMenuBar(menuBar);
 		
 		JMenu mnDoctores = new JMenu("Doctores");
@@ -65,6 +68,8 @@ public class Principal extends JFrame {
 		mnDoctores.add(mntmListarDoctores);
 		
 		JMenu mnCitasYConsultas = new JMenu("Servicio");
+		mnCitasYConsultas.setForeground(new Color(0, 51, 255));
+		mnCitasYConsultas.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		menuBar.add(mnCitasYConsultas);
 		
 		JMenuItem mntmHacerCita = new JMenuItem("Hacer Cita");
@@ -90,6 +95,8 @@ public class Principal extends JFrame {
 		mnCitasYConsultas.add(mntmHacerConsulta);
 		
 		JMenu mnControl = new JMenu("Control ");
+		mnControl.setForeground(new Color(0, 51, 255));
+		mnControl.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		menuBar.add(mnControl);
 		
 		JMenuItem mntmPacEnfermedadesVigilancia = new JMenuItem("Pac. Enfermedades Vigilancia");
@@ -99,6 +106,8 @@ public class Principal extends JFrame {
 		mnControl.add(mntmControlVacunas);
 		
 		JMenu mnHistoral = new JMenu("Historial");
+		mnHistoral.setForeground(new Color(0, 51, 255));
+		mnHistoral.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		menuBar.add(mnHistoral);
 		
 		JMenuItem mntmHistorialClinica = new JMenuItem("Historial Clinica");
@@ -111,6 +120,8 @@ public class Principal extends JFrame {
 		mnHistoral.add(mntmNewMenuItem_9);
 		
 		JMenu mnNewMenu = new JMenu("Administracion");
+		mnNewMenu.setForeground(new Color(0, 51, 255));
+		mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
@@ -150,8 +161,12 @@ public class Principal extends JFrame {
 		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 204, 255));
+		contentPane.add(panel, BorderLayout.CENTER);
 	}
 
 }
