@@ -255,13 +255,9 @@ public class HacerConsulta extends JDialog {
         txtEnfermedadDescripcion.setBounds(114, 74, 268, 56);
         pnlConsulta.add(txtEnfermedadDescripcion);
         
-        JLabel lblNewLabel = new JLabel("Vacunar:");
-        lblNewLabel.setBounds(424, 16, 56, 16);
-        pnlConsulta.add(lblNewLabel);
-        
-        JComboBox cmbTodasVacunas = new JComboBox();
-        cmbTodasVacunas.setBounds(394, 42, 106, 22);
-        pnlConsulta.add(cmbTodasVacunas);
+        JButton btnVacunar = new JButton("Vacunar");
+        btnVacunar.setBounds(403, 146, 97, 25);
+        pnlConsulta.add(btnVacunar);
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

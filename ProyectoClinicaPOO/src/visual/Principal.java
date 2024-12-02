@@ -60,9 +60,23 @@ public class Principal extends JFrame {
 		menuBar.add(mnDoctores);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar Citas");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarCitasXDoctor listCitXDoc = new ListarCitasXDoctor();
+				listCitXDoc.setModal(true);
+				listCitXDoc.setVisible(true);
+			}
+		});
 		mnDoctores.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Listar Consultas");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarConsultasXDoctor listConsXDoc = new ListarConsultasXDoctor();
+				listConsXDoc.setModal(true);
+				listConsXDoc.setVisible(true);
+			}
+		});
 		mnDoctores.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Reportes Por Paciente");
@@ -114,7 +128,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmHistorialClinica = new JMenuItem("Historial Clinica");
 		mnHistoral.add(mntmHistorialClinica);
 		
-		JMenuItem mntmReporte = new JMenuItem("Reportes");
+		JMenuItem mntmReporte = new JMenuItem("Reportes(XPacientes)");
 		mnHistoral.add(mntmReporte);
 		
 		JMenuItem mntmListarCitas = new JMenuItem("Listar Citas Totales");
