@@ -86,5 +86,9 @@ public class Historial {
 	    return resultados;
 	}
 
+	public boolean eliminarAccion(Object accion) {
+	    return Acciones.remove(accion);
+	}
+
 	
 }
