@@ -49,12 +49,12 @@ public class VacunarPaciente extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JPanel pnlListaVacunasDisponibles = new JPanel();
-		pnlListaVacunasDisponibles.setBounds(22, 181, 561, 238);
+		pnlListaVacunasDisponibles.setBounds(27, 181, 561, 238);
 		contentPanel.add(pnlListaVacunasDisponibles);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(22, 26, 381, 142);
+		panel.setBounds(27, 26, 381, 142);
 		contentPanel.add(panel);
 		
 		JLabel label = new JLabel("Cedula:");
@@ -108,7 +108,7 @@ public class VacunarPaciente extends JDialog {
 		panel.add(txtEdadPaciente);
 		
 		JPanel pnlDatosVacuna = new JPanel();
-		pnlDatosVacuna.setBounds(416, 26, 165, 142);
+		pnlDatosVacuna.setBounds(423, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
 		pnlDatosVacuna.setLayout(null);
 		
