@@ -14,6 +14,7 @@ public class Vacuna  extends VacunaDisponible{
         this.fechaAplicacion = fechaAplicacion;
         this.dosisNecesarias = dosisNecesarias;
         this.dosisAplicadas = dosisAplicadas;
+        
     }
 
    

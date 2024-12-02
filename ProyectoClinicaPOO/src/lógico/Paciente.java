@@ -16,6 +16,7 @@ public class Paciente extends Persona {
         this.enfermedades = enfermedades;
         this.historiaClinica = historiaClinica;
         this.codigoPaciente = codigoPaciente;
+        
     }
 
     public ArrayList<Vacuna> getMisVacunas() {
