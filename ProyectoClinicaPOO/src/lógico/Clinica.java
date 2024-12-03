@@ -11,6 +11,7 @@ public class Clinica {
 	private ArrayList<Medico> medicos;
 	private ArrayList<Cita> citas;
 	private ArrayList<Consulta> consultas;
+	private ArrayList<Historial> historiales;
 	
 
 	private ArrayList<Vacuna> vacunasPuestas;
@@ -36,6 +37,8 @@ public class Clinica {
 		this.vacunasDisponibles = new ArrayList<>();
 		this.vacunasPuestas = new ArrayList<>();
 		this.especialidades = new ArrayList<>();
+		this.setHistoriales(new ArrayList<>());
+
 		idMedico = 0;
 		idCita = 0;
 		idPaciente = 0;
@@ -307,6 +310,14 @@ public class Clinica {
 
 	public void setConsultas(ArrayList<Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public ArrayList<Historial> getHistoriales() {
+		return historiales;
+	}
+
+	public void setHistoriales(ArrayList<Historial> historiales) {
+		this.historiales = historiales;
 	}
 	
 }
