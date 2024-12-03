@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -36,44 +37,48 @@ public class Login extends JDialog {
      * Create the dialog.
      */
     public Login() {
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 521, 358);
         getContentPane().setLayout(new BorderLayout());
+
+        // Cambiar el color de fondo del contentPanel
+        contentPanel.setBackground(new Color(173, 216, 230)); // Azul clarito (RGB: 173, 216, 230)
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
 
         JLabel label = new JLabel("Usuario:");
-        label.setBounds(145, 100, 48, 14);
+        label.setBounds(148, 120, 48, 14);
         contentPanel.add(label);
 
         JLabel lblNewLabel = new JLabel("Contraseña:");
-        lblNewLabel.setBounds(124, 130, 69, 14);
+        lblNewLabel.setBounds(126, 163, 70, 14);
         contentPanel.add(lblNewLabel);
 
         Usuario = new JTextField();
-        Usuario.setBounds(200, 100, 111, 20);
+        Usuario.setBounds(208, 117, 111, 20);
         contentPanel.add(Usuario);
         Usuario.setColumns(10);
 
         Contra = new JTextField();
-        Contra.setBounds(200, 130, 111, 20);
+        Contra.setBounds(208, 160, 111, 20);
         contentPanel.add(Contra);
         Contra.setColumns(10);
 
         JLabel lblRol = new JLabel("Rol:");
-        lblRol.setBounds(167, 160, 26, 14);
+        lblRol.setBounds(170, 200, 26, 14);
         contentPanel.add(lblRol);
 
         JComboBox<String> Rol = new JComboBox<>();
         Rol.setModel(new DefaultComboBoxModel<>(new String[] {"Paciente", "Médico", "Administra"}));
-        Rol.setBounds(200, 160, 111, 20);
+        Rol.setBounds(208, 197, 111, 20);
         contentPanel.add(Rol);
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        buttonPane.setBackground(new Color(173, 216, 230)); // Azul clarito
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
-        
-        JButton okButton = new JButton("Entrar");
+
+        JButton okButton = new JButton("Registrar");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();  
