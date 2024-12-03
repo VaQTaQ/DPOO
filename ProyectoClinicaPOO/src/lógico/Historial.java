@@ -8,6 +8,10 @@ public class Historial {
 	
 	private Date Fecha;
 	private String Detalle;
+	//idea de Hugo
+	private ArrayList<Object> Acciones; //incluira todo lo que se haga en la clinica(ejemplo: se pone la vacuna a un paciente ese objeto Vacuna iria dentro de ese arrayLis)
+	private ArrayList<String> reportes;//Aqui iran los reportes de todo lo que se haga que se generaran de forma automatica con funciones
+	
 
 	public Historial(){//constructor con ambas ideas implementadas(si se elije la de hugo se deberia eliminar detalles y accionn)
 		super();//sino los arrayList
@@ -19,10 +23,7 @@ public class Historial {
 	}
 
 
-	//idea de Hugo
-	private ArrayList<Object> Acciones; //incluira todo lo que se haga en la clinica(ejemplo: se pone la vacuna a un paciente ese objeto Vacuna iria dentro de ese arrayLis)
-	private ArrayList<String> reportes;//Aqui iran los reportes de todo lo que se haga que se generaran de forma automatica con funciones
-	
+
 	public Date getFecha() {
 		return Fecha;
 	}
