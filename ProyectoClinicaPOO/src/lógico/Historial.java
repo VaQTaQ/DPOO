@@ -5,14 +5,13 @@ import java.util.Date;
 
 public class Historial {
 	//Idea de Ian y Charls
-	private String Accion;
+	
 	private Date Fecha;
 	private String Detalle;
 
 	public Historial(){//constructor con ambas ideas implementadas(si se elije la de hugo se deberia eliminar detalles y accionn)
 		super();//sino los arrayList
 
-		this.Accion = new String();
 		this.Fecha = new Date();
 		this.Detalle = new String();
 		this.Acciones = new ArrayList<Object>();
@@ -23,12 +22,7 @@ public class Historial {
 	//idea de Hugo
 	private ArrayList<Object> Acciones; //incluira todo lo que se haga en la clinica(ejemplo: se pone la vacuna a un paciente ese objeto Vacuna iria dentro de ese arrayLis)
 	private ArrayList<String> reportes;//Aqui iran los reportes de todo lo que se haga que se generaran de forma automatica con funciones
-	public String getAccion() {
-		return Accion;
-	}
-	public void setAccion(String accion) {
-		Accion = accion;
-	}
+	
 	public Date getFecha() {
 		return Fecha;
 	}

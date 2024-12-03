@@ -5,20 +5,11 @@ import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import lógico.Clinica;
-import lógico.Cita;
-import lógico.Enfermedad;
-import lógico.Medico;
-import lógico.Paciente;
-import lógico.Vacuna;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -28,6 +19,12 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import lógico.Clinica;
+import lógico.Cita;
+import lógico.Enfermedad;
+import lógico.Medico;
+import lógico.Paciente;
+import lógico.Vacuna;
 
 public class HacerCita extends JDialog {
 

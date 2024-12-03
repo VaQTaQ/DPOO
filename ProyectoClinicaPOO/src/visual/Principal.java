@@ -83,6 +83,9 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Reportes Por Paciente");
 		mnDoctores.add(mntmNewMenuItem_9);
 		
+		JMenuItem mntmPacEnfermedadesVigilancia = new JMenuItem("Pac. Enfermedades Vigilancia");
+		mnDoctores.add(mntmPacEnfermedadesVigilancia);
+		
 		JMenu mnCitasYConsultas = new JMenu("Servicio");
 		mnCitasYConsultas.setForeground(new Color(0, 51, 255));
 		mnCitasYConsultas.setFont(new Font("Segoe UI", Font.BOLD, 20));
@@ -109,17 +112,6 @@ public class Principal extends JFrame {
 			}
 		});
 		mnCitasYConsultas.add(mntmHacerConsulta);
-		
-		JMenu mnControl = new JMenu("Control ");
-		mnControl.setForeground(new Color(0, 51, 255));
-		mnControl.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		menuBar.add(mnControl);
-		
-		JMenuItem mntmPacEnfermedadesVigilancia = new JMenuItem("Pac. Enfermedades Vigilancia");
-		mnControl.add(mntmPacEnfermedadesVigilancia);
-		
-		JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
-		mnControl.add(mntmControlVacunas);
 		
 		JMenu mnHistoral = new JMenu("Historial");
 		mnHistoral.setForeground(new Color(0, 51, 255));
@@ -171,6 +163,16 @@ public class Principal extends JFrame {
 		
 		JMenuItem mntmListarPacientesB = new JMenuItem("Listar Pacientes B. Vigilancia");
 		mnNewMenu.add(mntmListarPacientesB);
+		
+		JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
+		mntmControlVacunas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControlVacuna conVacuna = new ControlVacuna();
+				conVacuna.setModal(true);
+				conVacuna.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmControlVacunas);
 		mntmListarDoctores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListarDoctores liDoctores = new ListarDoctores();

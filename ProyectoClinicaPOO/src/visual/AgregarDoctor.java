@@ -9,11 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-
-
 import lógico.Clinica;
 import lógico.Medico;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -168,13 +165,8 @@ public class AgregarDoctor extends JDialog {
 				            Medico nuevoMedico = new Medico(cedula, nombre, apellido, edad, sexo, direccion, especialidad, codigoMedico);
 
 				            Clinica.getInstance().registrarMedico(nuevoMedico);
-
-				            
 				            
 				            JOptionPane.showMessageDialog(null, "Medico registrado satisfactoriamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-
-				            
-				            
 				            clean();
 				            
 				            

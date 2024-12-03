@@ -2,17 +2,28 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import lógico.Clinica;
 import lógico.Paciente;
 import lógico.Vacuna;
+import lógico.VacunaDisponible;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VacunarPaciente extends JDialog {
 
@@ -24,6 +35,11 @@ public class VacunarPaciente extends JDialog {
 	private JTextField txtEdadPaciente;
 	private JTextField txtFechaHoy;
 	private JTextField txtDosisAplicar;
+	private Paciente pacienteSeleccionado;
+	
+    private JTable tblVacunasDisponibles;
+    private DefaultTableModel modeloVacunas;
+    private Object[] rowVacunas;
 
 	/**
 	 * Launch the application.
@@ -41,6 +57,43 @@ public class VacunarPaciente extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
+	
+	 public VacunarPaciente(Paciente paciente) {
+	        this(); 
+	        this.pacienteSeleccionado = paciente;
+
+	        txtCedulaPaciente.setText(paciente.getCedula());
+	        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());
+	        txtIdPaciente.setText(paciente.getCodigoPaciente());
+	        txtSexoPaciente.setText(paciente.getSexo());
+	        txtEdadPaciente.setText(String.valueOf(paciente.getEdad()));
+	        txtFechaHoy.setText(new Date().toString());	 
+	        
+	        
+	        cargarVacunasDisponibles();
+	        
+	        }
+	 
+	private void cargarVacunasDisponibles() {
+		// TODO Auto-generated method stub
+	        modeloVacunas.setRowCount(0);
+	        ArrayList<VacunaDisponible> vacunas = Clinica.getInstance().getVacunasDisponibles();
+	        rowVacunas = new Object[modeloVacunas.getColumnCount()];
+
+	        for (VacunaDisponible vacuna : vacunas) {
+	        	
+	            rowVacunas[0] = vacuna.getNombre();
+	            
+	            rowVacunas[1] = vacuna.getMinEdad();
+	            
+	            rowVacunas[2] = vacuna.getMaxEdad();
+	            
+	            modeloVacunas.addRow(rowVacunas);
+	        }
+	    
+
+	}
+
 	public VacunarPaciente() {
 		setBounds(100, 100, 633, 527);
 		getContentPane().setLayout(new BorderLayout());
@@ -50,7 +103,18 @@ public class VacunarPaciente extends JDialog {
 		
 		JPanel pnlListaVacunasDisponibles = new JPanel();
 		pnlListaVacunasDisponibles.setBounds(27, 181, 561, 238);
+        pnlListaVacunasDisponibles.setLayout(new BorderLayout());
 		contentPanel.add(pnlListaVacunasDisponibles);
+
+        JScrollPane scrollPane = new JScrollPane();
+        pnlListaVacunasDisponibles.add(scrollPane, BorderLayout.CENTER);
+
+        tblVacunasDisponibles = new JTable();
+        modeloVacunas = new DefaultTableModel();
+        String[] columnas = { "Nombre", "Edad Min", "Edad Max" };
+        modeloVacunas.setColumnIdentifiers(columnas);
+        tblVacunasDisponibles.setModel(modeloVacunas);
+        scrollPane.setViewportView(tblVacunasDisponibles);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -136,6 +200,33 @@ public class VacunarPaciente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnVacunar = new JButton("Vacunar");
+				btnVacunar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int selectedRow = tblVacunasDisponibles.getSelectedRow();
+					    if (selectedRow >= 0) {
+					    	
+					        String nombreVacuna = (String) modeloVacunas.getValueAt(selectedRow, 0);
+					        VacunaDisponible vacunaSeleccionada = null;
+					        
+					        for (VacunaDisponible vacuna : Clinica.getInstance().getVacunasDisponibles()) {
+					        	
+					            if (vacuna.getNombre().equalsIgnoreCase(nombreVacuna)) {
+					            	
+					                vacunaSeleccionada = vacuna;
+					                break;
+					            }
+					        }
+					        
+					        if (vacunaSeleccionada != null) {
+					        	
+					            JOptionPane.showMessageDialog(null, "Paciente vacunado con: " + vacunaSeleccionada.getNombre(), "Vacunación exitosa", JOptionPane.INFORMATION_MESSAGE);
+					            dispose(); 
+					            
+					        } 
+					    }
+						
+					}
+				});
 				btnVacunar.setActionCommand("OK");
 				buttonPane.add(btnVacunar);
 				getRootPane().setDefaultButton(btnVacunar);

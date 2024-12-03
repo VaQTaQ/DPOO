@@ -8,13 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import lógico.Clinica;
-import lógico.Consulta;
-import lógico.Enfermedad;
-import lógico.Medico;
-import lógico.Paciente;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -24,6 +17,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerDateModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import lógico.Clinica;
+import lógico.Consulta;
+import lógico.Enfermedad;
+import lógico.Medico;
+import lógico.Paciente;
 
 public class HacerConsulta extends JDialog {
 
@@ -42,6 +40,8 @@ public class HacerConsulta extends JDialog {
     private JComboBox<String> cmbVigilancia;
     private JSpinner spnFechaConsulta;
     private JTextField txtEnfermedadDescripcion;
+    private Paciente pacienteSeleccionado;
+
 
     /**
      * Launch the application.
@@ -113,7 +113,9 @@ public class HacerConsulta extends JDialog {
         JButton btnBuscarPacienteXId = new JButton("Buscar");
         btnBuscarPacienteXId.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
                 Paciente paciente = Clinica.getInstance().buscarPacienteById("P-" + txtPacienteId.getText());
+                pacienteSeleccionado = paciente;
 
                 if (paciente != null) {
                     txtPacienteCedula.setText(paciente.getCedula());
@@ -258,7 +260,7 @@ public class HacerConsulta extends JDialog {
         JButton btnVacunar = new JButton("Vacunar");
         btnVacunar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		VacunarPaciente vacPaciente = new VacunarPaciente();
+        		VacunarPaciente vacPaciente = new VacunarPaciente(pacienteSeleccionado);
         		vacPaciente.setModal(true);
         		vacPaciente.setVisible(true);
         		

@@ -2,7 +2,7 @@ package lógico;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 public class Clinica {
 	private String nombre;
@@ -228,19 +228,19 @@ public class Clinica {
 		this.direccion = direccion;
 	}
 
-	public List<Paciente> getPacientes() {
+	public ArrayList<Paciente> getPacientes() {
 		return pacientes;
 	}
 
-	public List<Medico> getMedicos() {
+	public ArrayList<Medico> getMedicos() {
 		return medicos;
 	}
 
-	public List<Cita> getCitas() {
+	public ArrayList<Cita> getCitas() {
 		return citas;
 	}
 	
-	public List<Consulta> getConsultas() {
+	public ArrayList<Consulta> getConsultas() {
 		return consultas;
 	}
 
