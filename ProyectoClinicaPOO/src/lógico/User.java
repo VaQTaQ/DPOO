@@ -5,20 +5,22 @@ public class User {
 	private String nombre;
 	private String pasword;
 	private String type;
+	private Persona vinculado;
 	private boolean isAdmint;
 	private boolean isMedic;
 	private boolean isPaciente;
 	
-	public User(String nombre, String pasword, String type, boolean isAdmint, boolean isMedic, boolean isPaciente) {
+	public User(String nombre, String pasword, String type, Persona vinculado, boolean isAdmint, boolean isMedic,
+			boolean isPaciente) {
 		super();
 		this.nombre = nombre;
 		this.pasword = pasword;
 		this.type = type;
+		this.vinculado = vinculado;
 		this.isAdmint = isAdmint;
 		this.isMedic = isMedic;
 		this.isPaciente = isPaciente;
-	}
-	
+	}	
 	public String getNombre() {
 		return nombre;
 	}
@@ -54,6 +56,14 @@ public class User {
 	}
 	public void setPaciente(boolean isPaciente) {
 		this.isPaciente = isPaciente;
+	}
+
+	public Persona getVinculado() {
+		return vinculado;
+	}
+
+	public void setVinculado(Persona vinculado) {
+		this.vinculado = vinculado;
 	}
 	
 
