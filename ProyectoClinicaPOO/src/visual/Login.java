@@ -17,8 +17,8 @@ import java.awt.event.ActionEvent;
 public class Login extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField Usuario;
+	private JTextField Contra;
 
 	/**
 	 * Launch the application.
@@ -52,25 +52,25 @@ public class Login extends JDialog {
 			contentPanel.add(lblNewLabel);
 		}
 		
-		textField = new JTextField();
-		textField.setBounds(200, 170, 111, 20);
-		contentPanel.add(textField);
-		textField.setColumns(10);
+		Usuario = new JTextField();
+		Usuario.setBounds(200, 170, 111, 20);
+		contentPanel.add(Usuario);
+		Usuario.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(200, 197, 111, 20);
-		contentPanel.add(textField_1);
-		textField_1.setColumns(10);
+		Contra = new JTextField();
+		Contra.setBounds(200, 197, 111, 20);
+		contentPanel.add(Contra);
+		Contra.setColumns(10);
 		{
 			JLabel lblRol = new JLabel("Rol:");
 			lblRol.setBounds(167, 142, 26, 14);
 			contentPanel.add(lblRol);
 		}
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Paciente", "M\u00E9dico", "Administra"}));
-		comboBox.setBounds(200, 139, 111, 20);
-		contentPanel.add(comboBox);
+		JComboBox Rol = new JComboBox();
+		Rol.setModel(new DefaultComboBoxModel(new String[] {"Paciente", "M\u00E9dico", "Administra"}));
+		Rol.setBounds(200, 139, 111, 20);
+		contentPanel.add(Rol);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
