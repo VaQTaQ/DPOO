@@ -1,9 +1,14 @@
 package lógico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Historial {
+public class Historial implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Idea de Ian y Charls
 	
 	private Date Fecha;
