@@ -12,7 +12,7 @@ public class Clinica {
 	private ArrayList<Cita> citas;
 	private ArrayList<Consulta> consultas;
 	private ArrayList<Historial> historiales;
-	
+	private ArrayList<User> usuarios;
 
 	private ArrayList<Vacuna> vacunasPuestas;
 	private ArrayList<String> especialidades;
@@ -38,6 +38,7 @@ public class Clinica {
 		this.vacunasPuestas = new ArrayList<>();
 		this.especialidades = new ArrayList<>();
 		this.setHistoriales(new ArrayList<>());
+		this.usuarios = new ArrayList<>();
 
 		idMedico = 0;
 		idCita = 0;
@@ -47,11 +48,10 @@ public class Clinica {
 	
 	public static Clinica getInstance() {
 		if (estado == null) {
-			estado = new Clinica("Nombre de la Clínica", "Dirección de la Clínica");
+			estado = new Clinica("Homs", "Autop. Juan Pablo Duarte Km. 28, Santiago de los Caballeros 51000");
 		}
 		return estado;
 	}
-
 	public void registrarPaciente(Paciente paciente) {
 		pacientes.add(paciente);
 		idPaciente++;
@@ -318,6 +318,20 @@ public class Clinica {
 
 	public void setHistoriales(ArrayList<Historial> historiales) {
 		this.historiales = historiales;
+	}
+
+	/**
+	 * @return the usuarios
+	 */
+	public ArrayList<User> getUsuarios() {
+		return usuarios;
+	}
+
+	/**
+	 * @param usuarios the usuarios to set
+	 */
+	public void setUsuarios(ArrayList<User> usuarios) {
+		this.usuarios = usuarios;
 	}
 	
 }

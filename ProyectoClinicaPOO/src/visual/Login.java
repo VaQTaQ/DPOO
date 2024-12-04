@@ -13,9 +13,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
+import lógico.Persona;
+import lógico.User;
 public class Login extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
@@ -25,7 +28,7 @@ public class Login extends JDialog {
 
     public static void main(String[] args) {
         try {
-            Login dialog = new Login();
+            Login dialog = new Login(new ArrayList<User>());
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             dialog.setVisible(true);
         } catch (Exception e) {
@@ -33,7 +36,7 @@ public class Login extends JDialog {
         }
     }
 
-    public Login() {
+    public Login(ArrayList<User> usuariosRegistrados) {
         setTitle("Iniciar Sesión");
         setBounds(100, 100, 521, 358);
         getContentPane().setLayout(new BorderLayout());
@@ -88,10 +91,32 @@ public class Login extends JDialog {
         okButton.setFont(new Font("Segoe UI", Font.BOLD, 12));
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Abrir ventana Principal directamente
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                dispose(); // Cerrar ventana de Login
+            	User usuario = new User (Usuario.getText(),new String(Contra.getPassword()), Rol.getSelectedItem().toString(), null, false, false, false);
+            	if(usuario.getNombre().equals("admin") && usuario.getPasword().equals("admin") && usuario.getType().equals("Admin")) {
+            			usuario.setAdmint(true);
+		            	Principal principal = new Principal(usuario);
+		                principal.setVisible(true);
+		                dispose();
+            		}if(usuario.getType().equalsIgnoreCase("Médico")) {
+            		usuario.setMedic(true);
+            		usuario.setAdmint(false);
+            	}
+            	if(usuario.getType().equalsIgnoreCase("Admin")) {
+            		usuario.setAdmint(true);
+            		usuario.setMedic(false);
+            	}
+            	if(!usuariosRegistrados.isEmpty())
+	            	for(User temp : usuariosRegistrados) {
+	            		if(temp.getNombre().equals(usuario.getNombre()) && temp.getPasword().equals(usuario.getPasword()) && temp.getType().equals(usuario.getType()))
+	            		{
+			            	Principal principal = new Principal(temp);
+			                principal.setVisible(true);
+			                dispose();
+	            		}
+	            	}
+            	else {
+            		
+            	}
             }
         });
         okButton.setActionCommand("OK");

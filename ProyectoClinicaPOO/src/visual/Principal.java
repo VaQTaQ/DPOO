@@ -18,16 +18,20 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 
+import lógico.User;
+import lógico.Clinica;
 public class Principal extends JFrame {
 
     private JPanel contentPane;
     private Dimension dim;
+    private User usuario;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Login login = new Login();
+                	Clinica clinica = Clinica.getInstance();
+                    Login login = new Login(clinica.getUsuarios());
                     login.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -36,7 +40,8 @@ public class Principal extends JFrame {
         });
     }
 
-    public Principal() {
+    public Principal(User user) {
+    	usuario = user;
         setTitle("Clinica - Sistema de Gestión");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         dim = getToolkit().getScreenSize();
@@ -133,11 +138,14 @@ public class Principal extends JFrame {
             }
         });
         mnHistorial.add(mntmListarConsultasTotales);
-        
+         
         JMenu mnAdministracion = new JMenu("Administracion");
         mnAdministracion.setForeground(new Color(0, 51, 255));
         mnAdministracion.setFont(new Font("Segoe UI", Font.BOLD, 20));
         menuBar.add(mnAdministracion);
+        if(!usuario.isAdmint()) {
+        	mnAdministracion.setVisible(false);
+        }
         
         JMenuItem mntmAgregarDoctor = new JMenuItem("Agregar Doctor");
         mntmAgregarDoctor.addActionListener(new ActionListener() {
@@ -177,7 +185,7 @@ public class Principal extends JFrame {
             }
         });
         mnAdministracion.add(mntmControlVacunas);
-
+        
         contentPane = new JPanel();
         contentPane.setBackground(new Color(153, 204, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
