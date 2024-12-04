@@ -154,8 +154,8 @@ public class Principal extends JFrame {
         JMenuItem mntmHistorialClinico = new JMenuItem("Historial Clinico");
         mnHistorial.add(mntmHistorialClinico);
         
-        JMenuItem mntmReportes = new JMenuItem("Reportes(XPacientes)");
-        mnHistorial.add(mntmReportes);
+        JMenuItem P = new JMenuItem("Pacientes");
+        mnHistorial.add(P);
         
         JMenuItem mntmListarCitasTotales = new JMenuItem("Listar Citas Totales");
         mntmListarCitasTotales.addActionListener(new ActionListener() {
