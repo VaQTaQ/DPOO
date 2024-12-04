@@ -1,9 +1,14 @@
 package lógico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reporte {
+public class Reporte implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String idHistorial; 
 	private Paciente paciente; 
 	private ArrayList<String> antecedentesMedicos; 
