@@ -1,7 +1,13 @@
 package lógico;
 
-public class VacunaDisponible {
+import java.io.Serializable;
+
+public class VacunaDisponible implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String nombre;
 	protected int minEdad;
 	protected int maxEdad;

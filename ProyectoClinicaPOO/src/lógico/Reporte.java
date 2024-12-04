@@ -1,8 +1,10 @@
 package lógico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 public class Reporte {
     private String idHistorial;
     private Paciente paciente;
@@ -10,6 +12,18 @@ public class Reporte {
     private ArrayList<Cita> citasMedicas;
     private ArrayList<String> diagnosticos;
     private ArrayList<Consulta> consultas; 
+=======
+public class Reporte implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String idHistorial; 
+	private Paciente paciente; 
+	private ArrayList<String> antecedentesMedicos; 
+	private ArrayList<Cita> citasMedicas; 
+	private ArrayList<String> diagnosticos; 
+>>>>>>> branch 'master' of https://github.com/VaQTaQ/DPOO.git
 
     public Reporte(String idHistorial, Paciente paciente) {
         this.idHistorial = idHistorial;

@@ -1,7 +1,13 @@
 package lógico;
 
-public class Enfermedad {
-    private String nombre;
+import java.io.Serializable;
+
+public class Enfermedad implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String nombre;
     private String descripcion;
     private boolean bajoVigilancia;
 

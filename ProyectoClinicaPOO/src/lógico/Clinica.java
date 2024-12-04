@@ -1,10 +1,15 @@
 package lógico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Clinica {
+public class Clinica implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String direccion;
 	private ArrayList<Paciente> pacientes;

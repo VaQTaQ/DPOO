@@ -11,10 +11,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.*;
 
 import lógico.User;
 import lógico.Clinica;
@@ -27,18 +35,53 @@ public class Principal extends JFrame {
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                File datos = new File("Clinica.dat");
+                if(!datos.exists()) {
                 	Clinica clinica = Clinica.getInstance();
                     Login login = new Login(clinica.getUsuarios());
                     login.setVisible(true);
-                } catch (Exception e) {
+                	}
+                else {
+                try {
+                	FileInputStream datosStream = new FileInputStream(datos);
+                	ObjectInputStream clinDat = new ObjectInputStream(datosStream);
+                	Clinica clinica = Clinica.getInstance();
+                	clinica = (Clinica) clinDat.readObject();
+                	Login login = new Login(clinica.getUsuarios());
+                    login.setVisible(true);
+                	/*
+*/
+                	
+                } catch (IOException e) {
                     e.printStackTrace();
-                }
+                } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
             }
         });
     }
 
     public Principal(User user) {
+    	addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+            	try {
+            	FileOutputStream clinData = new FileOutputStream("Clinica.dat");
+            	ObjectOutputStream clin = new ObjectOutputStream(clinData);
+            	clin.writeObject(Clinica.getInstance());
+            	}
+            	catch(FileNotFoundException e1) {
+            		e1.printStackTrace();
+            	}
+            	catch(IOException e1) {
+            		e1.printStackTrace();
+            	}
+            	
+            }
+        });
+    	
     	usuario = user;
         setTitle("Clinica - Sistema de Gestión");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -188,6 +231,9 @@ public class Principal extends JFrame {
         panel.setBackground(new Color(153, 204, 255));
         contentPane.add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
+        
+
+        
         
         //JLabel lblNewLabel = new JLabel("Bienvenido al Sistema de Gestión de Clínica");
         //lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
