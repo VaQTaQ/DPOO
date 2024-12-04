@@ -14,9 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.SystemColor;
+
 
 import lógico.User;
 import lógico.Clinica;
@@ -60,9 +58,7 @@ public class Principal extends JFrame {
         JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
         mntmListarCitas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ListarCitasXDoctor listCitXDoc = new ListarCitasXDoctor();
-                listCitXDoc.setModal(true);
-                listCitXDoc.setVisible(true);
+
             }
         });
         mnDoctores.add(mntmListarCitas);
@@ -70,10 +66,9 @@ public class Principal extends JFrame {
         JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
         mntmListarConsultas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ListarConsultasXDoctor listConsXDoc = new ListarConsultasXDoctor();
-                listConsXDoc.setModal(true);
-                listConsXDoc.setVisible(true);
+            	
             }
+ 
         });
         mnDoctores.add(mntmListarConsultas);
         
@@ -159,9 +154,6 @@ public class Principal extends JFrame {
         
         JMenuItem mntmAgregarAdmin = new JMenuItem("Agregar Admin");
         mnAdministracion.add(mntmAgregarAdmin);
-        
-        JMenuItem mntmListarPacientes = new JMenuItem("Listar Pacientes Totales");
-        mnAdministracion.add(mntmListarPacientes);
         
         JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
         mntmListarDoctores.addActionListener(new ActionListener() {
