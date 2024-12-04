@@ -1,9 +1,14 @@
 package lógico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cita {
-    private int idCita;
+public class Cita implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int idCita;
     private Persona posiblePaciente;
     private String pacienteID;
     private String doctorID;
