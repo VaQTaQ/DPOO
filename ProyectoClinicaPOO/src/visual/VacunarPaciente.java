@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.table.DefaultTableModel;
 
 import lógico.Clinica;
@@ -40,6 +41,7 @@ public class VacunarPaciente extends JDialog {
     private JTable tblVacunasDisponibles;
     private DefaultTableModel modeloVacunas;
     private Object[] rowVacunas;
+    
 
 	/**
 	 * Launch the application.
@@ -201,32 +203,51 @@ public class VacunarPaciente extends JDialog {
 			{
 				JButton btnVacunar = new JButton("Vacunar");
 				btnVacunar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						int selectedRow = tblVacunasDisponibles.getSelectedRow();
-					    if (selectedRow >= 0) {
-					    	
-					        String nombreVacuna = (String) modeloVacunas.getValueAt(selectedRow, 0);
-					        VacunaDisponible vacunaSeleccionada = null;
-					        
-					        for (VacunaDisponible vacuna : Clinica.getInstance().getVacunasDisponibles()) {
-					        	
-					            if (vacuna.getNombre().equalsIgnoreCase(nombreVacuna)) {
-					            	
-					                vacunaSeleccionada = vacuna;
-					                break;
-					            }
-					        }
-					        
-					        if (vacunaSeleccionada != null) {
-					        	
-					            JOptionPane.showMessageDialog(null, "Paciente vacunado con: " + vacunaSeleccionada.getNombre(), "Vacunación exitosa", JOptionPane.INFORMATION_MESSAGE);
-					            dispose(); 
-					            
-					        } 
-					    }
-						
-					}
+				    public void actionPerformed(ActionEvent e) {
+				    	
+				        
+				        if (tblVacunasDisponibles.getSelectedRow() >= 0) {
+				        	
+				            String nombreVacuna = (String) modeloVacunas.getValueAt(tblVacunasDisponibles.getSelectedRow(), 0);
+				            VacunaDisponible vacunaSeleccionada = null;
+
+				            for (VacunaDisponible vacuna : Clinica.getInstance().getVacunasDisponibles()) {
+				            	
+				                if (vacuna.getNombre().equalsIgnoreCase(nombreVacuna)) {
+				                	
+				                    vacunaSeleccionada = vacuna;
+				                    break;
+				                }
+				            }
+
+				            if (vacunaSeleccionada != null) {
+				                try {
+				                    int dosisNecesarias = 1;
+
+				                    Vacuna nuevaVacuna = new Vacuna(
+				                        vacunaSeleccionada.getNombre(),
+				                        new Date(), 
+				                        dosisNecesarias,
+				                        Integer.parseInt(txtDosisAplicar.getText()), 
+				                        vacunaSeleccionada.getMinEdad(),
+				                        vacunaSeleccionada.getMaxEdad()
+				                    );
+
+				                    pacienteSeleccionado.getMisVacunas().add(nuevaVacuna); 
+
+				                    JOptionPane.showMessageDialog(null, "Paciente vacunado con: " + vacunaSeleccionada.getNombre(), "Vacunación exitosa", JOptionPane.INFORMATION_MESSAGE);
+				                    dispose();
+
+				                } catch (Exception ex) {
+				                    JOptionPane.showMessageDialog(null, "Error al vacunar al paciente: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				                }
+				            }
+				        } else {
+				            JOptionPane.showMessageDialog(null, "Seleccione una vacuna de la lista.", "Error", JOptionPane.ERROR_MESSAGE);
+				        }
+				    }
 				});
+
 				btnVacunar.setActionCommand("OK");
 				buttonPane.add(btnVacunar);
 				getRootPane().setDefaultButton(btnVacunar);
