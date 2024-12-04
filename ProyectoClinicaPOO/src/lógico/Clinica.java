@@ -13,7 +13,6 @@ public class Clinica {
 	private ArrayList<Consulta> consultas;
 	private ArrayList<Historial> historiales;
 	private ArrayList<User> usuarios;
-
 	private ArrayList<Vacuna> vacunasPuestas;
 	private ArrayList<String> especialidades;
 	private ArrayList<VacunaDisponible> vacunasDisponibles;
@@ -40,10 +39,10 @@ public class Clinica {
 		this.setHistoriales(new ArrayList<>());
 		this.usuarios = new ArrayList<>();
 
-		idMedico = 0;
-		idCita = 0;
-		idPaciente = 0;
-		idConsulta = 0;
+		idMedico = this.medicos.size();
+		idCita = this.citas.size();
+		idPaciente = this.pacientes.size();
+		idConsulta = this.consultas.size();
 	}
 	
 	public static Clinica getInstance() {
