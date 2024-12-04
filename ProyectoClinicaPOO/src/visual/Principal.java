@@ -80,7 +80,7 @@ public class Principal extends JFrame {
             	}
             	
             }
-    	}
+        });
     	
     	usuario = user;
         setTitle("Clinica - Sistema de Gestión");
