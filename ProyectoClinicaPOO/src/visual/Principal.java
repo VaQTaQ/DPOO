@@ -14,7 +14,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.*;
 
 import lógico.User;
 import lógico.Clinica;
@@ -28,12 +34,23 @@ public class Principal extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+                	FileInputStream datos = new FileInputStream("Clinica.dat");
+                	ObjectInputStream clinDat = new ObjectInputStream(datos);
+                	Clinica clinica = Clinica.getInstance();
+                	clinica = (Clinica) clinDat.readObject();
+                	Login login = new Login(clinica.getUsuarios());
+                    login.setVisible(true);
+                	/*
                 	Clinica clinica = Clinica.getInstance();
                     Login login = new Login(clinica.getUsuarios());
-                    login.setVisible(true);
-                } catch (Exception e) {
+                    login.setVisible(true);*/
+                	
+                } catch (IOException e) {
                     e.printStackTrace();
-                }
+                } catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
     }
