@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,11 +103,13 @@ public class VacunarPaciente extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		contentPanel.setBackground(new Color(173, 216, 230));
 		
 		JPanel pnlListaVacunasDisponibles = new JPanel();
 		pnlListaVacunasDisponibles.setBounds(27, 181, 561, 238);
         pnlListaVacunasDisponibles.setLayout(new BorderLayout());
 		contentPanel.add(pnlListaVacunasDisponibles);
+		pnlListaVacunasDisponibles.setBackground(new Color(173, 216, 230));
 
         JScrollPane scrollPane = new JScrollPane();
         pnlListaVacunasDisponibles.add(scrollPane, BorderLayout.CENTER);
@@ -117,6 +120,7 @@ public class VacunarPaciente extends JDialog {
         modeloVacunas.setColumnIdentifiers(columnas);
         tblVacunasDisponibles.setModel(modeloVacunas);
         scrollPane.setViewportView(tblVacunasDisponibles);
+        tblVacunasDisponibles.setBackground(new Color(173, 216, 230));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -177,6 +181,7 @@ public class VacunarPaciente extends JDialog {
 		pnlDatosVacuna.setBounds(423, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
 		pnlDatosVacuna.setLayout(null);
+		
 		
 		JLabel lblNewLabel = new JLabel("Fecha:");
 		lblNewLabel.setBounds(54, 72, 56, 16);

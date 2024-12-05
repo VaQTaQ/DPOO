@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Date;
 
@@ -65,6 +66,7 @@ public class HacerConsulta extends JDialog {
         setBounds(100, 100, 584, 717);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
+        contentPanel.setBackground(new Color(173, 216, 230));
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
@@ -73,6 +75,8 @@ public class HacerConsulta extends JDialog {
         pnlPaciente.setBounds(17, 42, 532, 165);
         contentPanel.add(pnlPaciente);
         pnlPaciente.setLayout(null);
+        pnlPaciente.setBackground(new Color(173, 216, 230));  // Azul clarito
+
 
         JLabel lblCedula = new JLabel("Cedula:");
         lblCedula.setBounds(60, 17, 56, 16);
@@ -148,6 +152,8 @@ public class HacerConsulta extends JDialog {
         pnlDoctor.setBounds(133, 220, 299, 154);
         contentPanel.add(pnlDoctor);
         pnlDoctor.setLayout(null);
+        pnlDoctor.setBackground(new Color(173, 216, 230));  // Azul clarito
+
 
         JLabel lblDoctorId = new JLabel("ID Doctor:");
         lblDoctorId.setBounds(12, 22, 70, 16);
@@ -203,6 +209,8 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.setBounds(27, 387, 512, 221);
         contentPanel.add(pnlConsulta);
         pnlConsulta.setLayout(null);
+        pnlConsulta.setBackground(new Color(173, 216, 230));  // Azul clarito
+
 
         JLabel lblFechaConsulta = new JLabel("Fecha:");
         lblFechaConsulta.setBounds(239, 190, 56, 16);

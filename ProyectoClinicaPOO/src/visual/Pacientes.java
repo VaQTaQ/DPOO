@@ -50,6 +50,7 @@ public class Pacientes extends JDialog {
         setBounds(100, 100, 700, 400);
         setLocationRelativeTo(null); 
         getContentPane().setLayout(new BorderLayout());
+        contentPanel.setBackground(new java.awt.Color(173, 216, 230));
         contentPanel.setBackground(SystemColor.activeCaption);
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -71,6 +72,7 @@ public class Pacientes extends JDialog {
             JPanel buttonPane = new JPanel();
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
+            buttonPane.setBackground(new java.awt.Color(173, 216, 230));
             {
                 JButton btnVerReportes = new JButton("Ver Reportes");
                 btnVerReportes.addActionListener(new ActionListener() {

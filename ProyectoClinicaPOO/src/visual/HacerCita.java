@@ -25,6 +25,7 @@ import lógico.Enfermedad;
 import lógico.Medico;
 import lógico.Paciente;
 import lógico.Vacuna;
+import java.awt.Color;
 
 public class HacerCita extends JDialog {
 
@@ -63,7 +64,9 @@ public class HacerCita extends JDialog {
         setBounds(100, 100, 728, 485);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
+        
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPanel.setBackground(new Color(173, 216, 230));  
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
 
@@ -71,6 +74,7 @@ public class HacerCita extends JDialog {
         pnlDatosPaciente.setBounds(12, 33, 686, 165);
         contentPanel.add(pnlDatosPaciente);
         pnlDatosPaciente.setLayout(null);
+        contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblCedula = new JLabel("Cedula:");
         lblCedula.setBounds(12, 13, 56, 16);
@@ -130,6 +134,7 @@ public class HacerCita extends JDialog {
         pnlDatosDoctor.setBounds(40, 211, 299, 154);
         contentPanel.add(pnlDatosDoctor);
         pnlDatosDoctor.setLayout(null);
+        contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblNewLabel = new JLabel("ID Doctor:");
         lblNewLabel.setBounds(12, 22, 70, 16);
@@ -186,6 +191,7 @@ public class HacerCita extends JDialog {
         pnlDatosCita.setBounds(369, 211, 299, 154);
         contentPanel.add(pnlDatosCita);
         pnlDatosCita.setLayout(null);
+        contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblPrioridad = new JLabel("Prioridad:");
         lblPrioridad.setBounds(10, 23, 70, 16);
