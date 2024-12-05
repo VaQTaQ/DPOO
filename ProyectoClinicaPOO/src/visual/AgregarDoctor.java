@@ -180,8 +180,7 @@ public class AgregarDoctor extends JDialog {
 		contentPanel.add(txtConfirmPasswordDoctor);
 
 		JComboBox cmbEspecialidad = new JComboBox();
-		cmbEspecialidad.setModel(new DefaultComboBoxModel(
-				new String[] { "<Seleccione>", "Medicina General/Familiar", "Pediatría", "Ginecología y Obstetricia", "Cardiología" }));
+		cmbEspecialidad.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Cardiolog\u00EDa", "Dermatolog\u00EDa", "Neurolog\u00EDa", "Ginecolog\u00EDa y Obstetricia", "Pediatr\u00EDa", "Oncolog\u00EDa", "Psiquiatr\u00EDa", "Cirug\u00EDa General", "Oftalmolog\u00EDa", "Otorrinolaringolog\u00EDa", "Ortopedia y Traumatolog\u00EDa", "Urolog\u00EDa", "Endocrinolog\u00EDa", "Gastroenterolog\u00EDa", "Reumatolog\u00EDa", "Nefrolog\u00EDa", "Hematolog\u00EDa", "Medicina Interna", "Medicina Familiar", "Neumolog\u00EDa", "Anestesiolog\u00EDa", "Medicina de Emergencias", "Patolog\u00EDa", "Radiolog\u00EDa", "Infectolog\u00EDa"}));
 		cmbEspecialidad.setBounds(100, 153, 155, 22);
 		contentPanel.add(cmbEspecialidad);
 
