@@ -29,6 +29,7 @@ public class Login extends JDialog {
     private JTextField Usuario;
     private JPasswordField Contra;
     private JComboBox<String> Rol;
+    private JLabel image;
 
     public static void main(String[] args) {
         try {
@@ -56,14 +57,14 @@ public class Login extends JDialog {
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
         lblTitulo.setBounds(87, 47, 328, 30);
         contentPanel.add(lblTitulo);
-        
-        ImageIcon imageIcon = new ImageIcon("/logo.jpg"); 
-        //JLabel imageLabel = new JLabel(imageIcon);
-        Image scaledImage = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        JLabel imageLabel = new JLabel(scaledIcon);
-        contentPanel.add(imageLabel);
-        imageLabel.setVisible(true);
+//        
+//        ImageIcon imageIcon = new ImageIcon("/logo.jpg"); 
+//        //JLabel imageLabel = new JLabel(imageIcon);
+//        Image scaledImage = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+//        ImageIcon scaledIcon = new ImageIcon("/logo.jpg");
+//        JLabel imageLabel = new JLabel(scaledIcon);
+//        contentPanel.add(imageLabel);
+//        imageLabel.setVisible(true);
         
         JLabel label = new JLabel("Usuario:");
         label.setForeground(Color.BLUE);
@@ -99,6 +100,15 @@ public class Login extends JDialog {
         Rol.setModel(new DefaultComboBoxModel<>(new String[] { "Médico", "Admin"}));
         Rol.setBounds(166, 197, 170, 25);
         contentPanel.add(Rol);
+        
+        image = new JLabel("");
+        
+      //  ImageIcon ico = new ImageIcon(getClass().getResource("/logo.jpg"));
+		//ImageIcon img = new ImageIcon(ico.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_SMOOTH));
+        
+        //image.setBounds(372, 129, 90, 50);
+        //contentPanel.add(image);
+        
 
         JPanel buttonPane = new JPanel();
         buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
