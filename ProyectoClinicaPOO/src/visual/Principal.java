@@ -258,6 +258,15 @@ public class Principal extends JFrame {
         mnAdministracion.add(mntmListarDoctores);
         
         JMenuItem mntmNewMenuItem = new JMenuItem("Listar Admins");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		ListarAdmins liAdmins = new ListarAdmins();
+        		liAdmins.setModal(true);
+        		liAdmins.setVisible(true);
+        	}
+        	
+        });
         mnAdministracion.add(mntmNewMenuItem);
         mntmListarDoctores.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
