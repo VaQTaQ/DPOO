@@ -19,6 +19,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.Font;
 
 public class AgregarDoctor extends JDialog {
 
@@ -51,7 +54,7 @@ public class AgregarDoctor extends JDialog {
 	 */
 	public AgregarDoctor() {
 		setTitle("Agregue un doctor");
-		setBounds(100, 100, 599, 550); 
+		setBounds(100, 100, 546, 430); 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPanel.setBackground(new Color(173, 216, 230)); // Fondo azul clarito
@@ -60,111 +63,135 @@ public class AgregarDoctor extends JDialog {
 
 		// Campos existentes
 		JLabel lblNewLabel = new JLabel("Cedula:");
-		lblNewLabel.setBounds(39, 51, 56, 16);
+		lblNewLabel.setForeground(new Color(51, 51, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(23, 16, 56, 16);
 		contentPanel.add(lblNewLabel);
 
 		JLabel lblNombre = new JLabel("Nombres:");
-		lblNombre.setBounds(39, 96, 56, 16);
+		lblNombre.setForeground(new Color(51, 51, 255));
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNombre.setBounds(23, 61, 67, 16);
 		contentPanel.add(lblNombre);
 
 		JLabel lblEdad = new JLabel("Edad:");
-		lblEdad.setBounds(39, 143, 56, 16);
+		lblEdad.setForeground(new Color(51, 51, 255));
+		lblEdad.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblEdad.setBounds(34, 108, 56, 16);
 		contentPanel.add(lblEdad);
 
 		JLabel lblEspecialidad = new JLabel("Especialidad:");
-		lblEspecialidad.setBounds(39, 191, 81, 16);
+		lblEspecialidad.setForeground(new Color(51, 51, 255));
+		lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblEspecialidad.setBounds(12, 156, 96, 16);
 		contentPanel.add(lblEspecialidad);
 
 		JLabel lblDireccion = new JLabel("Direccion:");
-		lblDireccion.setBounds(283, 191, 69, 16);
+		lblDireccion.setForeground(new Color(51, 51, 255));
+		lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblDireccion.setBounds(258, 156, 69, 16);
 		contentPanel.add(lblDireccion);
 
 		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(287, 54, 56, 16);
+		lblId.setForeground(new Color(51, 51, 255));
+		lblId.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblId.setBounds(271, 19, 56, 16);
 		contentPanel.add(lblId);
 
 		JLabel lblApellido = new JLabel("Apellidos:");
-		lblApellido.setBounds(287, 99, 56, 16);
+		lblApellido.setForeground(new Color(51, 51, 255));
+		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblApellido.setBounds(267, 61, 72, 16);
 		contentPanel.add(lblApellido);
 
 		JLabel lblSexo = new JLabel("Sexo:");
-		lblSexo.setBounds(287, 143, 56, 16);
+		lblSexo.setForeground(new Color(51, 51, 255));
+		lblSexo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblSexo.setBounds(271, 108, 56, 16);
 		contentPanel.add(lblSexo);
 
 		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setBounds(39, 240, 56, 16);
+		lblUsuario.setForeground(new Color(51, 51, 255));
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblUsuario.setBounds(12, 274, 56, 16);
 		contentPanel.add(lblUsuario);
 
 		JLabel lblPassword = new JLabel("Contraseña:");
-		lblPassword.setBounds(283, 240, 81, 16);
+		lblPassword.setForeground(new Color(51, 51, 255));
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblPassword.setBounds(237, 274, 81, 16);
 		contentPanel.add(lblPassword);
 
 		
-		JLabel lblConfirmPassword = new JLabel("Confirmar contraseña:");
-		lblConfirmPassword.setBounds(39, 280, 150, 16);
+		JLabel lblConfirmPassword = new JLabel("Confirmar: ");
+		lblConfirmPassword.setForeground(new Color(51, 51, 255));
+		lblConfirmPassword.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblConfirmPassword.setBounds(237, 306, 81, 16);
 		contentPanel.add(lblConfirmPassword);
 
 		txtCedulaDoctor = new JTextField();
-		txtCedulaDoctor.setBounds(88, 48, 155, 22);
+		txtCedulaDoctor.setBounds(91, 13, 155, 22);
 		contentPanel.add(txtCedulaDoctor);
 		txtCedulaDoctor.setColumns(10);
 
 		txtNombresDoctor = new JTextField();
 		txtNombresDoctor.setColumns(10);
-		txtNombresDoctor.setBounds(98, 93, 155, 22);
+		txtNombresDoctor.setBounds(91, 58, 155, 22);
 		contentPanel.add(txtNombresDoctor);
 
 		spnEdadDoctor = new JSpinner();
 		spnEdadDoctor.setModel(new SpinnerNumberModel(18, 0, 120, 1));
-		spnEdadDoctor.setBounds(75, 140, 155, 22);
+		spnEdadDoctor.setBounds(208, 105, 45, 22);
 		contentPanel.add(spnEdadDoctor);
 
 		txtIdDoctor = new JTextField();
 		txtIdDoctor.setText("D-" + Clinica.idMedico);
 		txtIdDoctor.setEditable(false);
 		txtIdDoctor.setColumns(10);
-		txtIdDoctor.setBounds(310, 51, 155, 22);
+		txtIdDoctor.setBounds(437, 13, 69, 22);
 		contentPanel.add(txtIdDoctor);
 
 		txtApellidosDoctor = new JTextField();
 		txtApellidosDoctor.setColumns(10);
-		txtApellidosDoctor.setBounds(343, 96, 155, 22);
+		txtApellidosDoctor.setBounds(351, 58, 155, 22);
 		contentPanel.add(txtApellidosDoctor);
 
 		JComboBox cmbSexoDoctor = new JComboBox();
 		cmbSexoDoctor.setModel(new DefaultComboBoxModel(new String[] { "Seleccione", "Masculino", "Femenino" }));
-		cmbSexoDoctor.setBounds(329, 140, 145, 22);
+		cmbSexoDoctor.setBounds(361, 105, 145, 22);
 		contentPanel.add(cmbSexoDoctor);
 
 		txtDireccionDoctor = new JTextField();
 		txtDireccionDoctor.setColumns(10);
-		txtDireccionDoctor.setBounds(343, 188, 179, 40);
+		txtDireccionDoctor.setBounds(327, 153, 179, 40);
 		contentPanel.add(txtDireccionDoctor);
 
 		txtUsuarioDoctor = new JTextField();
-		txtUsuarioDoctor.setBounds(98, 237, 155, 22);
+		txtUsuarioDoctor.setBounds(70, 271, 155, 22);
 		contentPanel.add(txtUsuarioDoctor);
 		txtUsuarioDoctor.setColumns(10);
 
 		txtPasswordDoctor = new JPasswordField();
-		txtPasswordDoctor.setBounds(373, 237, 155, 22);
+		txtPasswordDoctor.setBounds(330, 268, 155, 22);
 		contentPanel.add(txtPasswordDoctor);
 
 		txtConfirmPasswordDoctor = new JPasswordField();
-		txtConfirmPasswordDoctor.setBounds(185, 277, 155, 22);
+		txtConfirmPasswordDoctor.setBounds(330, 300, 155, 22);
 		contentPanel.add(txtConfirmPasswordDoctor);
 
 		JComboBox cmbEspecialidad = new JComboBox();
 		cmbEspecialidad.setModel(new DefaultComboBoxModel(
 				new String[] { "<Seleccione>", "Medicina General/Familiar", "Pediatría", "Ginecología y Obstetricia", "Cardiología" }));
-		cmbEspecialidad.setBounds(116, 188, 145, 22);
+		cmbEspecialidad.setBounds(100, 153, 155, 22);
 		contentPanel.add(cmbEspecialidad);
 
 		JPanel buttonPane = new JPanel();
+		buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
 		JButton btnAgregarDoctor = new JButton("Agregar");
+		btnAgregarDoctor.setBackground(new Color(102, 255, 51));
 		btnAgregarDoctor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
