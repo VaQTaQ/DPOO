@@ -1,5 +1,6 @@
 package visual;
-
+import java.awt.image.*;
+import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Image;
 
 import lógico.Persona;
 import lógico.User;
@@ -54,7 +56,15 @@ public class Login extends JDialog {
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
         lblTitulo.setBounds(87, 47, 328, 30);
         contentPanel.add(lblTitulo);
-
+        
+        ImageIcon imageIcon = new ImageIcon("/logo.jpg"); 
+        //JLabel imageLabel = new JLabel(imageIcon);
+        Image scaledImage = imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        JLabel imageLabel = new JLabel(scaledIcon);
+        contentPanel.add(imageLabel);
+        imageLabel.setVisible(true);
+        
         JLabel label = new JLabel("Usuario:");
         label.setForeground(Color.BLUE);
         label.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -107,7 +117,15 @@ public class Login extends JDialog {
 		            	Principal principal = new Principal(usuario);
 		                principal.setVisible(true);
 		                dispose();
-            		}if(usuario.getType().equalsIgnoreCase("Médico")) {
+            		}
+            	else if(usuario.getNombre().equals("medico") && usuario.getPasword().equals("medico") && usuario.getType().equals("Médico")) {
+        			usuario.setAdmint(false);
+        			usuario.setMedic(true);
+	            	Principal principal = new Principal(usuario);
+	                principal.setVisible(true);
+	                dispose();
+        		}
+            	if(usuario.getType().equalsIgnoreCase("Médico")) {
             		usuario.setMedic(true);
             		usuario.setAdmint(false);
             	}

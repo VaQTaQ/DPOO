@@ -69,11 +69,13 @@ public class Principal extends JFrame {
 
     public Principal(User user) {
     	addWindowListener(new WindowAdapter() {
-            @Override
+            private ObjectOutputStream clin;
+
+			@Override
             public void windowClosing(WindowEvent e) {
             	try {
             	FileOutputStream clinData = new FileOutputStream("Clinica.dat");
-            	ObjectOutputStream clin = new ObjectOutputStream(clinData);
+            	clin = new ObjectOutputStream(clinData);
             	clin.writeObject(Clinica.getInstance());
             	}
             	catch(FileNotFoundException e1) {
