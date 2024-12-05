@@ -29,6 +29,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class VacunarPaciente extends JDialog {
 
@@ -130,7 +132,7 @@ public class VacunarPaciente extends JDialog {
 
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(173, 216, 230));
+		panel.setBackground(new Color(255, 255, 204));
 		panel.setLayout(null);
 		panel.setBounds(27, 26, 381, 142);
 		contentPanel.add(panel);
@@ -196,7 +198,7 @@ public class VacunarPaciente extends JDialog {
 		panel.add(txtEdadPaciente);
 		
 		JPanel pnlDatosVacuna = new JPanel();
-		pnlDatosVacuna.setBackground(new Color(173, 216, 230));
+		pnlDatosVacuna.setBackground(new Color(255, 204, 204));
 		pnlDatosVacuna.setBounds(423, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
 		pnlDatosVacuna.setLayout(null);
@@ -226,6 +228,7 @@ public class VacunarPaciente extends JDialog {
 		pnlDatosVacuna.add(lblDosisAAplicar);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			buttonPane.setBackground(new Color(173, 216, 230));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

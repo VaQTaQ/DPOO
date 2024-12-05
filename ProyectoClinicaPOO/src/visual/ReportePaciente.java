@@ -23,6 +23,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class ReportePaciente extends JDialog {
 
@@ -87,7 +89,7 @@ public class ReportePaciente extends JDialog {
         txtNombreClinica.setColumns(10);
 
         JPanel pnlDatosMedico = new JPanel();
-        pnlDatosMedico.setBackground(new Color(173, 216, 230));
+        pnlDatosMedico.setBackground(new Color(255, 255, 204));
         pnlDatosMedico.setBounds(18, 57, 225, 86);
         contentPanel.add(pnlDatosMedico);
         pnlDatosMedico.setLayout(null);
@@ -118,7 +120,7 @@ public class ReportePaciente extends JDialog {
         pnlDatosMedico.add(txtEspecialidadDoctor);
 
         JPanel pnlDatosPaciente = new JPanel();
-        pnlDatosPaciente.setBackground(new Color(173, 216, 230));
+        pnlDatosPaciente.setBackground(new Color(153, 204, 204));
         pnlDatosPaciente.setBounds(260, 57, 348, 86);
         contentPanel.add(pnlDatosPaciente);
         pnlDatosPaciente.setLayout(null);
@@ -172,7 +174,7 @@ public class ReportePaciente extends JDialog {
         txtSexPaciente.setColumns(10);
 
         JPanel pnlDatosConsulta = new JPanel();
-        pnlDatosConsulta.setBackground(new Color(173, 216, 230));
+        pnlDatosConsulta.setBackground(new Color(255, 204, 204));
         pnlDatosConsulta.setBounds(18, 156, 590, 172);
         contentPanel.add(pnlDatosConsulta);
         pnlDatosConsulta.setLayout(null);
@@ -186,19 +188,19 @@ public class ReportePaciente extends JDialog {
         JLabel lblDiagnosticos = new JLabel("Diagnosticos:");
         lblDiagnosticos.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblDiagnosticos.setForeground(Color.BLUE);
-        lblDiagnosticos.setBounds(12, 68, 83, 16);
+        lblDiagnosticos.setBounds(12, 68, 95, 16);
         pnlDatosConsulta.add(lblDiagnosticos);
 
         JLabel lblTratamiento = new JLabel("Tratamiento:");
         lblTratamiento.setForeground(Color.BLUE);
         lblTratamiento.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblTratamiento.setBounds(12, 116, 83, 16);
+        lblTratamiento.setBounds(12, 125, 95, 16);
         pnlDatosConsulta.add(lblTratamiento);
 
         JLabel lblVacunas = new JLabel("Vacunas:");
         lblVacunas.setForeground(Color.BLUE);
         lblVacunas.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblVacunas.setBounds(271, 13, 56, 16);
+        lblVacunas.setBounds(271, 13, 69, 16);
         pnlDatosConsulta.add(lblVacunas);
 
         txtEnfermedadConsulta = new JTextField();
@@ -229,7 +231,7 @@ public class ReportePaciente extends JDialog {
         JLabel lblFechaDeEmision = new JLabel("Fecha de Emision:");
         lblFechaDeEmision.setForeground(Color.BLUE);
         lblFechaDeEmision.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblFechaDeEmision.setBounds(271, 125, 105, 16);
+        lblFechaDeEmision.setBounds(271, 125, 116, 16);
         pnlDatosConsulta.add(lblFechaDeEmision);
 
         txtFechaEmision = new JTextField();
@@ -241,7 +243,7 @@ public class ReportePaciente extends JDialog {
         JLabel lblTratado = new JLabel("Tratado:");
         lblTratado.setForeground(Color.BLUE);
         lblTratado.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblTratado.setBounds(128, 339, 50, 16);
+        lblTratado.setBounds(128, 339, 68, 16);
         contentPanel.add(lblTratado);
 
         cmbTratadoConsulta = new JComboBox(); 
@@ -278,6 +280,7 @@ public class ReportePaciente extends JDialog {
 
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
             buttonPane.setBackground(new Color(173, 216, 230));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);

@@ -18,6 +18,8 @@ import lógico.Enfermedad;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class ListarConsultas extends JDialog {
 
@@ -70,6 +72,7 @@ public class ListarConsultas extends JDialog {
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             buttonPane.setBackground(new java.awt.Color(173, 216, 230));

@@ -27,6 +27,8 @@ import lógico.Paciente;
 import lógico.Vacuna;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class HacerCita extends JDialog {
 
@@ -73,7 +75,7 @@ public class HacerCita extends JDialog {
 
         JPanel pnlDatosPaciente = new JPanel();
         pnlDatosPaciente.setBounds(12, 33, 686, 165);
-        pnlDatosPaciente.setBackground(new Color(173, 216, 230)); 
+        pnlDatosPaciente.setBackground(new Color(255, 255, 204)); 
         contentPanel.add(pnlDatosPaciente);
         pnlDatosPaciente.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
@@ -145,8 +147,8 @@ public class HacerCita extends JDialog {
         pnlDatosPaciente.add(spnPacienteEdad);
 
         JPanel pnlDatosDoctor = new JPanel();
-        pnlDatosDoctor.setBounds(40, 211, 299, 154);
-        pnlDatosDoctor.setBackground(new Color(173, 216, 230));
+        pnlDatosDoctor.setBounds(12, 211, 299, 154);
+        pnlDatosDoctor.setBackground(new Color(204, 255, 204));
         contentPanel.add(pnlDatosDoctor);
         pnlDatosDoctor.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
@@ -209,8 +211,8 @@ public class HacerCita extends JDialog {
         pnlDatosDoctor.add(btnBuscarDoctorById);
 
         JPanel pnlDatosCita = new JPanel();
-        pnlDatosCita.setBounds(369, 211, 299, 154);
-        pnlDatosCita.setBackground(new Color(173, 216, 230));
+        pnlDatosCita.setBounds(399, 211, 299, 154);
+        pnlDatosCita.setBackground(new Color(153, 204, 204));
         contentPanel.add(pnlDatosCita);
         pnlDatosCita.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
@@ -249,6 +251,7 @@ public class HacerCita extends JDialog {
         pnlDatosCita.add(cmbCitaActiva);
 
         JPanel buttonPane = new JPanel();
+        buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
         buttonPane.setBackground(new Color(173, 216, 230));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);

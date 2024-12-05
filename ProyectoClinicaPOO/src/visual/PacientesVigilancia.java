@@ -24,6 +24,8 @@ import lógico.Paciente;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class PacientesVigilancia extends JDialog {
 
@@ -63,6 +65,8 @@ public class PacientesVigilancia extends JDialog {
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+            buttonPane.setBackground(new Color(153, 204, 255));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {

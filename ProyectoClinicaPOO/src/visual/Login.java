@@ -19,6 +19,8 @@ import java.awt.Font;
 
 import lógico.Persona;
 import lógico.User;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 public class Login extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
@@ -47,48 +49,49 @@ public class Login extends JDialog {
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
 
-        JLabel lblTitulo = new JLabel("Sistema de Gestión Clínica");
+        JLabel lblTitulo = new JLabel("Sistema de Gesti\u00F3n Cl\u00EDnica Homs");
         lblTitulo.setForeground(Color.BLUE);
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblTitulo.setBounds(126, 50, 270, 30);
+        lblTitulo.setBounds(87, 47, 328, 30);
         contentPanel.add(lblTitulo);
 
         JLabel label = new JLabel("Usuario:");
         label.setForeground(Color.BLUE);
         label.setFont(new Font("Tahoma", Font.BOLD, 13));
-        label.setBounds(148, 120, 70, 14);
+        label.setBounds(84, 122, 70, 14);
         contentPanel.add(label);
 
         JLabel lblNewLabel = new JLabel("Contraseña:");
         lblNewLabel.setForeground(Color.BLUE);
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblNewLabel.setBounds(126, 163, 90, 14);
+        lblNewLabel.setBounds(64, 165, 90, 14);
         contentPanel.add(lblNewLabel);
 
         Usuario = new JTextField();
-        Usuario.setBounds(208, 117, 170, 25);
+        Usuario.setBounds(166, 117, 170, 25);
         contentPanel.add(Usuario);
         Usuario.setColumns(10);
 
         Contra = new JPasswordField();
-        Contra.setBounds(208, 160, 170, 25);
+        Contra.setBounds(166, 160, 170, 25);
         contentPanel.add(Contra);
         Contra.setColumns(10);
 
         JLabel lblRol = new JLabel("Rol:");
         lblRol.setForeground(Color.BLUE);
         lblRol.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblRol.setBounds(170, 200, 26, 14);
+        lblRol.setBounds(115, 194, 26, 30);
         contentPanel.add(lblRol);
 
         Rol = new JComboBox<>();
         Rol.setFont(new Font("Tahoma", Font.BOLD, 13));
         Rol.setForeground(Color.BLACK);
         Rol.setModel(new DefaultComboBoxModel<>(new String[] { "Médico", "Admin"}));
-        Rol.setBounds(208, 197, 170, 25);
+        Rol.setBounds(166, 197, 170, 25);
         contentPanel.add(Rol);
 
         JPanel buttonPane = new JPanel();
+        buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
         buttonPane.setBackground(new Color(173, 216, 230)); 
         getContentPane().add(buttonPane, BorderLayout.SOUTH);

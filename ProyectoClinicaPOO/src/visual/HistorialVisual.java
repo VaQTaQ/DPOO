@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class HistorialVisual extends JDialog {
 
@@ -71,6 +73,7 @@ public class HistorialVisual extends JDialog {
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
             buttonPane.setBackground(new Color(173, 216, 230));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);

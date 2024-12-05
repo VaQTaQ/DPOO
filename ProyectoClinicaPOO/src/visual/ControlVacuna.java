@@ -24,6 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class ControlVacuna extends JDialog {
 
@@ -63,7 +65,7 @@ public class ControlVacuna extends JDialog {
         {
             JPanel pnlEliminarVacuna = new JPanel();
             pnlEliminarVacuna.setBounds(12, 13, 404, 285);
-            pnlEliminarVacuna.setBackground(new Color(173, 216, 230)); 
+            pnlEliminarVacuna.setBackground(new Color(255, 255, 204)); 
             contentPanel.add(pnlEliminarVacuna);
             pnlEliminarVacuna.setLayout(null);
             {
@@ -123,7 +125,7 @@ public class ControlVacuna extends JDialog {
         {
             JPanel pnlAgregarVacuna = new JPanel();
             pnlAgregarVacuna.setBounds(428, 13, 201, 285);
-            pnlAgregarVacuna.setBackground(new Color(173, 216, 230)); 
+            pnlAgregarVacuna.setBackground(new Color(204, 255, 204)); 
             contentPanel.add(pnlAgregarVacuna);
             pnlAgregarVacuna.setLayout(null);
             {
@@ -194,6 +196,7 @@ public class ControlVacuna extends JDialog {
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
             buttonPane.setBackground(new Color(173, 216, 230));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);

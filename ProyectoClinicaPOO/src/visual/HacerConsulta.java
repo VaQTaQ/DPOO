@@ -77,7 +77,7 @@ public class HacerConsulta extends JDialog {
 
         JPanel pnlPaciente = new JPanel();
         pnlPaciente.setBorder(new TitledBorder(null, "Paciente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        pnlPaciente.setBackground(new Color(255, 255, 224));
+        pnlPaciente.setBackground(new Color(255, 255, 204));
         pnlPaciente.setBounds(24, 42, 518, 165);
         contentPanel.add(pnlPaciente);
         pnlPaciente.setLayout(null);
@@ -228,38 +228,38 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.setBackground(new Color(211, 211, 211));
         pnlConsulta.setBounds(27, 387, 512, 221);
         contentPanel.add(pnlConsulta);
-        pnlConsulta.setLayout(null);
         pnlConsulta.setBackground(new Color(173, 216, 230));  // Azul clarito
+        pnlConsulta.setLayout(null);
 
 
         JLabel lblFechaConsulta = new JLabel("Fecha:");
-        lblFechaConsulta.setForeground(new Color(0, 0, 255));
         lblFechaConsulta.setBounds(239, 190, 56, 16);
+        lblFechaConsulta.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblFechaConsulta);
 
         spnFechaConsulta = new JSpinner();
-        spnFechaConsulta.setModel(new SpinnerDateModel(new Date(), null, null, java.util.Calendar.DAY_OF_YEAR));
         spnFechaConsulta.setBounds(285, 187, 119, 22);
+        spnFechaConsulta.setModel(new SpinnerDateModel(new Date(), null, null, java.util.Calendar.DAY_OF_YEAR));
         pnlConsulta.add(spnFechaConsulta);
 
         JLabel lblDiagnostico = new JLabel("Diagnostico:");
-        lblDiagnostico.setForeground(new Color(0, 0, 255));
         lblDiagnostico.setBounds(31, 16, 89, 16);
+        lblDiagnostico.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblDiagnostico);
 
         JLabel lblEnfermedad = new JLabel("Enfermedad:");
-        lblEnfermedad.setForeground(new Color(0, 0, 255));
         lblEnfermedad.setBounds(31, 45, 74, 16);
+        lblEnfermedad.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblEnfermedad);
 
         JLabel lblTratamiento = new JLabel("Tratamiento:");
-        lblTratamiento.setForeground(new Color(0, 0, 255));
         lblTratamiento.setBounds(31, 133, 80, 16);
+        lblTratamiento.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblTratamiento);
 
         JLabel lblVigilancia = new JLabel("Importante para vigilancia:");
-        lblVigilancia.setForeground(new Color(0, 0, 255));
         lblVigilancia.setBounds(11, 191, 160, 16);
+        lblVigilancia.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblVigilancia);
 
         txtDiagnostico = new JTextField();
@@ -268,31 +268,32 @@ public class HacerConsulta extends JDialog {
         txtDiagnostico.setColumns(10);
 
         txtEnfermedadNombre = new JTextField();
-        txtEnfermedadNombre.setColumns(10);
         txtEnfermedadNombre.setBounds(114, 45, 268, 22);
+        txtEnfermedadNombre.setColumns(10);
         pnlConsulta.add(txtEnfermedadNombre);
 
         txtTratamiento = new JTextField();
-        txtTratamiento.setColumns(10);
         txtTratamiento.setBounds(114, 135, 268, 46);
+        txtTratamiento.setColumns(10);
         pnlConsulta.add(txtTratamiento);
 
         cmbVigilancia = new JComboBox<>();
-        cmbVigilancia.setModel(new DefaultComboBoxModel<>(new String[] { "---", "Si", "No" }));
         cmbVigilancia.setBounds(166, 188, 56, 22);
+        cmbVigilancia.setModel(new DefaultComboBoxModel<>(new String[] { "---", "Si", "No" }));
         pnlConsulta.add(cmbVigilancia);
         
         JLabel lblDescripcion = new JLabel("Descripcion:");
-        lblDescripcion.setForeground(new Color(0, 0, 255));
         lblDescripcion.setBounds(31, 74, 74, 16);
+        lblDescripcion.setForeground(new Color(0, 0, 255));
         pnlConsulta.add(lblDescripcion);
         
         txtEnfermedadDescripcion = new JTextField();
-        txtEnfermedadDescripcion.setColumns(10);
         txtEnfermedadDescripcion.setBounds(114, 74, 268, 56);
+        txtEnfermedadDescripcion.setColumns(10);
         pnlConsulta.add(txtEnfermedadDescripcion);
         
         JButton btnVacunar = new JButton("Vacunar");
+        btnVacunar.setBounds(403, 146, 97, 25);
         //btnVacunar.setBackground(new Color(255, 0, 0));
         btnVacunar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -302,7 +303,6 @@ public class HacerConsulta extends JDialog {
         		
         	}
         });
-        btnVacunar.setBounds(403, 146, 97, 25);
         pnlConsulta.add(btnVacunar);
 
         JPanel buttonPane = new JPanel();
