@@ -154,9 +154,9 @@ public class Principal extends JFrame {
         JMenuItem mntmHistorialClinico = new JMenuItem("Historial Clinico");
         mntmHistorialClinico.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		VacunarPaciente vacPac = new VacunarPaciente();
-        		vacPac.setModal(true);
-        		vacPac.setVisible(true);
+        		HistorialVisual histoVis = new HistorialVisual();
+        		histoVis.setModal(true);
+        		histoVis.setVisible(true);
         	}
         });
         mnHistorial.add(mntmHistorialClinico);
