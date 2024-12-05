@@ -66,6 +66,7 @@ public class Principal extends JFrame {
             }
         });
     }
+    
 
     public Principal(User user) {
     	addWindowListener(new WindowAdapter() {
