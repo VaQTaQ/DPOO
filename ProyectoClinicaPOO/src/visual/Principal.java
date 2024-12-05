@@ -225,6 +225,13 @@ public class Principal extends JFrame {
         mnAdministracion.add(mntmAgregarDoctor);
         
         JMenuItem mntmAgregarAdmin = new JMenuItem("Agregar Admin");
+        mntmAgregarAdmin.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AgregarAdmin agAdmin = new AgregarAdmin();
+        		agAdmin.setModal(true);
+        		agAdmin.setVisible(true);
+        	}
+        });
         mnAdministracion.add(mntmAgregarAdmin);
         
         JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
