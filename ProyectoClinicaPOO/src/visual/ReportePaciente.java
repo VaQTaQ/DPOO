@@ -67,6 +67,7 @@ public class ReportePaciente extends JDialog {
 	public ReportePaciente(Paciente paciente,PacientesVigilancia pacientesVigilancia) { 
         this.paciente = paciente; 
         this.pacientesVigilancia = pacientesVigilancia;
+        
 
         setBounds(100, 100, 644, 453);
         getContentPane().setLayout(new BorderLayout());
@@ -76,6 +77,7 @@ public class ReportePaciente extends JDialog {
         
 
         txtNombreClinica = new JTextField();
+        txtNombreClinica.setBackground(new Color(173, 216, 230));
         txtNombreClinica.setForeground(Color.BLUE);
         txtNombreClinica.setFont(new Font("Tahoma", Font.BOLD, 13));
         txtNombreClinica.setEditable(false);
