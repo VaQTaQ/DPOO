@@ -150,7 +150,33 @@ public class Principal extends JFrame {
         });
         mnServicios.add(mntmHacerConsulta);
         
-        JMenu mnHistorial = new JMenu("Historial");
+        JMenu mnNewMenu = new JMenu("Historial Paciente");
+        mnNewMenu.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        mnNewMenu.setForeground(new Color(51, 51, 255));
+        menuBar.add(mnNewMenu);
+        
+        JMenuItem P = new JMenuItem("Pacientes");
+        mnNewMenu.add(P);
+        
+        JMenuItem mntmListarPacientesBVigilancia = new JMenuItem("Pacientes B. Vigilancia");
+        mnNewMenu.add(mntmListarPacientesBVigilancia);
+        mntmListarPacientesBVigilancia.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		PacientesVigilancia pacVil = new PacientesVigilancia();
+        		pacVil.setModal(true);
+        		pacVil.setVisible(true);
+        		
+        	}
+        });
+        P.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Pacientes pacientes = new Pacientes();
+        		pacientes.setModal(true);
+        		pacientes.setVisible(true);
+        	}
+        });
+        
+        JMenu mnHistorial = new JMenu("Historial Clinica");
         mnHistorial.setForeground(new Color(0, 51, 255));
         mnHistorial.setFont(new Font("Segoe UI", Font.BOLD, 20));
         menuBar.add(mnHistorial);
@@ -185,26 +211,20 @@ public class Principal extends JFrame {
         });
         mnHistorial.add(mntmListarConsultasTotales);
         
-        JMenuItem P = new JMenuItem("Pacientes");
-        P.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Pacientes pacientes = new Pacientes();
-        		pacientes.setModal(true);
-        		pacientes.setVisible(true);
-        	}
-        });
-        mnHistorial.add(P);
+        JMenu mnNewMenu_1 = new JMenu("Control Vacunas");
+        mnNewMenu_1.setForeground(new Color(51, 51, 255));
+        mnNewMenu_1.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        menuBar.add(mnNewMenu_1);
         
-        JMenuItem mntmListarPacientesBVigilancia = new JMenuItem("Pacientes B. Vigilancia");
-        mntmListarPacientesBVigilancia.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		PacientesVigilancia pacVil = new PacientesVigilancia();
-        		pacVil.setModal(true);
-        		pacVil.setVisible(true);
-        		
-        	}
+        JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
+        mnNewMenu_1.add(mntmControlVacunas);
+        mntmControlVacunas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ControlVacuna conVacuna = new ControlVacuna();
+                conVacuna.setModal(true);
+                conVacuna.setVisible(true);
+            }
         });
-        mnHistorial.add(mntmListarPacientesBVigilancia);
          
         JMenu mnAdministracion = new JMenu("Administracion");
         mnAdministracion.setForeground(new Color(0, 51, 255));
@@ -243,16 +263,6 @@ public class Principal extends JFrame {
             }
         });
         mnAdministracion.add(mntmListarDoctores);
-        
-        JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
-        mntmControlVacunas.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ControlVacuna conVacuna = new ControlVacuna();
-                conVacuna.setModal(true);
-                conVacuna.setVisible(true);
-            }
-        });
-        mnAdministracion.add(mntmControlVacunas);
         
         contentPane = new JPanel();
         contentPane.setBackground(new Color(153, 204, 255));
