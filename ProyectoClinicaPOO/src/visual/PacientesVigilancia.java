@@ -73,14 +73,20 @@ public class PacientesVigilancia extends JDialog {
                 JButton btnVerReportes = new JButton("Ver Reportes");
                 btnVerReportes.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                    	
                         int selectedRow = tblListarPacientesVigilancia.getSelectedRow();
+                        
                         if (selectedRow >= 0) {
+                        	
                             String idPaciente = (String) modelo.getValueAt(selectedRow, 0);
                             Paciente paciente = Clinica.getInstance().buscarPacienteById(idPaciente);
+                            
                             if (paciente != null) {
+                            	
                                 ReportePaciente reportePacienteDialog = new ReportePaciente(paciente, PacientesVigilancia.this); // [Línea 74: Pasar referencia de PacientesVigilancia]
                                 reportePacienteDialog.setModal(true);
                                 reportePacienteDialog.setVisible(true);
+                                
                             } else {
                                 JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
@@ -113,23 +119,32 @@ public class PacientesVigilancia extends JDialog {
         modelo.setRowCount(0);
         row = new Object[modelo.getColumnCount()];
         List<Paciente> pacientesVigilancia = obtenerPacientesVigilancia();
+        
         for (Paciente paciente : pacientesVigilancia) {
+        	
             row[0] = paciente.getCodigoPaciente();
             row[1] = paciente.getNombre() + " " + paciente.getApellido();
-            Consulta ultimaConsulta = obtenerUltimaConsultaVigilanciaNoTratada(paciente); 
-            if (ultimaConsulta != null) {
-                String nombreDoctor = ultimaConsulta.getMedico().getNombre() + " " + ultimaConsulta.getMedico().getApellido();
+
+            Consulta ultConsulta = obtenerUltConsultVigNoTratada(paciente); 
+            
+            if (ultConsulta != null) {
+            	
+                String nombreDoctor = ultConsulta.getMedico().getNombre() + " " + ultConsulta.getMedico().getApellido();
                 row[2] = nombreDoctor;
-                row[3] = ultimaConsulta.getEnfermedad().getNombre();
+                row[3] = ultConsulta.getEnfermedad().getNombre();
                 modelo.addRow(row);
             }
         }
     }
 
-    private List<Paciente> obtenerPacientesVigilancia() { 
-        List<Paciente> pacientesVigilancia = new ArrayList<>();
+    private ArrayList<Paciente> obtenerPacientesVigilancia() { 
+    	
+    	ArrayList<Paciente> pacientesVigilancia = new ArrayList<>();
+        
         for (Paciente paciente : Clinica.getInstance().getPacientes()) {
-            Consulta ultimaConsulta = obtenerUltimaConsultaVigilanciaNoTratada(paciente);
+        	
+            Consulta ultimaConsulta = obtenerUltConsultVigNoTratada(paciente);
+            
             if (ultimaConsulta != null) {
                 pacientesVigilancia.add(paciente);
             }
@@ -137,20 +152,23 @@ public class PacientesVigilancia extends JDialog {
         return pacientesVigilancia;
     }
 
-    private Consulta obtenerUltimaConsultaVigilanciaNoTratada(Paciente paciente) { 
-        List<Consulta> consultasPaciente = new ArrayList<>();
+    private Consulta obtenerUltConsultVigNoTratada(Paciente paciente) { 
+    	
+        Consulta ultimaConsulta = null;
+        
         for (Consulta consulta : Clinica.getInstance().getConsultas()) {
+        	
             if (consulta.getPaciente().equals(paciente) && consulta.getEnfermedad().isBajoVigilancia() && !consulta.isTratado()) {
-                consultasPaciente.add(consulta);
+                
+                if (ultimaConsulta == null || consulta.getFecha().compareTo(ultimaConsulta.getFecha()) > 0) {
+                	
+                    ultimaConsulta = consulta;
+                }
             }
         }
-        if (!consultasPaciente.isEmpty()) {
-            consultasPaciente.sort((c1, c2) -> c2.getFecha().compareTo(c1.getFecha()));
-            return consultasPaciente.get(0);
-        } else {
-            return null;
-        }
+        return ultimaConsulta;
     }
+
 
     public void actualizarLista() {
         cargarPacientesVigilancia();

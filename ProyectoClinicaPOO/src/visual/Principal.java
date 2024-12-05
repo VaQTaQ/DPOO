@@ -102,14 +102,6 @@ public class Principal extends JFrame {
         mnDoctores.setFont(new Font("Segoe UI", Font.BOLD, 20));
         menuBar.add(mnDoctores);
         
-        JMenuItem mntmListarCitas = new JMenuItem("Listar Citas");
-        mntmListarCitas.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        mnDoctores.add(mntmListarCitas);
-        
         JMenuItem mntmListarConsultas = new JMenuItem("Listar Consultas");
         mntmListarConsultas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -121,9 +113,6 @@ public class Principal extends JFrame {
         
         JMenuItem mntmReportesPaciente = new JMenuItem("Reportes Por Paciente");
         mnDoctores.add(mntmReportesPaciente);
-        
-        JMenuItem mntmPacientesVigilancia = new JMenuItem("Pac. Enfermedades Vigilancia");
-        mnDoctores.add(mntmPacientesVigilancia);
         
         JMenu mnServicios = new JMenu("Servicio");
         mnServicios.setForeground(new Color(0, 51, 255));

@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -132,9 +131,12 @@ public class Pacientes extends JDialog {
     }
 
     private void cargarPacientes() {
-        modelo.setRowCount(0);
+        
+    	modelo.setRowCount(0);
         row = new Object[modelo.getColumnCount()];
+        
         for (Paciente paciente : Clinica.getInstance().getPacientes()) {
+        	
             row[0] = paciente.getCodigoPaciente();
             row[1] = paciente.getNombre() + " " + paciente.getApellido();
 
@@ -154,19 +156,19 @@ public class Pacientes extends JDialog {
     }
 
     private Consulta obtenerUltimaConsulta(Paciente paciente) { 
-        List<Consulta> consultasPaciente = new ArrayList<>();
+        Consulta ultimaConsulta = null;
+        
         for (Consulta consulta : Clinica.getInstance().getConsultas()) {
+        	
             if (consulta.getPaciente().equals(paciente)) {
-                consultasPaciente.add(consulta);
+            	
+                if (ultimaConsulta == null || 
+                    consulta.getFecha().compareTo(ultimaConsulta.getFecha()) > 0) {
+                    ultimaConsulta = consulta;
+                }
             }
         }
-        
-        if (!consultasPaciente.isEmpty()) {
-
-            consultasPaciente.sort((c1, c2) -> c2.getFecha().compareTo(c1.getFecha()));
-            return consultasPaciente.get(0);
-        } else {
-            return null;
-        }
+        return ultimaConsulta;
     }
+
 }
