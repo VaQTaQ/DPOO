@@ -158,8 +158,7 @@ public class Pacientes extends JDialog {
         	
             if (consulta.getPaciente().equals(paciente)) {
             	
-                if (ultimaConsulta == null || 
-                    consulta.getFecha().compareTo(ultimaConsulta.getFecha()) > 0) {
+                if (ultimaConsulta == null || consulta.getFecha().compareTo(ultimaConsulta.getFecha()) > 0) {
                     ultimaConsulta = consulta;
                 }
             }

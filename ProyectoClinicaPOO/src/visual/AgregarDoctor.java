@@ -24,7 +24,6 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 
 public class AgregarDoctor extends JDialog {
-
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCedulaDoctor;
 	private JTextField txtNombresDoctor;
