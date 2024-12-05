@@ -71,6 +71,7 @@ public class ReportePaciente extends JDialog {
 
         setBounds(100, 100, 644, 453);
         getContentPane().setLayout(new BorderLayout());
+        contentPanel.setBackground(new Color(173, 216, 230));
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
@@ -104,6 +105,7 @@ public class ReportePaciente extends JDialog {
         pnlDatosMedico.add(lblEspecialidad);
 
         txtNombreDoctor = new JTextField();
+        
         txtNombreDoctor.setEditable(false);
         txtNombreDoctor.setBounds(91, 10, 116, 22);
         pnlDatosMedico.add(txtNombreDoctor);
@@ -170,6 +172,7 @@ public class ReportePaciente extends JDialog {
         txtSexPaciente.setColumns(10);
 
         JPanel pnlDatosConsulta = new JPanel();
+        pnlDatosConsulta.setBackground(new Color(173, 216, 230));
         pnlDatosConsulta.setBounds(18, 156, 590, 172);
         contentPanel.add(pnlDatosConsulta);
         pnlDatosConsulta.setLayout(null);

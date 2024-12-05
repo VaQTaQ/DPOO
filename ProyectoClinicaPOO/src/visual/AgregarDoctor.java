@@ -186,6 +186,7 @@ public class AgregarDoctor extends JDialog {
 		contentPanel.add(cmbEspecialidad);
 
 		JPanel buttonPane = new JPanel();
+		buttonPane.setBackground(new Color(173, 216, 230));
 		buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
