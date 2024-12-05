@@ -255,6 +255,10 @@ public class Principal extends JFrame {
         mnAdministracion.add(mntmAgregarAdmin);
         
         JMenuItem mntmListarDoctores = new JMenuItem("Listar Doctores");
+        mnAdministracion.add(mntmListarDoctores);
+        
+        JMenuItem mntmNewMenuItem = new JMenuItem("Listar Admins");
+        mnAdministracion.add(mntmNewMenuItem);
         mntmListarDoctores.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListarDoctores liDoctores = new ListarDoctores();
@@ -262,7 +266,6 @@ public class Principal extends JFrame {
                 liDoctores.setVisible(true);
             }
         });
-        mnAdministracion.add(mntmListarDoctores);
         
         contentPane = new JPanel();
         contentPane.setBackground(new Color(153, 204, 255));
