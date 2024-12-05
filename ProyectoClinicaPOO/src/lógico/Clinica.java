@@ -95,7 +95,7 @@ public class Clinica implements Serializable {
 		medicos.add(medico);
 		idMedico++;
 		String accion = "Agregar Doctor";
-	    String detalle = medico.getEspecialidad() + " " + medico.getNombre();
+	    String detalle = medico.getEspecialidad() + " | " + medico.getNombre();
 	    Historial historial = new Historial(accion, detalle, new Date());
 	    historiales.add(historial);
 	}
