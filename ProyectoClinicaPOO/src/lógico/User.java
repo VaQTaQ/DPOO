@@ -13,7 +13,7 @@ public class User implements Serializable{
 	private Persona vinculado;
 	private boolean isAdmint;
 	private boolean isMedic;
-	private boolean isPaciente;
+	
 	
 	public User(String nombre, String pasword, String type, Persona vinculado, boolean isAdmint, boolean isMedic,
 			boolean isPaciente) {
@@ -24,7 +24,7 @@ public class User implements Serializable{
 		this.vinculado = vinculado;
 		this.isAdmint = isAdmint;
 		this.isMedic = isMedic;
-		this.isPaciente = isPaciente;
+		
 	}	
 	public String getNombre() {
 		return nombre;
@@ -56,12 +56,7 @@ public class User implements Serializable{
 	public void setMedic(boolean isMedic) {
 		this.isMedic = isMedic;
 	}
-	public boolean isPaciente() {
-		return isPaciente;
-	}
-	public void setPaciente(boolean isPaciente) {
-		this.isPaciente = isPaciente;
-	}
+	
 
 	public Persona getVinculado() {
 		return vinculado;

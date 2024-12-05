@@ -229,6 +229,24 @@ public class Clinica implements Serializable {
 		}
 		return null; 
 	}
+	
+	 public void registrarUsuario(User usuario) {
+	        usuarios.add(usuario);
+	        // Opcionalmente, puedes agregar una entrada al historial
+	        String accion = "Agregar Usuario";
+	        String detalle = "Usuario: " + usuario.getNombre() + " | Tipo: " + usuario.getType();
+	        Historial historial = new Historial(accion, detalle, new Date());
+	        historiales.add(historial);
+	    }
+
+	 public User buscarUsuarioPorNombre(String nombreUsuario) {
+        for (User usuario : usuarios) {
+            if (usuario.getNombre().equalsIgnoreCase(nombreUsuario)) {
+                return usuario;
+            }
+        }
+        return null;
+	 }
 
 
 	// Getters y Setters
