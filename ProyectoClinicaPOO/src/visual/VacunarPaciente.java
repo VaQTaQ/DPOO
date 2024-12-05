@@ -3,6 +3,7 @@ package visual;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import lógico.Clinica;
 import lógico.Historial;
@@ -65,7 +67,6 @@ public class VacunarPaciente extends JDialog {
 	 public VacunarPaciente(Paciente paciente) {
 	        this(); 
 	        this.pacienteSeleccionado = paciente;
-
 	        txtCedulaPaciente.setText(paciente.getCedula());
 	        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());
 	        txtIdPaciente.setText(paciente.getCodigoPaciente());
@@ -106,6 +107,7 @@ public class VacunarPaciente extends JDialog {
 		contentPanel.setLayout(null);
 		contentPanel.setBackground(new Color(173, 216, 230));
 		
+		
 		JPanel pnlListaVacunasDisponibles = new JPanel();
 		pnlListaVacunasDisponibles.setBounds(27, 181, 561, 238);
         pnlListaVacunasDisponibles.setLayout(new BorderLayout());
@@ -120,31 +122,46 @@ public class VacunarPaciente extends JDialog {
         String[] columnas = { "Nombre", "Edad Min", "Edad Max" };
         modeloVacunas.setColumnIdentifiers(columnas);
         tblVacunasDisponibles.setModel(modeloVacunas);
-        scrollPane.setViewportView(tblVacunasDisponibles);
+        JTableHeader header = tblVacunasDisponibles.getTableHeader();
+        header.setFont(new Font("Tahoma", Font.BOLD, 13)); 
+        header.setForeground(Color.BLUE); 
         tblVacunasDisponibles.setBackground(new Color(173, 216, 230));
+        scrollPane.setViewportView(tblVacunasDisponibles);
+
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(173, 216, 230));
 		panel.setLayout(null);
 		panel.setBounds(27, 26, 381, 142);
 		contentPanel.add(panel);
 		
 		JLabel label = new JLabel("Cedula:");
+		label.setForeground(Color.BLUE);
+		label.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label.setBounds(12, 16, 56, 16);
 		panel.add(label);
 		
 		JLabel label_1 = new JLabel("Nombre:");
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		label_1.setForeground(Color.BLUE);
 		label_1.setBounds(12, 70, 56, 16);
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("Edad:");
+		label_2.setForeground(Color.BLUE);
+		label_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label_2.setBounds(296, 73, 56, 16);
 		panel.add(label_2);
 		
 		JLabel label_3 = new JLabel("Sexo:");
+		label_3.setForeground(Color.BLUE);
+		label_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label_3.setBounds(254, 16, 56, 16);
 		panel.add(label_3);
 		
 		JLabel label_4 = new JLabel("ID Paciente:");
+		label_4.setForeground(Color.BLUE);
+		label_4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label_4.setBounds(172, 16, 70, 16);
 		panel.add(label_4);
 		
@@ -179,12 +196,15 @@ public class VacunarPaciente extends JDialog {
 		panel.add(txtEdadPaciente);
 		
 		JPanel pnlDatosVacuna = new JPanel();
+		pnlDatosVacuna.setBackground(new Color(173, 216, 230));
 		pnlDatosVacuna.setBounds(423, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
 		pnlDatosVacuna.setLayout(null);
 		
 		
 		JLabel lblNewLabel = new JLabel("Fecha:");
+		lblNewLabel.setForeground(Color.BLUE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setBounds(54, 72, 56, 16);
 		pnlDatosVacuna.add(lblNewLabel);
 		
@@ -200,6 +220,8 @@ public class VacunarPaciente extends JDialog {
 		pnlDatosVacuna.add(txtDosisAplicar);
 		
 		JLabel lblDosisAAplicar = new JLabel("Dosis a Aplicar:");
+		lblDosisAAplicar.setForeground(Color.BLUE);
+		lblDosisAAplicar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDosisAAplicar.setBounds(31, 16, 103, 16);
 		pnlDatosVacuna.add(lblDosisAAplicar);
 		{
@@ -259,12 +281,14 @@ public class VacunarPaciente extends JDialog {
 				});
 
 				btnVacunar.setActionCommand("OK");
+				btnVacunar.setBackground(new Color(102, 255, 51));
 				buttonPane.add(btnVacunar);
 				getRootPane().setDefaultButton(btnVacunar);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
+				cancelButton.setBackground(new Color(255, 69, 58));
 				buttonPane.add(cancelButton);
 			}
 		}

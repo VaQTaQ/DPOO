@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import lógico.Clinica;
 import lógico.Consulta;
@@ -60,12 +63,16 @@ public class Pacientes extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarPacientes = new JTable(); 
-                modelo = new DefaultTableModel();
-                String[] columnas = { "ID Paciente", "Nombre", "Doctor", "Enfermedad" }; 
-                modelo.setColumnIdentifiers(columnas);
-                tblListarPacientes.setModel(modelo);
-                scrollPane.setViewportView(tblListarPacientes);
+            	tblListarPacientes = new JTable(); 
+            	modelo = new DefaultTableModel();
+            	String[] columnas = { "ID Paciente", "Nombre", "Doctor", "Enfermedad" }; 
+            	modelo.setColumnIdentifiers(columnas);
+            	tblListarPacientes.setModel(modelo);
+            	JTableHeader header = tblListarPacientes.getTableHeader();
+            	header.setFont(new Font("Tahoma", Font.BOLD, 13)); 
+            	header.setForeground(Color.BLUE); 
+            	scrollPane.setViewportView(tblListarPacientes);
+
             }
         }
         {
@@ -75,6 +82,7 @@ public class Pacientes extends JDialog {
             buttonPane.setBackground(new java.awt.Color(173, 216, 230));
             {
                 JButton btnVerReportes = new JButton("Ver Reportes");
+                btnVerReportes.setBackground(new Color(102, 255, 51));
                 btnVerReportes.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         
@@ -113,6 +121,7 @@ public class Pacientes extends JDialog {
                     }
                 });
                 cancelButton.setActionCommand("Cancel");
+                cancelButton.setBackground(new Color(255, 69, 58));
                 buttonPane.add(cancelButton);
             }
         }

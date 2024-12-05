@@ -82,7 +82,7 @@ public class HistorialVisual extends JDialog {
                     }
                 });
                 btnCerrar.setActionCommand("Cancel");
-                btnCerrar.setBackground(new Color(255, 0, 0));
+                btnCerrar.setBackground(new Color(255, 69, 58));
                 buttonPane.add(btnCerrar);
             }
         }

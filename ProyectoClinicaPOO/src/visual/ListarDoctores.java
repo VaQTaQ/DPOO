@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -56,12 +58,15 @@ public class ListarDoctores extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarDoctores = new JTable();
-                modelo = new DefaultTableModel();
-                String[] columnas = { "ID", "Nombre y Apellido", "Especialidad", "Edad", "Número de Consultas" };
-                modelo.setColumnIdentifiers(columnas);
-                tblListarDoctores.setModel(modelo);
-                scrollPane.setViewportView(tblListarDoctores);
+            	tblListarDoctores = new JTable();
+            	modelo = new DefaultTableModel();
+            	String[] columnas = { "ID", "Nombre y Apellido", "Especialidad", "Edad", "Número de Consultas" };
+            	modelo.setColumnIdentifiers(columnas);
+            	tblListarDoctores.setModel(modelo);
+            	scrollPane.setViewportView(tblListarDoctores);
+            	tblListarDoctores.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 13)); 
+            	tblListarDoctores.getTableHeader().setForeground(Color.BLUE); 
+
                 
             }
         }
@@ -79,6 +84,7 @@ public class ListarDoctores extends JDialog {
                     }
                 });
                 cancelButton.setActionCommand("Cancel");
+                cancelButton.setBackground(new Color(255, 69, 58));
                 buttonPane.add(cancelButton);
             }
         }

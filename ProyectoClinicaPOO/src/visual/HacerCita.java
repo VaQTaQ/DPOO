@@ -356,7 +356,7 @@ public class HacerCita extends JDialog {
             }
         });
         cancelButton.setActionCommand("Cancel");
-        cancelButton.setBackground(new Color(255, 0, 0));
+        cancelButton.setBackground(new Color(255, 69, 58));
         buttonPane.add(cancelButton);
     }
 }

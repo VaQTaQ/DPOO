@@ -48,17 +48,20 @@ public class Login extends JDialog {
         contentPanel.setLayout(null);
 
         JLabel lblTitulo = new JLabel("Sistema de Gestión Clínica");
-        lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        lblTitulo.setForeground(Color.BLUE);
+        lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
         lblTitulo.setBounds(126, 50, 270, 30);
         contentPanel.add(lblTitulo);
 
         JLabel label = new JLabel("Usuario:");
-        label.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        label.setForeground(Color.BLUE);
+        label.setFont(new Font("Tahoma", Font.BOLD, 13));
         label.setBounds(148, 120, 70, 14);
         contentPanel.add(label);
 
         JLabel lblNewLabel = new JLabel("Contraseña:");
-        lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        lblNewLabel.setForeground(Color.BLUE);
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNewLabel.setBounds(126, 163, 90, 14);
         contentPanel.add(lblNewLabel);
 
@@ -73,11 +76,14 @@ public class Login extends JDialog {
         Contra.setColumns(10);
 
         JLabel lblRol = new JLabel("Rol:");
-        lblRol.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        lblRol.setForeground(Color.BLUE);
+        lblRol.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblRol.setBounds(170, 200, 26, 14);
         contentPanel.add(lblRol);
 
         Rol = new JComboBox<>();
+        Rol.setFont(new Font("Tahoma", Font.BOLD, 13));
+        Rol.setForeground(Color.BLACK);
         Rol.setModel(new DefaultComboBoxModel<>(new String[] { "Médico", "Admin"}));
         Rol.setBounds(208, 197, 170, 25);
         contentPanel.add(Rol);
@@ -88,6 +94,7 @@ public class Login extends JDialog {
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton okButton = new JButton("Iniciar Sesión");
+        okButton.setBackground(new Color(102, 255, 51)); 
         okButton.setFont(new Font("Segoe UI", Font.BOLD, 12));
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -124,6 +131,7 @@ public class Login extends JDialog {
         getRootPane().setDefaultButton(okButton);
 
         JButton cancelButton = new JButton("Salir");
+        cancelButton.setBackground(new Color(255, 69, 58));
         cancelButton.setFont(new Font("Segoe UI", Font.BOLD, 12));
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

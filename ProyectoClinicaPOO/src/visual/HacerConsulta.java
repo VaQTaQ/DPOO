@@ -387,7 +387,7 @@ public class HacerConsulta extends JDialog {
         buttonPane.add(btnHacerConsulta);
 
         JButton cancelButton = new JButton("Cancelar");
-        cancelButton.setBackground(new Color(255, 0, 0));
+        cancelButton.setBackground(new Color(255, 69, 58));
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

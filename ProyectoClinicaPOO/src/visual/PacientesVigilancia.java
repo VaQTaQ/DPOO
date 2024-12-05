@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.SystemColor;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import lógico.Clinica;
 import lógico.Consulta;
@@ -25,7 +28,7 @@ import java.awt.event.ActionEvent;
 public class PacientesVigilancia extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
-    private JTable tblListarPacientesVigilancia; // [Línea 28: Añadido JTable para listar pacientes]
+    private JTable tblListarPacientesVigilancia; 
     private DefaultTableModel modelo;
     private Object[] row;
 
@@ -46,12 +49,16 @@ public class PacientesVigilancia extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarPacientesVigilancia = new JTable();
-                modelo = new DefaultTableModel();
-                String[] columnas = { "ID Paciente", "Nombre", "Doctor", "Enfermedad" };
-                modelo.setColumnIdentifiers(columnas);
-                tblListarPacientesVigilancia.setModel(modelo);
-                scrollPane.setViewportView(tblListarPacientesVigilancia);
+            	tblListarPacientesVigilancia = new JTable();
+            	modelo = new DefaultTableModel();
+            	String[] columnas = { "ID Paciente", "Nombre", "Doctor", "Enfermedad" };
+            	modelo.setColumnIdentifiers(columnas);
+            	tblListarPacientesVigilancia.setModel(modelo);
+            	JTableHeader header = tblListarPacientesVigilancia.getTableHeader();
+            	header.setFont(new Font("Tahoma", Font.BOLD, 13)); 
+            	header.setForeground(Color.BLUE); 
+            	scrollPane.setViewportView(tblListarPacientesVigilancia);
+
             }
         }
         {
@@ -79,11 +86,13 @@ public class PacientesVigilancia extends JDialog {
                     }
                 });
                 btnVerReportes.setActionCommand("OK");
+                btnVerReportes.setBackground(new Color(102, 255, 51));
                 buttonPane.add(btnVerReportes);
                 getRootPane().setDefaultButton(btnVerReportes);
             }
             {
                 JButton cancelButton = new JButton("Cerrar");
+                cancelButton.setBackground(new Color(255, 69, 58));
                 cancelButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         dispose();

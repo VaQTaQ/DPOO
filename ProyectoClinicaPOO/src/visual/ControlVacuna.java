@@ -199,7 +199,7 @@ public class ControlVacuna extends JDialog {
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 JButton cancelButton = new JButton("Cerrar");
-                cancelButton.setBackground(new Color(255, 0, 0));
+                cancelButton.setBackground(new Color(255, 69, 58));
                 cancelButton.setActionCommand("Cancel");
                 cancelButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
