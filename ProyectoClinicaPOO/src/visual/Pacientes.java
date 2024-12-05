@@ -5,7 +5,12 @@ import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -70,6 +75,25 @@ public class Pacientes extends JDialog {
                 JButton btnVerReportes = new JButton("Ver Reportes");
                 btnVerReportes.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                        
+                        int selectedRow = tblListarPacientes.getSelectedRow();
+                        
+                        if (selectedRow >= 0) {
+                            
+                            String idPaciente = (String) modelo.getValueAt(selectedRow, 0);
+                            Paciente paciente = Clinica.getInstance().buscarPacienteById(idPaciente);
+                            
+                            if (paciente != null) {
+                                ReportePaciente reportePacienteDialog = new ReportePaciente(paciente);
+                                reportePacienteDialog.setModal(true);
+                                reportePacienteDialog.setVisible(true);
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Seleccione un paciente.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                        }
                        
                     }
                 });
@@ -93,32 +117,40 @@ public class Pacientes extends JDialog {
 
     private void cargarPacientes() {
         modelo.setRowCount(0);
-        ArrayList<String> pacientesAgregadosId = new ArrayList<>(); 
-
-        ArrayList<Consulta> listaConsultas = Clinica.getInstance().getConsultas(); 
-
         row = new Object[modelo.getColumnCount()];
-        
-        for (Consulta consulta : listaConsultas) { 
-        	
-            Paciente paciente = consulta.getPaciente();
-            String idPaciente = paciente.getCodigoPaciente();
+        for (Paciente paciente : Clinica.getInstance().getPacientes()) {
+            row[0] = paciente.getCodigoPaciente();
+            row[1] = paciente.getNombre() + " " + paciente.getApellido();
+
+            Consulta ultimaConsulta = obtenerUltimaConsulta(paciente);
             
-            if (!pacientesAgregadosId.contains(idPaciente)) {
-            	
-                row[0] = idPaciente;
-                
-                row[1] = paciente.getNombre() + " " + paciente.getApellido();
-
-                String nombreDoctor = consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido();
-                
+            if (ultimaConsulta != null) {
+                String nombreDoctor = ultimaConsulta.getMedico().getNombre() + " " + ultimaConsulta.getMedico().getApellido();
                 row[2] = nombreDoctor;
-                
-                row[3] = consulta.getEnfermedad().getNombre();
-
-                modelo.addRow(row);
-                pacientesAgregadosId.add(idPaciente); 
+                row[3] = ultimaConsulta.getEnfermedad().getNombre();
+            } else {
+            	
+                row[2] = "N/A";
+                row[3] = "N/A";
             }
+            modelo.addRow(row);
+        }
+    }
+
+    private Consulta obtenerUltimaConsulta(Paciente paciente) { 
+        List<Consulta> consultasPaciente = new ArrayList<>();
+        for (Consulta consulta : Clinica.getInstance().getConsultas()) {
+            if (consulta.getPaciente().equals(paciente)) {
+                consultasPaciente.add(consulta);
+            }
+        }
+        
+        if (!consultasPaciente.isEmpty()) {
+
+            consultasPaciente.sort((c1, c2) -> c2.getFecha().compareTo(c1.getFecha()));
+            return consultasPaciente.get(0);
+        } else {
+            return null;
         }
     }
 }

@@ -155,6 +155,13 @@ public class Principal extends JFrame {
         mnHistorial.add(mntmHistorialClinico);
         
         JMenuItem P = new JMenuItem("Pacientes");
+        P.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Pacientes pacientes = new Pacientes();
+        		pacientes.setModal(true);
+        		pacientes.setVisible(true);
+        	}
+        });
         mnHistorial.add(P);
         
         JMenuItem mntmListarCitasTotales = new JMenuItem("Listar Citas Totales");
