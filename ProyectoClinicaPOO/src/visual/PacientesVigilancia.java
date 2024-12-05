@@ -117,7 +117,7 @@ public class PacientesVigilancia extends JDialog {
     private void cargarPacientesVigilancia() { 
         modelo.setRowCount(0);
         row = new Object[modelo.getColumnCount()];
-        List<Paciente> pacientesVigilancia = obtenerPacientesVigilancia();
+        ArrayList<Paciente> pacientesVigilancia = obtenerPacientesVigilancia();
         
         for (Paciente paciente : pacientesVigilancia) {
         	
