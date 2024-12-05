@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -50,9 +51,10 @@ public class AgregarDoctor extends JDialog {
 	 */
 	public AgregarDoctor() {
 		setTitle("Agregue un doctor");
-		setBounds(100, 100, 599, 550); // Incrementar altura para acomodar campos nuevos
+		setBounds(100, 100, 599, 550); 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBackground(new Color(173, 216, 230)); // Fondo azul clarito
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
@@ -97,7 +99,7 @@ public class AgregarDoctor extends JDialog {
 		lblPassword.setBounds(283, 240, 81, 16);
 		contentPanel.add(lblPassword);
 
-		// Nuevo campo para confirmar contraseña
+		
 		JLabel lblConfirmPassword = new JLabel("Confirmar contraseña:");
 		lblConfirmPassword.setBounds(39, 280, 150, 16);
 		contentPanel.add(lblConfirmPassword);
@@ -166,7 +168,7 @@ public class AgregarDoctor extends JDialog {
 		btnAgregarDoctor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					// Validaciones
+					
 					if (txtCedulaDoctor.getText().isEmpty() || txtNombresDoctor.getText().isEmpty()
 							|| txtApellidosDoctor.getText().isEmpty() || cmbSexoDoctor.getSelectedIndex() == 0
 							|| txtDireccionDoctor.getText().isEmpty() || cmbEspecialidad.getSelectedIndex() == 0
@@ -188,7 +190,7 @@ public class AgregarDoctor extends JDialog {
 						return;
 					}
 
-					// Crear objeto Medico y registrar
+					
 					int edad = (Integer) spnEdadDoctor.getValue();
 					String cedula = txtCedulaDoctor.getText();
 					String nombre = txtNombresDoctor.getText();
@@ -219,24 +221,26 @@ public class AgregarDoctor extends JDialog {
 				txtNombresDoctor.setText("");
 				txtApellidosDoctor.setText("");
 				spnEdadDoctor.setValue(18);
-				cmbSexoDoctor.setSelectedIndex(0);
 				txtDireccionDoctor.setText("");
-				cmbEspecialidad.setSelectedIndex(0);
 				txtUsuarioDoctor.setText("");
 				txtPasswordDoctor.setText("");
 				txtConfirmPasswordDoctor.setText("");
-				txtIdDoctor.setText("D-" + Clinica.idMedico);
+				cmbEspecialidad.setSelectedIndex(0);
+				cmbSexoDoctor.setSelectedIndex(0);
 			}
 		});
+
+		btnAgregarDoctor.setActionCommand("OK");
 		buttonPane.add(btnAgregarDoctor);
 		getRootPane().setDefaultButton(btnAgregarDoctor);
 
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
+		JButton cancelButton = new JButton("Cancelar");
+		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		buttonPane.add(btnCancelar);
+		cancelButton.setActionCommand("Cancel");
+		buttonPane.add(cancelButton);
 	}
 }
