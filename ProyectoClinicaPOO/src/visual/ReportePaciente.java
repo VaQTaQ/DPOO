@@ -44,7 +44,7 @@ public class ReportePaciente extends JDialog {
 	
 	private Paciente paciente; 
     private ArrayList<Consulta> consultasPaciente; 
-    private int indiceConsultaActual; 
+    private int indConsultaActual; 
     private JComboBox<String> cmbTratadoConsulta; 
     private JButton btnAnteriorReporte; 
     private JButton btnSiguienteReporte; 
@@ -258,9 +258,9 @@ public class ReportePaciente extends JDialog {
         cmbTratadoConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
+            	if (!consultasPaciente.isEmpty()) {
             		
-                    Consulta consulta = consultasPaciente.get(indiceConsultaActual);
+                    Consulta consulta = consultasPaciente.get(indConsultaActual);
                     boolean tratado = cmbTratadoConsulta.getSelectedItem().toString().equals("Si");
                     consulta.setTratado(tratado);
 
@@ -297,8 +297,8 @@ public class ReportePaciente extends JDialog {
                 btnAnteriorReporte.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                     
-                        if (indiceConsultaActual > 0) {
-                            indiceConsultaActual--;
+                        if (indConsultaActual > 0) {
+                            indConsultaActual--;
                             mostrarConsultaActual();
                         } 
                     }
@@ -312,8 +312,8 @@ public class ReportePaciente extends JDialog {
                 btnSiguienteReporte.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                     	
-                        if (indiceConsultaActual < consultasPaciente.size() - 1) {
-                            indiceConsultaActual++;
+                        if (indConsultaActual < consultasPaciente.size() - 1) {
+                            indConsultaActual++;
                             
                             mostrarConsultaActual();
                         } 
@@ -325,12 +325,12 @@ public class ReportePaciente extends JDialog {
         Clinica clinica = Clinica.getInstance();
         txtNombreClinica.setText("HOMS");
 
-        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());//dy
+        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());//d
         txtEdadPaciente.setText(String.valueOf(paciente.getEdad()));
         txtIdPaciente.setText(paciente.getCodigoPaciente());
         txtSexPaciente.setText(paciente.getSexo());
 
-        String vacunas = "";
+        String vacunas = " ";
         for (int i = 0; i < paciente.getMisVacunas().size(); i++) {
             vacunas += paciente.getMisVacunas().get(i).getNombre();
             if (i < paciente.getMisVacunas().size() - 1) {
@@ -354,7 +354,7 @@ public class ReportePaciente extends JDialog {
         consultasPaciente = new ArrayList<>(consultasFiltradas); 
 
         if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
-            indiceConsultaActual = 0;
+            indConsultaActual = 0;
             mostrarConsultaActual();
         } else {
             JOptionPane.showMessageDialog(this, "El paciente no tiene consultas registradas.");
@@ -365,7 +365,7 @@ public class ReportePaciente extends JDialog {
         
         
         if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
-            indiceConsultaActual = 0;
+            indConsultaActual = 0;
             mostrarConsultaActual();
         } else {
             JOptionPane.showMessageDialog(this, "El paciente no tiene consultas bajo vigilancia.");
@@ -384,7 +384,7 @@ public class ReportePaciente extends JDialog {
 	 }
 	
     private void mostrarConsultaActual() { 
-        Consulta consulta = consultasPaciente.get(indiceConsultaActual);
+        Consulta consulta = consultasPaciente.get(indConsultaActual);
         txtNombreDoctor.setText(consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido());
         txtEspecialidadDoctor.setText(consulta.getMedico().getEspecialidad());
         txtEnfermedadConsulta.setText(consulta.getEnfermedad().getNombre());
