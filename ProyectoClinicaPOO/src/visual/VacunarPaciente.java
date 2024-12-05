@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import lógico.Clinica;
+import lógico.Historial;
 import lógico.Paciente;
 import lógico.Vacuna;
 import lógico.VacunaDisponible;
@@ -239,6 +240,10 @@ public class VacunarPaciente extends JDialog {
 				                    );
 
 				                    pacienteSeleccionado.getMisVacunas().add(nuevaVacuna); 
+				                    String accion = "Vacunar Paciente";
+				                    String detalle = "Vacuna: " + nuevaVacuna.getNombre() + " | Paciente: " + pacienteSeleccionado.getNombre();
+				                    Historial historial = new Historial(accion, detalle, new Date());
+				                    Clinica.getInstance().getHistoriales().add(historial);
 
 				                    JOptionPane.showMessageDialog(null, "Paciente vacunado con: " + vacunaSeleccionada.getNombre(), "Vacunación exitosa", JOptionPane.INFORMATION_MESSAGE);
 				                    dispose();

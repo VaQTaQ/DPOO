@@ -3,6 +3,7 @@ package visual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,16 +14,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import lógico.Clinica;
-import lógico.Medico;
+import lógico.Historial;
 
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
-public class ListarDoctores extends JDialog {
+public class HistorialVisual extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
-    private JTable tblListarDoctores;
+    private JTable tblHistorial;
     private DefaultTableModel modelo;
     private Object[] row;
 
@@ -31,7 +33,7 @@ public class ListarDoctores extends JDialog {
      */
     public static void main(String[] args) {
         try {
-            ListarDoctores dialog = new ListarDoctores();
+            HistorialVisual dialog = new HistorialVisual();
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
             dialog.setVisible(true);
         } catch (Exception e) {
@@ -42,12 +44,11 @@ public class ListarDoctores extends JDialog {
     /**
      * Create the dialog.
      */
-    public ListarDoctores() {
-        setTitle("Listado de Doctores");
+    public HistorialVisual() {
+        setTitle("Historial de Acciones");
         setBounds(100, 100, 700, 400);
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
-        contentPanel.setBackground(new java.awt.Color(173, 216, 230));
         contentPanel.setBackground(SystemColor.activeCaption);
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -56,49 +57,43 @@ public class ListarDoctores extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarDoctores = new JTable();
+                tblHistorial = new JTable();
                 modelo = new DefaultTableModel();
-                String[] columnas = { "ID", "Nombre y Apellido", "Especialidad", "Edad", "Número de Consultas" };
+                String[] columnas = { "Acción", "Detalle", "Fecha" };
                 modelo.setColumnIdentifiers(columnas);
-                tblListarDoctores.setModel(modelo);
-                scrollPane.setViewportView(tblListarDoctores);
-                
+                tblHistorial.setModel(modelo);
+                scrollPane.setViewportView(tblHistorial);
             }
         }
         {
             JPanel buttonPane = new JPanel();
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
-            buttonPane.setBackground(new java.awt.Color(173, 216, 230));
             {
-                JButton cancelButton = new JButton("Cerrar");
-                cancelButton.addActionListener(new ActionListener() {
+                JButton btnCerrar = new JButton("Cerrar");
+                btnCerrar.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
-                        
                     }
                 });
-                cancelButton.setActionCommand("Cancel");
-                buttonPane.add(cancelButton);
+                btnCerrar.setActionCommand("Cancel");
+                buttonPane.add(btnCerrar);
             }
         }
-        cargarDoctores();
+        cargarHistorial();
     }
 
-    private void cargarDoctores() {
-    
+    private void cargarHistorial() {
         modelo.setRowCount(0);
-        ArrayList<Medico> listaDoctores = (ArrayList<Medico>) Clinica.getInstance().getMedicos();
+        ArrayList<Historial> listaHistorial = Clinica.getInstance().getHistoriales();
         row = new Object[modelo.getColumnCount()];
-        
-        for (Medico doctor : listaDoctores) {
-        	
-            row[0] = doctor.getCodigoMedico(); 
-            row[1] = doctor.getNombre() + " " + doctor.getApellido(); 
-            row[2] = doctor.getEspecialidad(); 
-            row[3] = doctor.getEdad(); 
-            row[4] = doctor.getNumeroConsultas(); 
-            
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        for (Historial historial : listaHistorial) {
+            row[0] = historial.getAccion();
+            row[1] = historial.getDetalle();
+            row[2] = sdf.format(historial.getFecha());
+
             modelo.addRow(row);
         }
     }

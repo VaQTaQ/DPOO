@@ -94,6 +94,10 @@ public class Clinica implements Serializable {
 	public void registrarMedico(Medico medico) {
 		medicos.add(medico);
 		idMedico++;
+		String accion = "Agregar Doctor";
+	    String detalle = medico.getEspecialidad() + " " + medico.getNombre();
+	    Historial historial = new Historial(accion, detalle, new Date());
+	    historiales.add(historial);
 	}
 
 	public Medico buscarMedicoPorCedula(String cedula) {
@@ -137,6 +141,10 @@ public class Clinica implements Serializable {
 	public void registrarCita(Cita cita) {
 		citas.add(cita);
 		idCita++;
+		String accion = "Agregar Cita";
+	    String detalle = (cita.isActive() ? "Activa" : "Inactiva") + " | Prioridad: " + cita.getPrioridad() + " | Doctor: " + cita.getDoctorID();
+	    Historial historial = new Historial(accion, detalle, new Date());
+	    historiales.add(historial);
 	}
 
 	public Cita buscarCitaPorId(int idCita) {
@@ -152,6 +160,10 @@ public class Clinica implements Serializable {
 
 	public void registrarConsulta(Consulta consulta) {
 		consultas.add(consulta);
+		String accion = "Hacer Consulta";
+	    String detalle = (consulta.isImportante() ? "Vigilancia" : "No Vigilancia") + " | Doctor: " + consulta.getMedico().getNombre() + " | Enfermedad: " + consulta.getEnfermedad().getNombre();
+	    Historial historial = new Historial(accion, detalle, new Date());
+	    historiales.add(historial);
 	}
 
 	public void registrarVacuna(Vacuna vacuna) {
@@ -160,6 +172,10 @@ public class Clinica implements Serializable {
 				return;
 		}
 		vacunasPuestas.add(vacuna);
+		String accion = "Agregar Vacuna";
+	    String detalle = vacuna.getNombre();
+	    Historial historial = new Historial(accion, detalle, new Date());
+	    historiales.add(historial);
 	}
 
 	public void registrarVacunaDisponible(VacunaDisponible vacuna) {
