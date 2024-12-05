@@ -46,5 +46,10 @@ public class Medico extends Persona {
     public int getNumeroConsultas() {
         return consultas.size();
     }
+
+	public Object getPasword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
