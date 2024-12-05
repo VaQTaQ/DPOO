@@ -1,0 +1,145 @@
+package visual;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.SystemColor;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import lógico.Clinica;
+import lógico.Consulta;
+import lógico.Paciente;
+
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class PacientesVigilancia extends JDialog {
+
+    private final JPanel contentPanel = new JPanel();
+    private JTable tblListarPacientesVigilancia; // [Línea 28: Añadido JTable para listar pacientes]
+    private DefaultTableModel modelo;
+    private Object[] row;
+
+    /**
+     * Create the dialog.
+     */
+    public PacientesVigilancia() {
+        setTitle("Pacientes en Vigilancia");
+        setBounds(100, 100, 700, 400);
+        setLocationRelativeTo(null);
+        getContentPane().setLayout(new BorderLayout());
+        contentPanel.setBackground(SystemColor.activeCaption);
+        contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
+        contentPanel.setLayout(new BorderLayout(0, 0));
+
+        {
+            JScrollPane scrollPane = new JScrollPane();
+            contentPanel.add(scrollPane, BorderLayout.CENTER);
+            {
+                tblListarPacientesVigilancia = new JTable();
+                modelo = new DefaultTableModel();
+                String[] columnas = { "ID Paciente", "Nombre", "Doctor", "Enfermedad" };
+                modelo.setColumnIdentifiers(columnas);
+                tblListarPacientesVigilancia.setModel(modelo);
+                scrollPane.setViewportView(tblListarPacientesVigilancia);
+            }
+        }
+        {
+            JPanel buttonPane = new JPanel();
+            buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            getContentPane().add(buttonPane, BorderLayout.SOUTH);
+            {
+                JButton btnVerReportes = new JButton("Ver Reportes");
+                btnVerReportes.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        int selectedRow = tblListarPacientesVigilancia.getSelectedRow();
+                        if (selectedRow >= 0) {
+                            String idPaciente = (String) modelo.getValueAt(selectedRow, 0);
+                            Paciente paciente = Clinica.getInstance().buscarPacienteById(idPaciente);
+                            if (paciente != null) {
+                                ReportePaciente reportePacienteDialog = new ReportePaciente(paciente, PacientesVigilancia.this); // [Línea 74: Pasar referencia de PacientesVigilancia]
+                                reportePacienteDialog.setModal(true);
+                                reportePacienteDialog.setVisible(true);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Paciente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Seleccione un paciente.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                });
+                btnVerReportes.setActionCommand("OK");
+                buttonPane.add(btnVerReportes);
+                getRootPane().setDefaultButton(btnVerReportes);
+            }
+            {
+                JButton cancelButton = new JButton("Cerrar");
+                cancelButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                    }
+                });
+                cancelButton.setActionCommand("Cancel");
+                buttonPane.add(cancelButton);
+            }
+        }
+        cargarPacientesVigilancia();
+    }
+
+    private void cargarPacientesVigilancia() { 
+        modelo.setRowCount(0);
+        row = new Object[modelo.getColumnCount()];
+        List<Paciente> pacientesVigilancia = obtenerPacientesVigilancia();
+        for (Paciente paciente : pacientesVigilancia) {
+            row[0] = paciente.getCodigoPaciente();
+            row[1] = paciente.getNombre() + " " + paciente.getApellido();
+            Consulta ultimaConsulta = obtenerUltimaConsultaVigilanciaNoTratada(paciente); 
+            if (ultimaConsulta != null) {
+                String nombreDoctor = ultimaConsulta.getMedico().getNombre() + " " + ultimaConsulta.getMedico().getApellido();
+                row[2] = nombreDoctor;
+                row[3] = ultimaConsulta.getEnfermedad().getNombre();
+                modelo.addRow(row);
+            }
+        }
+    }
+
+    private List<Paciente> obtenerPacientesVigilancia() { 
+        List<Paciente> pacientesVigilancia = new ArrayList<>();
+        for (Paciente paciente : Clinica.getInstance().getPacientes()) {
+            Consulta ultimaConsulta = obtenerUltimaConsultaVigilanciaNoTratada(paciente);
+            if (ultimaConsulta != null) {
+                pacientesVigilancia.add(paciente);
+            }
+        }
+        return pacientesVigilancia;
+    }
+
+    private Consulta obtenerUltimaConsultaVigilanciaNoTratada(Paciente paciente) { 
+        List<Consulta> consultasPaciente = new ArrayList<>();
+        for (Consulta consulta : Clinica.getInstance().getConsultas()) {
+            if (consulta.getPaciente().equals(paciente) && consulta.getEnfermedad().isBajoVigilancia() && !consulta.isTratado()) {
+                consultasPaciente.add(consulta);
+            }
+        }
+        if (!consultasPaciente.isEmpty()) {
+            consultasPaciente.sort((c1, c2) -> c2.getFecha().compareTo(c1.getFecha()));
+            return consultasPaciente.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public void actualizarLista() {
+        cargarPacientesVigilancia();
+    }
+}

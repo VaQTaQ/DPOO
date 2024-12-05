@@ -154,10 +154,7 @@ public class Principal extends JFrame {
         JMenuItem mntmHistorialClinico = new JMenuItem("Historial Clinico");
         mnHistorial.add(mntmHistorialClinico);
         
-        JMenuItem mntmReportes = new JMenuItem("Reportes(XPacientes)");
-        mnHistorial.add(mntmReportes);
-        
-        JMenuItem mntmListarCitasTotales = new JMenuItem("Listar Citas Totales");
+        JMenuItem mntmListarCitasTotales = new JMenuItem("Citas");
         mntmListarCitasTotales.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListarCitas liCitas = new ListarCitas();
@@ -167,7 +164,7 @@ public class Principal extends JFrame {
         });
         mnHistorial.add(mntmListarCitasTotales);
         
-        JMenuItem mntmListarConsultasTotales = new JMenuItem("Listar Consultas Totales");
+        JMenuItem mntmListarConsultasTotales = new JMenuItem("Consultas ");
         mntmListarConsultasTotales.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ListarConsultas liConsultas = new ListarConsultas();
@@ -176,6 +173,27 @@ public class Principal extends JFrame {
             }
         });
         mnHistorial.add(mntmListarConsultasTotales);
+        
+        JMenuItem P = new JMenuItem("Pacientes");
+        P.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Pacientes pacientes = new Pacientes();
+        		pacientes.setModal(true);
+        		pacientes.setVisible(true);
+        	}
+        });
+        mnHistorial.add(P);
+        
+        JMenuItem mntmListarPacientesBVigilancia = new JMenuItem("Pacientes B. Vigilancia");
+        mntmListarPacientesBVigilancia.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		PacientesVigilancia pacVil = new PacientesVigilancia();
+        		pacVil.setModal(true);
+        		pacVil.setVisible(true);
+        		
+        	}
+        });
+        mnHistorial.add(mntmListarPacientesBVigilancia);
          
         JMenu mnAdministracion = new JMenu("Administracion");
         mnAdministracion.setForeground(new Color(0, 51, 255));
@@ -207,9 +225,6 @@ public class Principal extends JFrame {
             }
         });
         mnAdministracion.add(mntmListarDoctores);
-        
-        JMenuItem mntmListarPacientesBVigilancia = new JMenuItem("Listar Pacientes B. Vigilancia");
-        mnAdministracion.add(mntmListarPacientesBVigilancia);
         
         JMenuItem mntmControlVacunas = new JMenuItem("Control Vacunas");
         mntmControlVacunas.addActionListener(new ActionListener() {

@@ -55,13 +55,14 @@ public class ControlVacuna extends JDialog {
         setBounds(100, 100, 659, 392);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
-        contentPanel.setBackground(new Color(255, 255, 255));
+        contentPanel.setBackground(new Color(173, 216, 230)); 
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
         {
             JPanel pnlEliminarVacuna = new JPanel();
             pnlEliminarVacuna.setBounds(12, 13, 404, 285);
+            pnlEliminarVacuna.setBackground(new Color(173, 216, 230)); 
             contentPanel.add(pnlEliminarVacuna);
             pnlEliminarVacuna.setLayout(null);
             {
@@ -71,28 +72,28 @@ public class ControlVacuna extends JDialog {
                 btnEliminarVacuna.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         int selectedRow = tblListarVacunas.getSelectedRow();
-                        
+
                         if (selectedRow >= 0) {
-                        	
+
                             String nombreVacuna = (String) modelo.getValueAt(selectedRow, 0);
-                             VacunaDisponible vacunaAEliminar = null;
-                             
+                            VacunaDisponible vacunaAEliminar = null;
+
                             for (VacunaDisponible vacunaDisponible : Clinica.getInstance().getVacunasDisponibles()) {
-                            	
+
                                 if (vacunaDisponible.getNombre().equalsIgnoreCase(nombreVacuna)) {
-                                	
+
                                     vacunaAEliminar = vacunaDisponible;
                                     break;
                                 }
                             }
-                            
-                            
+
                             if (vacunaAEliminar != null) {
                                 Clinica.getInstance().getVacunasDisponibles().remove(vacunaAEliminar);
                                 cargarVacunas();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Debe seleccionar una vacuna para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Debe seleccionar una vacuna para eliminar.",
+                                    "Advertencia", JOptionPane.WARNING_MESSAGE);
                         }
                     }
                 });
@@ -100,6 +101,7 @@ public class ControlVacuna extends JDialog {
             {
                 JPanel pnlListarVacunas = new JPanel();
                 pnlListarVacunas.setBounds(12, 13, 380, 247);
+                pnlListarVacunas.setBackground(new Color(173, 216, 230)); 
                 pnlEliminarVacuna.add(pnlListarVacunas);
                 pnlListarVacunas.setLayout(new BorderLayout(0, 0));
 
@@ -117,6 +119,7 @@ public class ControlVacuna extends JDialog {
         {
             JPanel pnlAgregarVacuna = new JPanel();
             pnlAgregarVacuna.setBounds(428, 13, 201, 285);
+            pnlAgregarVacuna.setBackground(new Color(173, 216, 230)); 
             contentPanel.add(pnlAgregarVacuna);
             pnlAgregarVacuna.setLayout(null);
             {
@@ -145,16 +148,18 @@ public class ControlVacuna extends JDialog {
                         int maxEdad = (int) spnEdadMaxima.getValue();
 
                         if (!nombre.isEmpty()) {
-                        	
+
                             VacunaDisponible nuevaVacuna = new VacunaDisponible(nombre, minEdad, maxEdad);
                             Clinica.getInstance().registrarVacunaDisponible(nuevaVacuna);
                             cargarVacunas();
                             txtNombreVacuna.setText("");
                             spnEdadMinima.setValue(0);
                             spnEdadMaxima.setValue(0);
-                            
+
                         } else {
-                            JOptionPane.showMessageDialog(null, "El nombre de la vacuna no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null,
+                                    "El nombre de la vacuna no puede estar vacío.", "Error",
+                                    JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 });
@@ -178,6 +183,7 @@ public class ControlVacuna extends JDialog {
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBackground(new Color(173, 216, 230));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
@@ -192,51 +198,46 @@ public class ControlVacuna extends JDialog {
             }
         }
 
-
-        
         cargarVacunas();
     }
 
     private void cargarVacunas() {
-    	
         modelo.setRowCount(0);
         ArrayList<VacunaDisponible> listaVacunas = Clinica.getInstance().getVacunasDisponibles();
         row = new Object[modelo.getColumnCount()];
 
         for (VacunaDisponible vacunaDisponible : listaVacunas) {
-        	
+
             row[0] = vacunaDisponible.getNombre();
-            
+
             row[1] = vacunaDisponible.getMinEdad();
-            
+
             row[2] = vacunaDisponible.getMaxEdad();
-            
+
             row[3] = getCantPacientesVacunados(vacunaDisponible);
-            
+
             modelo.addRow(row);
         }
     }
 
     private int getCantPacientesVacunados(VacunaDisponible vacunaDisponible) {
-    	
-    	ArrayList<Paciente> pacientes = Clinica.getInstance().getPacientes();
+
+        ArrayList<Paciente> pacientes = Clinica.getInstance().getPacientes();
         int cont = 0;
-                
+
         for (Paciente paciente : pacientes) {
             ArrayList<Vacuna> vacunasPuestas = paciente.getMisVacunas();
-            
+
             for (Vacuna vacuna : vacunasPuestas) {
-            	
+
                 if (vacuna.getNombre().equalsIgnoreCase(vacunaDisponible.getNombre())) {
                     cont++;
-                    
+
                 }
             }
-            
-            
+
         }
-        
-        
+
         return cont;
     }
 }

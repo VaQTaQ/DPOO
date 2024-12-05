@@ -22,6 +22,7 @@ import lógico.Consulta;
 import lógico.Enfermedad;
 import lógico.Medico;
 import lógico.Paciente;
+import lógico.Reporte;
 
 public class HacerConsulta extends JDialog {
 
@@ -328,7 +329,10 @@ public class HacerConsulta extends JDialog {
                     JOptionPane.showMessageDialog(null, "Consulta registrada exitosamente.", "Información",
                             JOptionPane.INFORMATION_MESSAGE);
                     
-                    
+                    if (paciente.getHistoriaClinica() == null) { 
+                        paciente.setHistoriaClinica(new Reporte("H-" + paciente.getCodigoPaciente(), paciente)); 
+                    }
+                    paciente.getHistoriaClinica().agregarConsulta(consulta); 
                     
 
                     limpiarFormulario();
