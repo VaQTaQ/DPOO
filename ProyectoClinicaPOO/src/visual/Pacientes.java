@@ -98,7 +98,7 @@ public class Pacientes extends JDialog {
                             PacientesVigilancia pacienteVil = new PacientesVigilancia();
                             
                             if (paciente != null) {
-                                ReportePaciente reportePacienteDialog = new ReportePaciente(paciente,pacienteVil);
+                                ReportePaciente reportePacienteDialog = new ReportePaciente(paciente);
                                 reportePacienteDialog.setModal(true);
                                 reportePacienteDialog.setVisible(true);
                                 

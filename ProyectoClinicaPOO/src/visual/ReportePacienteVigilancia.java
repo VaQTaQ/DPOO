@@ -17,52 +17,59 @@ import lógico.Paciente;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 
-public class ReportePaciente extends JDialog {
+public class ReportePacienteVigilancia extends JDialog {
 
-    private final JPanel contentPanel = new JPanel();
-    private JTextField txtNombreClinica;
-    private JTextField txtNombreDoctor;
-    private JTextField txtEspecialidadDoctor;
-    private JTextField txtNombrePaciente;
-    private JTextField txtEdadPaciente;
-    private JTextField txtIdPaciente;
-    private JTextField txtEnfermedadConsulta;
-    private JTextField txtDiagnosticosConsulta;
-    private JTextField txtTratamientoConsultas;
-    private JTextField txtVacunasPaciente;
-    private JTextField txtFechaEmision;
-    private JTextField txtSexPaciente;
-
-    private Paciente paciente; 
+	private final JPanel contentPanel = new JPanel();
+	private JTextField txtNombreClinica;
+	private JTextField txtNombreDoctor;
+	private JTextField txtEspecialidadDoctor;
+	private JTextField txtNombrePaciente;
+	private JTextField txtEdadPaciente;
+	private JTextField txtIdPaciente;
+	private JTextField txtEnfermedadConsulta;
+	private JTextField txtDiagnosticosConsulta;
+	private JTextField txtTratamientoConsultas;
+	private JTextField txtVacunasPaciente;
+	private JTextField txtFechaEmision;
+	private JTextField txtSexPaciente;
+	
+	private Paciente paciente; 
     private ArrayList<Consulta> consultasPaciente; 
     private int indConsultaActual; 
+    private JComboBox<String> cmbTratadoConsulta; 
     private JButton btnAnteriorReporte; 
     private JButton btnSiguienteReporte; 
+    private PacientesVigilancia pacientesVigilancia; 
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        try {
-            ReportePaciente dialog = new ReportePaciente(null);
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			ReportePacienteVigilancia dialog = new ReportePacienteVigilancia(null,null);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    /**
-     * Create the dialog.
-     */
-    public ReportePaciente(Paciente paciente) { 
+	/**
+	 * Create the dialog.
+	 */
+	public ReportePacienteVigilancia(Paciente paciente,PacientesVigilancia pacientesVigilancia) { 
         this.paciente = paciente; 
+        this.pacientesVigilancia = pacientesVigilancia;
+        
 
         setBounds(100, 100, 644, 453);
         getContentPane().setLayout(new BorderLayout());
@@ -70,6 +77,8 @@ public class ReportePaciente extends JDialog {
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
+        setAlwaysOnTop(true);
+
 
         txtNombreClinica = new JTextField();
         txtNombreClinica.setBackground(new Color(173, 216, 230));
@@ -100,6 +109,7 @@ public class ReportePaciente extends JDialog {
         pnlDatosMedico.add(lblEspecialidad);
 
         txtNombreDoctor = new JTextField();
+        
         txtNombreDoctor.setEditable(false);
         txtNombreDoctor.setBounds(91, 10, 116, 22);
         pnlDatosMedico.add(txtNombreDoctor);
@@ -179,7 +189,7 @@ public class ReportePaciente extends JDialog {
         lblEnfermedad.setBounds(12, 13, 83, 16);
         pnlDatosConsulta.add(lblEnfermedad);
 
-        JLabel lblDiagnosticos = new JLabel("Diagnósticos:");
+        JLabel lblDiagnosticos = new JLabel("Diagnosticos:");
         lblDiagnosticos.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblDiagnosticos.setForeground(Color.BLUE);
         lblDiagnosticos.setBounds(12, 68, 95, 16);
@@ -222,7 +232,7 @@ public class ReportePaciente extends JDialog {
         txtVacunasPaciente.setBounds(339, 10, 233, 90);
         pnlDatosConsulta.add(txtVacunasPaciente);
 
-        JLabel lblFechaDeEmision = new JLabel("Fecha de Emisión:");
+        JLabel lblFechaDeEmision = new JLabel("Fecha de Emision:");
         lblFechaDeEmision.setForeground(Color.BLUE);
         lblFechaDeEmision.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblFechaDeEmision.setBounds(271, 125, 116, 16);
@@ -234,44 +244,89 @@ public class ReportePaciente extends JDialog {
         txtFechaEmision.setEditable(false);
         txtFechaEmision.setColumns(10);
 
-        JPanel buttonPane = new JPanel();
-        buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-        buttonPane.setBackground(new Color(153, 204, 204));
-        buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        getContentPane().add(buttonPane, BorderLayout.SOUTH);
+        JLabel lblTratado = new JLabel("Tratado:");
+        lblTratado.setForeground(Color.BLUE);
+        lblTratado.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lblTratado.setBounds(128, 339, 68, 16);
+        contentPanel.add(lblTratado);
 
-        btnAnteriorReporte = new JButton("Anterior"); 
-        btnAnteriorReporte.setBackground(new Color(255, 69, 58));
-        btnAnteriorReporte.setActionCommand("OK");
-        buttonPane.add(btnAnteriorReporte);
-        getRootPane().setDefaultButton(btnAnteriorReporte);
+        cmbTratadoConsulta = new JComboBox(); 
+        cmbTratadoConsulta.setModel(new DefaultComboBoxModel(new String[] {"No", "Si"}));
+        cmbTratadoConsulta.setBounds(190, 336, 42, 22);
+        contentPanel.add(cmbTratadoConsulta);
 
-        btnAnteriorReporte.addActionListener(new ActionListener() {
+        
+        cmbTratadoConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (indConsultaActual > 0) {
-                    indConsultaActual--;
-                    mostrarConsultaActual();
-                } 
+            	
+            	if (!consultasPaciente.isEmpty()) {
+            		
+                    Consulta consulta = consultasPaciente.get(indConsultaActual);
+                    boolean tratado = cmbTratadoConsulta.getSelectedItem().toString().equals("Si");
+                    consulta.setTratado(tratado);
+
+                    if (tratado && consulta.getEnfermedad().isBajoVigilancia()) { 
+                    	
+                        pacientesVigilancia.actualizarLista(); 
+                        cargarConsultasVigilancia(); 
+                        
+                        if (consultasPaciente.isEmpty()) { 
+                            JOptionPane.showMessageDialog(ReportePacienteVigilancia.this, "Todas las consultas bajo vigilancia han sido tratadas.");
+                            dispose(); 
+                            
+                        } else {
+                            mostrarConsultaActual(); 
+                        }
+                    }
+                }
             }
         });
 
-        btnSiguienteReporte = new JButton("Siguiente"); 
-        btnSiguienteReporte.setBackground(new Color(102, 255, 51));
-        btnSiguienteReporte.setActionCommand("Cancel");
-        buttonPane.add(btnSiguienteReporte);
-        btnSiguienteReporte.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (indConsultaActual < consultasPaciente.size() - 1) {
-                    indConsultaActual++;
-                    mostrarConsultaActual();
-                } 
+        {
+            JPanel buttonPane = new JPanel();
+            buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+            buttonPane.setBackground(new Color(153, 204, 204));
+            buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            getContentPane().add(buttonPane, BorderLayout.SOUTH);
+            {
+                btnAnteriorReporte = new JButton("Anterior"); 
+                btnAnteriorReporte.setBackground(new Color(255, 69, 58));
+                btnAnteriorReporte.setActionCommand("OK");
+                buttonPane.add(btnAnteriorReporte);
+                getRootPane().setDefaultButton(btnAnteriorReporte);
+
+                btnAnteriorReporte.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                    
+                        if (indConsultaActual > 0) {
+                            indConsultaActual--;
+                            mostrarConsultaActual();
+                        } 
+                    }
+                });
             }
-        });
+            {
+                btnSiguienteReporte = new JButton("Siguiente"); 
+                btnSiguienteReporte.setBackground(new Color(102, 255, 51));
+                btnSiguienteReporte.setActionCommand("Cancel");
+                buttonPane.add(btnSiguienteReporte);
+                btnSiguienteReporte.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                    	
+                        if (indConsultaActual < consultasPaciente.size() - 1) {
+                            indConsultaActual++;
+                            
+                            mostrarConsultaActual();
+                        } 
+                    }
+                });
+            }
+        }
 
         Clinica clinica = Clinica.getInstance();
         txtNombreClinica.setText("HOMS");
 
-        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());
+        txtNombrePaciente.setText(paciente.getNombre() + " " + paciente.getApellido());//d
         txtEdadPaciente.setText(String.valueOf(paciente.getEdad()));
         txtIdPaciente.setText(paciente.getCodigoPaciente());
         txtSexPaciente.setText(paciente.getSexo());
@@ -290,13 +345,39 @@ public class ReportePaciente extends JDialog {
         } else {
             consultasPaciente = new ArrayList<>();
         }
+        
+        ArrayList<Consulta> consultasFiltradas = new ArrayList<>(); 
+        for (Consulta consulta : consultasPaciente) {
+            if (consulta.getEnfermedad().isBajoVigilancia()) {
+                consultasFiltradas.add(consulta); 
+            }
+        }
+        consultasPaciente = new ArrayList<>(consultasFiltradas); 
 
+        if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
+            indConsultaActual = 0;
+            mostrarConsultaActual();
+        } 
+        
+        cargarConsultasVigilancia(); 
+        
+        
         if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
             indConsultaActual = 0;
             mostrarConsultaActual();
         } 
     }
 
+	 private void cargarConsultasVigilancia() { 
+	        ArrayList<Consulta> consultasFiltradas = new ArrayList<>();
+	        for (Consulta consulta : consultasPaciente) {
+	            if (consulta.getEnfermedad().isBajoVigilancia()) {
+	                consultasFiltradas.add(consulta);
+	            }
+	        }
+	        consultasPaciente = consultasFiltradas;
+	 }
+	
     private void mostrarConsultaActual() { 
         Consulta consulta = consultasPaciente.get(indConsultaActual);
         txtNombreDoctor.setText(consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido());
@@ -305,5 +386,6 @@ public class ReportePaciente extends JDialog {
         txtDiagnosticosConsulta.setText(consulta.getDiagnostico());
         txtTratamientoConsultas.setText(consulta.getTratamiento());
         txtFechaEmision.setText(consulta.getFecha().toString());
+        cmbTratadoConsulta.setSelectedItem(consulta.isTratado() ? "Si" : "No");
     }
 }

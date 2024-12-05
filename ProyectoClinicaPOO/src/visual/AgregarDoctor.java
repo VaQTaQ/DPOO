@@ -34,7 +34,7 @@ public class AgregarDoctor extends JDialog {
 	private JTextField txtDireccionDoctor;
 	private JTextField txtUsuarioDoctor;
 	private JPasswordField txtPasswordDoctor;
-	private JPasswordField txtConfirmPasswordDoctor; // Nuevo campo para confirmar contraseña
+	private JPasswordField txtConfirmPasswordDoctor; 
 
 	/**
 	 * Launch the application.
@@ -61,7 +61,6 @@ public class AgregarDoctor extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		// Campos existentes
 		JLabel lblNewLabel = new JLabel("Cedula:");
 		lblNewLabel.setForeground(new Color(51, 51, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));

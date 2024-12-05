@@ -83,8 +83,7 @@ public class PacientesVigilancia extends JDialog {
                             
                             if (paciente != null) {
                             	
-                                ReportePaciente reportePacienteDialog = new ReportePaciente(paciente, PacientesVigilancia.this); // [Línea 74: Pasar referencia de PacientesVigilancia]
-                                reportePacienteDialog.setModal(true);
+                                ReportePacienteVigilancia reportePacienteDialog = new ReportePacienteVigilancia(paciente, PacientesVigilancia.this); 
                                 reportePacienteDialog.setVisible(true);
                                 
                             } else {
@@ -138,11 +137,9 @@ public class PacientesVigilancia extends JDialog {
     }
 
     private ArrayList<Paciente> obtenerPacientesVigilancia() { 
-    	
     	ArrayList<Paciente> pacientesVigilancia = new ArrayList<>();
         
         for (Paciente paciente : Clinica.getInstance().getPacientes()) {
-        	
             Consulta ultimaConsulta = obtenerUltConsultVigNoTratada(paciente);
             
             if (ultimaConsulta != null) {
@@ -153,7 +150,6 @@ public class PacientesVigilancia extends JDialog {
     }
 
     private Consulta obtenerUltConsultVigNoTratada(Paciente paciente) { 
-    	
         Consulta ultimaConsulta = null;
         
         for (Consulta consulta : Clinica.getInstance().getConsultas()) {
@@ -161,7 +157,6 @@ public class PacientesVigilancia extends JDialog {
             if (consulta.getPaciente().equals(paciente) && consulta.getEnfermedad().isBajoVigilancia() && !consulta.isTratado()) {
                 
                 if (ultimaConsulta == null || consulta.getFecha().compareTo(ultimaConsulta.getFecha()) > 0) {
-                	
                     ultimaConsulta = consulta;
                 }
             }

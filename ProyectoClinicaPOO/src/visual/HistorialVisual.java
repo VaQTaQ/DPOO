@@ -96,12 +96,12 @@ public class HistorialVisual extends JDialog {
         modelo.setRowCount(0);
         ArrayList<Historial> listaHistorial = Clinica.getInstance().getHistoriales();
         row = new Object[modelo.getColumnCount()];
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        
 
         for (Historial historial : listaHistorial) {
             row[0] = historial.getAccion();
             row[1] = historial.getDetalle();
-            row[2] = sdf.format(historial.getFecha());
+            row[2] = historial.getFecha();
 
             modelo.addRow(row);
         }

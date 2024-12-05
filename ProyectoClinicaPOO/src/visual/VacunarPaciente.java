@@ -259,13 +259,7 @@ public class VacunarPaciente extends JDialog {
 				                try {
 				                    int dosisNecesarias = 1;
 
-				                    Vacuna nuevaVacuna = new Vacuna(
-				                        vacunaSeleccionada.getNombre(),
-				                        new Date(), 
-				                        dosisNecesarias,
-				                        Integer.parseInt(txtDosisAplicar.getText()), 
-				                        vacunaSeleccionada.getMinEdad(),
-				                        vacunaSeleccionada.getMaxEdad()
+				                    Vacuna nuevaVacuna = new Vacuna(vacunaSeleccionada.getNombre(),new Date(), dosisNecesarias,Integer.parseInt(txtDosisAplicar.getText()), vacunaSeleccionada.getMinEdad(),vacunaSeleccionada.getMaxEdad()
 				                    );
 
 				                    pacienteSeleccionado.getMisVacunas().add(nuevaVacuna); 

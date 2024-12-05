@@ -244,7 +244,7 @@ public class HacerCita extends JDialog {
         txtCitaPrioridad.setColumns(10);
 
         spnCitaFecha = new JSpinner();
-        spnCitaFecha.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_YEAR));
+        spnCitaFecha.setModel(new SpinnerDateModel(new Date(1733414281802L), null, null, Calendar.DAY_OF_YEAR));
         spnCitaFecha.setBounds(90, 65, 119, 22);
         pnlDatosCita.add(spnCitaFecha);
 
