@@ -41,16 +41,17 @@ public class ReportePaciente extends JDialog {
 	private Paciente paciente; 
     private ArrayList<Consulta> consultasPaciente; 
     private int indiceConsultaActual; 
-    private JComboBox cmbTratadoConsulta; 
+    private JComboBox<String> cmbTratadoConsulta; 
     private JButton btnAnteriorReporte; 
     private JButton btnSiguienteReporte; 
+    private PacientesVigilancia pacientesVigilancia; 
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			ReportePaciente dialog = new ReportePaciente(null);
+			ReportePaciente dialog = new ReportePaciente(null,null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -61,8 +62,10 @@ public class ReportePaciente extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ReportePaciente(Paciente paciente) { 
+	public ReportePaciente(Paciente paciente,PacientesVigilancia pacientesVigilancia) { 
         this.paciente = paciente; 
+        this.pacientesVigilancia = pacientesVigilancia;
+
         setBounds(100, 100, 644, 453);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -205,7 +208,7 @@ public class ReportePaciente extends JDialog {
         lblTratado.setBounds(128, 339, 50, 16);
         contentPanel.add(lblTratado);
 
-        cmbTratadoConsulta = new JComboBox(); // [Modificación Línea 139: Convertido a variable de clase]
+        cmbTratadoConsulta = new JComboBox(); 
         cmbTratadoConsulta.setModel(new DefaultComboBoxModel(new String[] {"No", "Si"}));
         cmbTratadoConsulta.setBounds(190, 336, 42, 22);
         contentPanel.add(cmbTratadoConsulta);
@@ -213,10 +216,26 @@ public class ReportePaciente extends JDialog {
         
         cmbTratadoConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
+            	
+            	if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
+            		
                     Consulta consulta = consultasPaciente.get(indiceConsultaActual);
                     boolean tratado = cmbTratadoConsulta.getSelectedItem().toString().equals("Si");
                     consulta.setTratado(tratado);
+
+                    if (tratado && consulta.getEnfermedad().isBajoVigilancia()) { 
+                    	
+                        pacientesVigilancia.actualizarLista(); 
+                        cargarConsultasVigilancia(); 
+                        
+                        if (consultasPaciente.isEmpty()) { 
+                            JOptionPane.showMessageDialog(ReportePaciente.this, "Todas las consultas bajo vigilancia han sido tratadas.");
+                            dispose(); 
+                            
+                        } else {
+                            mostrarConsultaActual(); 
+                        }
+                    }
                 }
             }
         });
@@ -226,24 +245,23 @@ public class ReportePaciente extends JDialog {
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
-                btnAnteriorReporte = new JButton("Anterior"); // [Modificación Línea 159: Convertido a variable de clase]
+                btnAnteriorReporte = new JButton("Anterior"); 
                 btnAnteriorReporte.setActionCommand("OK");
                 buttonPane.add(btnAnteriorReporte);
                 getRootPane().setDefaultButton(btnAnteriorReporte);
 
                 btnAnteriorReporte.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                    
                         if (indiceConsultaActual > 0) {
                             indiceConsultaActual--;
                             mostrarConsultaActual();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No hay consultas anteriores.");
-                        }
+                        } 
                     }
                 });
             }
             {
-                btnSiguienteReporte = new JButton("Siguiente"); // Convertido a variable de clase]
+                btnSiguienteReporte = new JButton("Siguiente"); 
                 btnSiguienteReporte.setActionCommand("Cancel");
                 buttonPane.add(btnSiguienteReporte);
                 btnSiguienteReporte.addActionListener(new ActionListener() {
@@ -253,9 +271,7 @@ public class ReportePaciente extends JDialog {
                             indiceConsultaActual++;
                             
                             mostrarConsultaActual();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No hay más consultas.");
-                        }
+                        } 
                     }
                 });
             }
@@ -283,15 +299,45 @@ public class ReportePaciente extends JDialog {
         } else {
             consultasPaciente = new ArrayList<>();
         }
+        
+        ArrayList<Consulta> consultasFiltradas = new ArrayList<>(); 
+        for (Consulta consulta : consultasPaciente) {
+            if (consulta.getEnfermedad().isBajoVigilancia()) {
+                consultasFiltradas.add(consulta); 
+            }
+        }
+        consultasPaciente = new ArrayList<>(consultasFiltradas); 
 
         if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
             indiceConsultaActual = 0;
             mostrarConsultaActual();
         } else {
             JOptionPane.showMessageDialog(this, "El paciente no tiene consultas registradas.");
+            dispose();
+        }
+        
+        cargarConsultasVigilancia(); 
+        
+        
+        if (consultasPaciente != null && !consultasPaciente.isEmpty()) {
+            indiceConsultaActual = 0;
+            mostrarConsultaActual();
+        } else {
+            JOptionPane.showMessageDialog(this, "El paciente no tiene consultas bajo vigilancia.");
+            
         }
     }
 
+	 private void cargarConsultasVigilancia() { 
+	        ArrayList<Consulta> consultasFiltradas = new ArrayList<>();
+	        for (Consulta consulta : consultasPaciente) {
+	            if (consulta.getEnfermedad().isBajoVigilancia()) {
+	                consultasFiltradas.add(consulta);
+	            }
+	        }
+	        consultasPaciente = consultasFiltradas;
+	 }
+	
     private void mostrarConsultaActual() { 
         Consulta consulta = consultasPaciente.get(indiceConsultaActual);
         txtNombreDoctor.setText(consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido());
