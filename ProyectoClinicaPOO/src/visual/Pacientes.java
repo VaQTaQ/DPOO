@@ -145,11 +145,8 @@ public class Pacientes extends JDialog {
                 String nombreDoctor = ultimaConsulta.getMedico().getNombre() + " " + ultimaConsulta.getMedico().getApellido();
                 row[2] = nombreDoctor;
                 row[3] = ultimaConsulta.getEnfermedad().getNombre();
-            } else {
-            	
-                row[2] = "N/A";
-                row[3] = "N/A";
-            }
+            } 
+            
             modelo.addRow(row);
         }
     }
