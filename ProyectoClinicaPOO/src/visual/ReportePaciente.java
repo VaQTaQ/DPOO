@@ -86,6 +86,7 @@ public class ReportePaciente extends JDialog {
         txtNombreClinica.setColumns(10);
 
         JPanel pnlDatosMedico = new JPanel();
+        pnlDatosMedico.setBackground(new Color(173, 216, 230));
         pnlDatosMedico.setBounds(18, 57, 225, 86);
         contentPanel.add(pnlDatosMedico);
         pnlDatosMedico.setLayout(null);
@@ -93,13 +94,13 @@ public class ReportePaciente extends JDialog {
         JLabel lblNewLabel = new JLabel("Nombre:");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNewLabel.setForeground(Color.BLUE);
-        lblNewLabel.setBounds(12, 13, 56, 16);
+        lblNewLabel.setBounds(33, 13, 56, 16);
         pnlDatosMedico.add(lblNewLabel);
 
         JLabel lblEspecialidad = new JLabel("Especialidad:");
         lblEspecialidad.setForeground(Color.BLUE);
         lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblEspecialidad.setBounds(12, 45, 83, 16);
+        lblEspecialidad.setBounds(6, 45, 83, 16);
         pnlDatosMedico.add(lblEspecialidad);
 
         txtNombreDoctor = new JTextField();
@@ -115,6 +116,7 @@ public class ReportePaciente extends JDialog {
         pnlDatosMedico.add(txtEspecialidadDoctor);
 
         JPanel pnlDatosPaciente = new JPanel();
+        pnlDatosPaciente.setBackground(new Color(173, 216, 230));
         pnlDatosPaciente.setBounds(260, 57, 348, 86);
         contentPanel.add(pnlDatosPaciente);
         pnlDatosPaciente.setLayout(null);
