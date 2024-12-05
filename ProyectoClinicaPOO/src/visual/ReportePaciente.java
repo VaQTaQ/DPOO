@@ -89,6 +89,7 @@ public class ReportePaciente extends JDialog {
         txtNombreClinica.setColumns(10);
 
         JPanel pnlDatosMedico = new JPanel();
+        pnlDatosMedico.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosMedico.setBackground(new Color(255, 255, 204));
         pnlDatosMedico.setBounds(18, 57, 225, 86);
         contentPanel.add(pnlDatosMedico);
@@ -120,6 +121,7 @@ public class ReportePaciente extends JDialog {
         pnlDatosMedico.add(txtEspecialidadDoctor);
 
         JPanel pnlDatosPaciente = new JPanel();
+        pnlDatosPaciente.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosPaciente.setBackground(new Color(153, 204, 204));
         pnlDatosPaciente.setBounds(260, 57, 348, 86);
         contentPanel.add(pnlDatosPaciente);
@@ -174,6 +176,7 @@ public class ReportePaciente extends JDialog {
         txtSexPaciente.setColumns(10);
 
         JPanel pnlDatosConsulta = new JPanel();
+        pnlDatosConsulta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosConsulta.setBackground(new Color(255, 204, 204));
         pnlDatosConsulta.setBounds(18, 156, 590, 172);
         contentPanel.add(pnlDatosConsulta);

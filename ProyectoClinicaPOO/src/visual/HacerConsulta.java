@@ -76,8 +76,8 @@ public class HacerConsulta extends JDialog {
         contentPanel.setLayout(null);
 
         JPanel pnlPaciente = new JPanel();
-        pnlPaciente.setBorder(new TitledBorder(null, "Paciente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        pnlPaciente.setBackground(new Color(255, 255, 204));
+        pnlPaciente.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+        pnlPaciente.setBackground(new Color(255, 255, 255));
         pnlPaciente.setBounds(24, 42, 518, 165);
         contentPanel.add(pnlPaciente);
         pnlPaciente.setLayout(null);
@@ -161,7 +161,7 @@ public class HacerConsulta extends JDialog {
         pnlPaciente.add(txtPacienteEdad);
 
         JPanel pnlDoctor = new JPanel();
-        pnlDoctor.setBorder(new TitledBorder(null, "Doctor", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        pnlDoctor.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDoctor.setBackground(new Color(240, 255, 240));
         pnlDoctor.setBounds(133, 220, 299, 154);
         contentPanel.add(pnlDoctor);
@@ -224,8 +224,8 @@ public class HacerConsulta extends JDialog {
         pnlDoctor.add(btnBuscarDoctorXId);
 
         JPanel pnlConsulta = new JPanel();
-        pnlConsulta.setBorder(new TitledBorder(null, "Consulta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        pnlConsulta.setBackground(new Color(211, 211, 211));
+        pnlConsulta.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+        pnlConsulta.setBackground(new Color(255, 255, 204));
         pnlConsulta.setBounds(27, 387, 512, 221);
         contentPanel.add(pnlConsulta);
         pnlConsulta.setBackground(new Color(173, 216, 230));  // Azul clarito

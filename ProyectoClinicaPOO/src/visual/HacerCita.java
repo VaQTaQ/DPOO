@@ -74,6 +74,7 @@ public class HacerCita extends JDialog {
         contentPanel.setLayout(null);
 
         JPanel pnlDatosPaciente = new JPanel();
+        pnlDatosPaciente.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosPaciente.setBounds(12, 33, 686, 165);
         pnlDatosPaciente.setBackground(new Color(255, 255, 204)); 
         contentPanel.add(pnlDatosPaciente);
@@ -147,6 +148,7 @@ public class HacerCita extends JDialog {
         pnlDatosPaciente.add(spnPacienteEdad);
 
         JPanel pnlDatosDoctor = new JPanel();
+        pnlDatosDoctor.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosDoctor.setBounds(12, 211, 299, 154);
         pnlDatosDoctor.setBackground(new Color(204, 255, 204));
         contentPanel.add(pnlDatosDoctor);
@@ -211,6 +213,7 @@ public class HacerCita extends JDialog {
         pnlDatosDoctor.add(btnBuscarDoctorById);
 
         JPanel pnlDatosCita = new JPanel();
+        pnlDatosCita.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
         pnlDatosCita.setBounds(399, 211, 299, 154);
         pnlDatosCita.setBackground(new Color(153, 204, 204));
         contentPanel.add(pnlDatosCita);

@@ -64,6 +64,7 @@ public class ControlVacuna extends JDialog {
         contentPanel.setLayout(null);
         {
             JPanel pnlEliminarVacuna = new JPanel();
+            pnlEliminarVacuna.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
             pnlEliminarVacuna.setBounds(12, 13, 404, 285);
             pnlEliminarVacuna.setBackground(new Color(255, 255, 204)); 
             contentPanel.add(pnlEliminarVacuna);
@@ -124,6 +125,7 @@ public class ControlVacuna extends JDialog {
         }
         {
             JPanel pnlAgregarVacuna = new JPanel();
+            pnlAgregarVacuna.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
             pnlAgregarVacuna.setBounds(428, 13, 201, 285);
             pnlAgregarVacuna.setBackground(new Color(204, 255, 204)); 
             contentPanel.add(pnlAgregarVacuna);

@@ -31,6 +31,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
 
 public class VacunarPaciente extends JDialog {
 
@@ -132,6 +133,7 @@ public class VacunarPaciente extends JDialog {
 
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(new Color(255, 255, 204));
 		panel.setLayout(null);
 		panel.setBounds(27, 26, 381, 142);
@@ -198,6 +200,7 @@ public class VacunarPaciente extends JDialog {
 		panel.add(txtEdadPaciente);
 		
 		JPanel pnlDatosVacuna = new JPanel();
+		pnlDatosVacuna.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		pnlDatosVacuna.setBackground(new Color(255, 204, 204));
 		pnlDatosVacuna.setBounds(423, 26, 165, 142);
 		contentPanel.add(pnlDatosVacuna);
