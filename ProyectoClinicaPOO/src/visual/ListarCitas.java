@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -64,6 +66,8 @@ public class ListarCitas extends JDialog {
         modelo.setColumnIdentifiers(columnas);
         tblListarCitas.setModel(modelo);
         scrollPane.setViewportView(tblListarCitas);
+        tblListarCitas.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 13)); 
+        tblListarCitas.getTableHeader().setForeground(Color.BLUE); 
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -77,6 +81,7 @@ public class ListarCitas extends JDialog {
             }
         });
         cancelButton.setActionCommand("Cancel");
+        cancelButton.setBackground(new Color(255, 0, 0));
         buttonPane.add(cancelButton);
         
         

@@ -26,6 +26,7 @@ import lógico.Medico;
 import lógico.Paciente;
 import lógico.Vacuna;
 import java.awt.Color;
+import java.awt.Font;
 
 public class HacerCita extends JDialog {
 
@@ -72,31 +73,44 @@ public class HacerCita extends JDialog {
 
         JPanel pnlDatosPaciente = new JPanel();
         pnlDatosPaciente.setBounds(12, 33, 686, 165);
+        pnlDatosPaciente.setBackground(new Color(173, 216, 230)); 
         contentPanel.add(pnlDatosPaciente);
         pnlDatosPaciente.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblCedula = new JLabel("Cedula:");
+        lblCedula.setForeground(Color.BLUE);
+        lblCedula.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblCedula.setBounds(12, 13, 56, 16);
         pnlDatosPaciente.add(lblCedula);
 
         JLabel lblNombre = new JLabel("Nombre:");
+        lblNombre.setForeground(Color.BLUE);
+        lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNombre.setBounds(12, 67, 56, 16);
         pnlDatosPaciente.add(lblNombre);
 
         JLabel lblEdad = new JLabel("Edad:");
+        lblEdad.setForeground(Color.BLUE);
+        lblEdad.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblEdad.setBounds(12, 125, 56, 16);
         pnlDatosPaciente.add(lblEdad);
 
         JLabel lblDireccion = new JLabel("Direccion:");
+        lblDireccion.setForeground(Color.BLUE);
+        lblDireccion.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblDireccion.setBounds(456, 13, 68, 16);
         pnlDatosPaciente.add(lblDireccion);
 
         JLabel lblApellido = new JLabel("Apellido:");
+        lblApellido.setForeground(Color.BLUE);
+        lblApellido.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblApellido.setBounds(246, 67, 56, 16);
         pnlDatosPaciente.add(lblApellido);
 
         JLabel lblSexo = new JLabel("Sexo:");
+        lblSexo.setForeground(Color.BLUE);
+        lblSexo.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblSexo.setBounds(246, 125, 56, 16);
         pnlDatosPaciente.add(lblSexo);
 
@@ -132,19 +146,26 @@ public class HacerCita extends JDialog {
 
         JPanel pnlDatosDoctor = new JPanel();
         pnlDatosDoctor.setBounds(40, 211, 299, 154);
+        pnlDatosDoctor.setBackground(new Color(173, 216, 230));
         contentPanel.add(pnlDatosDoctor);
         pnlDatosDoctor.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblNewLabel = new JLabel("ID Doctor:");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lblNewLabel.setForeground(Color.BLUE);
         lblNewLabel.setBounds(12, 22, 70, 16);
         pnlDatosDoctor.add(lblNewLabel);
 
         JLabel lblNombreDoc = new JLabel("Nombre Doc.:");
+        lblNombreDoc.setForeground(Color.BLUE);
+        lblNombreDoc.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNombreDoc.setBounds(12, 67, 91, 16);
         pnlDatosDoctor.add(lblNombreDoc);
 
         JLabel lblEspecialidad = new JLabel("Especialidad:");
+        lblEspecialidad.setForeground(Color.BLUE);
+        lblEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblEspecialidad.setBounds(12, 112, 75, 16);
         pnlDatosDoctor.add(lblEspecialidad);
 
@@ -189,19 +210,26 @@ public class HacerCita extends JDialog {
 
         JPanel pnlDatosCita = new JPanel();
         pnlDatosCita.setBounds(369, 211, 299, 154);
+        pnlDatosCita.setBackground(new Color(173, 216, 230));
         contentPanel.add(pnlDatosCita);
         pnlDatosCita.setLayout(null);
         contentPanel.setBackground(new Color(173, 216, 230));  
 
         JLabel lblPrioridad = new JLabel("Prioridad:");
+        lblPrioridad.setFont(new Font("Tahoma", Font.BOLD, 13));
+        lblPrioridad.setForeground(Color.BLUE);
         lblPrioridad.setBounds(10, 23, 70, 16);
         pnlDatosCita.add(lblPrioridad);
 
         JLabel lblFecha = new JLabel("Fecha:");
+        lblFecha.setForeground(Color.BLUE);
+        lblFecha.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblFecha.setBounds(10, 68, 56, 16);
         pnlDatosCita.add(lblFecha);
 
         JLabel lblActiva = new JLabel("Activa:");
+        lblActiva.setForeground(Color.BLUE);
+        lblActiva.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblActiva.setBounds(10, 113, 56, 16);
         pnlDatosCita.add(lblActiva);
 
@@ -222,9 +250,11 @@ public class HacerCita extends JDialog {
 
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        buttonPane.setBackground(new Color(173, 216, 230));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton btnHacerCita = new JButton("Hacer Cita");
+        btnHacerCita.setBackground(new Color(102, 255, 51));
         btnHacerCita.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -326,6 +356,7 @@ public class HacerCita extends JDialog {
             }
         });
         cancelButton.setActionCommand("Cancel");
+        cancelButton.setBackground(new Color(255, 0, 0));
         buttonPane.add(cancelButton);
     }
 }

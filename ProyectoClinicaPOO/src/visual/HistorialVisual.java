@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -57,16 +59,19 @@ public class HistorialVisual extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblHistorial = new JTable();
-                modelo = new DefaultTableModel();
-                String[] columnas = { "Acción", "Detalle", "Fecha" };
-                modelo.setColumnIdentifiers(columnas);
-                tblHistorial.setModel(modelo);
-                scrollPane.setViewportView(tblHistorial);
+            	tblHistorial = new JTable();
+            	modelo = new DefaultTableModel();
+            	String[] columnas = { "Acción", "Detalle", "Fecha" };
+            	modelo.setColumnIdentifiers(columnas);
+            	tblHistorial.setModel(modelo);
+            	scrollPane.setViewportView(tblHistorial);
+            	tblHistorial.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 13));
+            	tblHistorial.getTableHeader().setForeground(Color.BLUE); 
             }
         }
         {
             JPanel buttonPane = new JPanel();
+            buttonPane.setBackground(new Color(173, 216, 230));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
@@ -77,6 +82,7 @@ public class HistorialVisual extends JDialog {
                     }
                 });
                 btnCerrar.setActionCommand("Cancel");
+                btnCerrar.setBackground(new Color(255, 0, 0));
                 buttonPane.add(btnCerrar);
             }
         }

@@ -1,7 +1,9 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -54,13 +56,16 @@ public class ListarConsultas extends JDialog {
             JScrollPane scrollPane = new JScrollPane();
             contentPanel.add(scrollPane, BorderLayout.CENTER);
             {
-                tblListarConsultas = new JTable();
-                modelo = new DefaultTableModel();
-                String[] columnas = { "ID Consulta", "Importante", "Nombre Paciente", "Nombre Doctor", "Diagnóstico",
-                        "Enfermedad", "Tratamiento", "Tratado" };
-                modelo.setColumnIdentifiers(columnas);
-                tblListarConsultas.setModel(modelo);
-                scrollPane.setViewportView(tblListarConsultas);
+            	tblListarConsultas = new JTable();
+            	modelo = new DefaultTableModel();
+            	String[] columnas = { "ID Consulta", "Importante", "Nombre Paciente", "Nombre Doctor", "Diagnóstico",
+            	    "Enfermedad", "Tratamiento", "Tratado" };
+            	modelo.setColumnIdentifiers(columnas);
+            	tblListarConsultas.setModel(modelo);
+            	scrollPane.setViewportView(tblListarConsultas);
+            	tblListarConsultas.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 13)); 
+            	tblListarConsultas.getTableHeader().setForeground(Color.BLUE); 
+
             }
         }
         {
@@ -77,6 +82,7 @@ public class ListarConsultas extends JDialog {
                     }
                 });
                 cancelButton.setActionCommand("Cancel");
+                cancelButton.setBackground(new Color(255, 0, 0));
                 buttonPane.add(cancelButton);
             }
         }

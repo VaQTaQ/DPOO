@@ -127,7 +127,7 @@ public class HacerConsulta extends JDialog {
         pnlPaciente.add(txtPacienteId);
 
         JButton btnBuscarPacienteXId = new JButton("Buscar");
-        btnBuscarPacienteXId.setForeground(new Color(100, 149, 237));
+        btnBuscarPacienteXId.setForeground(Color.BLACK);
         btnBuscarPacienteXId.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
@@ -202,7 +202,7 @@ public class HacerConsulta extends JDialog {
         pnlDoctor.add(txtDoctorEspecialidad);
 
         JButton btnBuscarDoctorXId = new JButton("Buscar");
-        btnBuscarDoctorXId.setForeground(new Color(100, 149, 237));
+        btnBuscarDoctorXId.setForeground(Color.BLACK);
         btnBuscarDoctorXId.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
@@ -293,7 +293,7 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.add(txtEnfermedadDescripcion);
         
         JButton btnVacunar = new JButton("Vacunar");
-        btnVacunar.setBackground(new Color(255, 160, 122));
+        //btnVacunar.setBackground(new Color(255, 0, 0));
         btnVacunar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		VacunarPaciente vacPaciente = new VacunarPaciente(pacienteSeleccionado);
@@ -306,12 +306,13 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.add(btnVacunar);
 
         JPanel buttonPane = new JPanel();
+        buttonPane.setBackground(new Color(173, 216, 230));
         buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton btnHacerConsulta = new JButton("Hacer Consulta");
-        btnHacerConsulta.setBackground(new Color(144, 238, 144));
+        btnHacerConsulta.setBackground(new Color(102, 255, 51));
         btnHacerConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
@@ -386,6 +387,7 @@ public class HacerConsulta extends JDialog {
         buttonPane.add(btnHacerConsulta);
 
         JButton cancelButton = new JButton("Cancelar");
+        cancelButton.setBackground(new Color(255, 0, 0));
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

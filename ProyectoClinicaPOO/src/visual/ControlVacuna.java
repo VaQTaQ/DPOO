@@ -23,6 +23,7 @@ import javax.swing.JSpinner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import java.awt.Font;
 
 public class ControlVacuna extends JDialog {
 
@@ -67,6 +68,7 @@ public class ControlVacuna extends JDialog {
             pnlEliminarVacuna.setLayout(null);
             {
                 JButton btnEliminarVacuna = new JButton("Eliminar");
+                //btnEliminarVacuna.setBackground(new Color(255, 0, 0));
                 btnEliminarVacuna.setBounds(295, 260, 97, 25);
                 pnlEliminarVacuna.add(btnEliminarVacuna);
                 btnEliminarVacuna.addActionListener(new ActionListener() {
@@ -111,6 +113,8 @@ public class ControlVacuna extends JDialog {
                 tblListarVacunas = new JTable();
                 modelo = new DefaultTableModel();
                 String[] columnas = { "Nombre", "Edad Min", "Edad Max", "Cantidad Vacunados" };
+                tblListarVacunas.getTableHeader().setForeground(new Color(0, 0, 255));
+                tblListarVacunas.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 13));
                 modelo.setColumnIdentifiers(columnas);
                 tblListarVacunas.setModel(modelo);
                 scrollPane.setViewportView(tblListarVacunas);
@@ -124,22 +128,29 @@ public class ControlVacuna extends JDialog {
             pnlAgregarVacuna.setLayout(null);
             {
                 JLabel lblNewLabel = new JLabel("Nombre:");
+                lblNewLabel.setForeground(Color.BLUE);
+                lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
                 lblNewLabel.setBounds(72, 13, 56, 16);
                 pnlAgregarVacuna.add(lblNewLabel);
             }
             {
                 JLabel lblEdadMinima = new JLabel("Edad Minima:");
+                lblEdadMinima.setForeground(Color.BLUE);
+                lblEdadMinima.setFont(new Font("Tahoma", Font.BOLD, 13));
                 lblEdadMinima.setBounds(60, 99, 80, 16);
                 pnlAgregarVacuna.add(lblEdadMinima);
             }
             {
                 JLabel lblEdadMaxima = new JLabel("Edad Maxima:");
+                lblEdadMaxima.setForeground(Color.BLUE);
+                lblEdadMaxima.setFont(new Font("Tahoma", Font.BOLD, 13));
                 lblEdadMaxima.setBounds(60, 175, 88, 16);
                 pnlAgregarVacuna.add(lblEdadMaxima);
             }
             {
                 JButton btnAgregarVacuna = new JButton("Agregar Vacuna");
-                btnAgregarVacuna.setBounds(38, 247, 125, 25);
+                //btnAgregarVacuna.setBackground(new Color(0, 255, 0));
+                btnAgregarVacuna.setBounds(45, 247, 125, 25);
                 pnlAgregarVacuna.add(btnAgregarVacuna);
                 btnAgregarVacuna.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -188,6 +199,7 @@ public class ControlVacuna extends JDialog {
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
                 JButton cancelButton = new JButton("Cerrar");
+                cancelButton.setBackground(new Color(255, 0, 0));
                 cancelButton.setActionCommand("Cancel");
                 cancelButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {

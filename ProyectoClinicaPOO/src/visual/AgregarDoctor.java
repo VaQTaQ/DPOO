@@ -262,6 +262,7 @@ public class AgregarDoctor extends JDialog {
 		getRootPane().setDefaultButton(btnAgregarDoctor);
 
 		JButton cancelButton = new JButton("Cancelar");
+		cancelButton.setBackground(new Color(255, 0, 0));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
