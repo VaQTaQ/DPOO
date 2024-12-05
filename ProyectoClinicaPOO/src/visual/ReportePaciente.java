@@ -279,9 +279,11 @@ public class ReportePaciente extends JDialog {
         String vacunas = " ";
         for (int i = 0; i < paciente.getMisVacunas().size(); i++) {
             vacunas += paciente.getMisVacunas().get(i).getNombre();
+            
             if (i < paciente.getMisVacunas().size() - 1) {
                 vacunas += ", ";
             }
+            
         }
         txtVacunasPaciente.setText(vacunas);
 

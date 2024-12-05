@@ -145,13 +145,16 @@ public class PacientesXDoctor extends JDialog {
         ArrayList<Consulta> consultas = Clinica.getInstance().getConsultas();
 
         ArrayList<String> pacientesIds = new ArrayList<>(); 
+        
         for (Consulta consulta : consultas) {
+        	
             if (consulta.getMedico().equals(medico)) {
                 Paciente paciente = consulta.getPaciente();
                 String pacienteId = paciente.getCodigoPaciente();
 
                 boolean yaAgregado = false;
                 for (String id : pacientesIds) {
+                	
                     if (id.equals(pacienteId)) {
                         yaAgregado = true;
                         break;

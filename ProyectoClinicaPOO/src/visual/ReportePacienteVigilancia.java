@@ -342,12 +342,15 @@ public class ReportePacienteVigilancia extends JDialog {
 
         if (paciente.getHistoriaClinica() != null) {
             consultasPaciente = (ArrayList<Consulta>) paciente.getHistoriaClinica().getConsultas();
+            
         } else {
             consultasPaciente = new ArrayList<>();
         }
         
         ArrayList<Consulta> consultasFiltradas = new ArrayList<>(); 
+        
         for (Consulta consulta : consultasPaciente) {
+        	
             if (consulta.getEnfermedad().isBajoVigilancia()) {
                 consultasFiltradas.add(consulta); 
             }
@@ -370,7 +373,9 @@ public class ReportePacienteVigilancia extends JDialog {
 
 	 private void cargarConsultasVigilancia() { 
 	        ArrayList<Consulta> consultasFiltradas = new ArrayList<>();
+	        
 	        for (Consulta consulta : consultasPaciente) {
+	        	
 	            if (consulta.getEnfermedad().isBajoVigilancia()) {
 	                consultasFiltradas.add(consulta);
 	            }
