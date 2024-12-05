@@ -95,7 +95,6 @@ public class Pacientes extends JDialog {
                             
                             String idPaciente = (String) modelo.getValueAt(selectedRow, 0);
                             Paciente paciente = Clinica.getInstance().buscarPacienteById(idPaciente);
-                            PacientesVigilancia pacienteVil = new PacientesVigilancia();
                             
                             if (paciente != null) {
                                 ReportePaciente reportePacienteDialog = new ReportePaciente(paciente);
