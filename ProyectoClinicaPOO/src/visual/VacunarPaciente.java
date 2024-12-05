@@ -226,6 +226,7 @@ public class VacunarPaciente extends JDialog {
 		pnlDatosVacuna.add(lblDosisAAplicar);
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(173, 216, 230));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
