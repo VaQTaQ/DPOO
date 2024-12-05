@@ -45,8 +45,12 @@ public class Principal extends JFrame {
                 try {
                 	FileInputStream datosStream = new FileInputStream(datos);
                 	ObjectInputStream clinDat = new ObjectInputStream(datosStream);
-                	Clinica clinica = Clinica.getInstance();
-                	clinica = (Clinica) clinDat.readObject();
+                	Clinica clinicaLeida = Clinica.getInstance();
+                	clinicaLeida = (Clinica) clinDat.readObject();
+                    Clinica.setInstance(clinicaLeida);
+                    clinDat.close();
+                    datosStream.close();
+                    Clinica clinica = Clinica.getInstance();
                 	Login login = new Login(clinica.getUsuarios());
                     login.setVisible(true);
                 	/*

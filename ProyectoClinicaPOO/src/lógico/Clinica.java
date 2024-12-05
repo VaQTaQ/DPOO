@@ -372,4 +372,8 @@ public class Clinica implements Serializable {
 		this.usuarios = usuarios;
 	}
 	
+	
+	public static void setInstance(Clinica instancia) {
+	    estado = instancia;
+	}
 }
