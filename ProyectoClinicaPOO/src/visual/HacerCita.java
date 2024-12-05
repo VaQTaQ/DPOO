@@ -161,7 +161,7 @@ public class HacerCita extends JDialog {
         lblNewLabel.setBounds(12, 22, 70, 16);
         pnlDatosDoctor.add(lblNewLabel);
 
-        JLabel lblNombreDoc = new JLabel("Nombre Doc.:");
+        JLabel lblNombreDoc = new JLabel("Nomb.Doc.:");
         lblNombreDoc.setForeground(Color.BLUE);
         lblNombreDoc.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNombreDoc.setBounds(12, 67, 91, 16);
@@ -250,13 +250,13 @@ public class HacerCita extends JDialog {
 
         cmbCitaActiva = new JComboBox<>();
         cmbCitaActiva.setModel(new DefaultComboBoxModel<>(new String[]{"<Seleccione>", "si", "No"}));
-        cmbCitaActiva.setBounds(90, 110, 82, 22);
+        cmbCitaActiva.setBounds(90, 110, 106, 22);
         pnlDatosCita.add(cmbCitaActiva);
 
         JPanel buttonPane = new JPanel();
         buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        buttonPane.setBackground(new Color(173, 216, 230));
+        buttonPane.setBackground(new Color(153, 204, 204));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton btnHacerCita = new JButton("Hacer Cita");

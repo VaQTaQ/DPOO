@@ -70,7 +70,7 @@ public class HacerConsulta extends JDialog {
         setBounds(100, 100, 584, 717);
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
-        contentPanel.setBackground(new Color(173, 216, 230));
+        contentPanel.setBackground(new Color(255, 255, 204));
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
@@ -306,7 +306,7 @@ public class HacerConsulta extends JDialog {
         pnlConsulta.add(btnVacunar);
 
         JPanel buttonPane = new JPanel();
-        buttonPane.setBackground(new Color(173, 216, 230));
+        buttonPane.setBackground(new Color(153, 204, 204));
         buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);

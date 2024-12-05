@@ -93,7 +93,7 @@ public class Login extends JDialog {
         JPanel buttonPane = new JPanel();
         buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        buttonPane.setBackground(new Color(173, 216, 230)); 
+        buttonPane.setBackground(new Color(153, 204, 204)); 
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton okButton = new JButton("Iniciar Sesión");

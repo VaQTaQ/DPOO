@@ -284,7 +284,7 @@ public class ReportePaciente extends JDialog {
         {
             JPanel buttonPane = new JPanel();
             buttonPane.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-            buttonPane.setBackground(new Color(173, 216, 230));
+            buttonPane.setBackground(new Color(153, 204, 204));
             buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
             getContentPane().add(buttonPane, BorderLayout.SOUTH);
             {
